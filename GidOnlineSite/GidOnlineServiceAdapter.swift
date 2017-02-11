@@ -18,7 +18,7 @@ class GidOnlineServiceAdapter: ServiceAdapter {
   var document: Document?
 
   init() {
-    super.init(configName: NSHomeDirectory() + "/Library/Caches/settings.json")
+    super.init(configName: NSHomeDirectory() + "/Library/Caches/gidonline-settings.json")
 
     bookmarks.load()
     history.load()
