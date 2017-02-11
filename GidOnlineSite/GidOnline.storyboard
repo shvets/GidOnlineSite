@@ -60,7 +60,7 @@
         <!--Genres Group Controller-->
         <scene sceneID="l8X-DB-yrh">
             <objects>
-                <collectionViewController id="XJq-Pq-Qv4" customClass="GenresGroupController" customModule="EtvnetApp" sceneMemberID="viewController">
+                <collectionViewController id="XJq-Pq-Qv4" customClass="GenresGroupController" customModule="GidOnlineSite" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Gb9-XC-3jM">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -147,7 +147,7 @@
         <!--Themes Controller-->
         <scene sceneID="qyk-2Q-Qcw">
             <objects>
-                <collectionViewController id="gvs-Rq-7PM" customClass="GOThemesController" customModule="EtvnetApp" sceneMemberID="viewController">
+                <collectionViewController id="gvs-Rq-7PM" customClass="GOThemesController" customModule="GidOnlineSite" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="TSr-FX-R64">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -189,7 +189,7 @@
         <!--Letters Controller-->
         <scene sceneID="AhC-Jx-Fgb">
             <objects>
-                <collectionViewController id="vis-hK-wUc" customClass="LettersController" customModule="EtvnetApp" sceneMemberID="viewController">
+                <collectionViewController id="vis-hK-wUc" customClass="LettersController" customModule="GidOnlineSite" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="KQU-D0-bhc">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -234,7 +234,7 @@
         <!--Letter Controller-->
         <scene sceneID="uoa-nG-fcI">
             <objects>
-                <collectionViewController id="kTf-6t-8aZ" customClass="LetterController" customModule="EtvnetApp" sceneMemberID="viewController">
+                <collectionViewController id="kTf-6t-8aZ" customClass="LetterController" customModule="GidOnlineSite" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="XyU-Je-MlQ">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -276,7 +276,7 @@
         <!--Countries Controller-->
         <scene sceneID="pYN-sC-bew">
             <objects>
-                <collectionViewController id="ad4-qh-LXQ" customClass="CountriesController" customModule="EtvnetApp" sceneMemberID="viewController">
+                <collectionViewController id="ad4-qh-LXQ" customClass="CountriesController" customModule="GidOnlineSite" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="EK2-Or-eeN">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -318,7 +318,7 @@
         <!--Years Controller-->
         <scene sceneID="Y5D-YY-oGy">
             <objects>
-                <collectionViewController id="eFx-sW-aYJ" customClass="YearsController" customModule="EtvnetApp" sceneMemberID="viewController">
+                <collectionViewController id="eFx-sW-aYJ" customClass="YearsController" customModule="GidOnlineSite" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="76S-th-qsz">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -360,7 +360,7 @@
         <!--Filters Controller-->
         <scene sceneID="zNa-KT-R4s">
             <objects>
-                <collectionViewController id="Sm5-Nd-Aal" customClass="FiltersController" customModule="EtvnetApp" sceneMemberID="viewController">
+                <collectionViewController id="Sm5-Nd-Aal" customClass="FiltersController" customModule="GidOnlineSite" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Kld-4R-GO9">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
