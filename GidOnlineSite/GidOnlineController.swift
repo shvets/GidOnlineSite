@@ -4,7 +4,7 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-class GidOnlineController: BaseCollectionViewController {
+open class GidOnlineController: BaseCollectionViewController {
   let CELL_IDENTIFIER = "GidOnlineCell"
 
   let MAIN_MENU_ITEMS = [
@@ -23,10 +23,12 @@ class GidOnlineController: BaseCollectionViewController {
   var document: Document?
 
   static public func instantiate() -> Self {
-    return AppStoryboard.instantiateController("GidOnline", bundle: Bundle.main, viewControllerClass: self)
+    let bundle = Bundle(identifier: "com.rubikon.GidOnlineSite")!
+
+    return AppStoryboard.instantiateController("GidOnline", bundle: bundle, viewControllerClass: self)
   }
 
-  override func viewDidLoad() {
+  override open func viewDidLoad() {
     super.viewDidLoad()
 
     self.clearsSelectionOnViewWillAppear = false
@@ -60,15 +62,15 @@ class GidOnlineController: BaseCollectionViewController {
 
   // MARK: UICollectionViewDataSource
 
-  override func numberOfSections(in collectionView: UICollectionView) -> Int {
+  override open func numberOfSections(in collectionView: UICollectionView) -> Int {
     return 1
   }
 
-  override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  override open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return items.count
   }
 
-  override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+  override open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_IDENTIFIER, for: indexPath) as! MediaNameCell
 
     let item = items[indexPath.row]
@@ -123,7 +125,7 @@ class GidOnlineController: BaseCollectionViewController {
 
   // MARK: - Navigation
 
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+  override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let identifier = segue.identifier {
       switch identifier {
         case GenresGroupController.SEGUE_IDENTIFIER:
