@@ -99,12 +99,6 @@ class GidOnlineDataSource: DataSource {
         do {
           var movies: [MediaItem] = []
 
-  //        let document = try service.getMovieDocument(parentId!)
-  //        let serialInfo = try service.getSerialInfo(parentId!)
-  //
-  //
-  //        let seasons = serialInfo["seasons"] as! [[String: String]]
-
           let index1 = identifier!.index(identifier!.startIndex, offsetBy: GidOnlineAPI.SITE_URL.characters.count)
           let index2 = identifier!.endIndex
           let path = identifier![index1 ..< index2]
@@ -126,15 +120,6 @@ class GidOnlineDataSource: DataSource {
         catch {
           print("Error getting seasons")
         }
-
-  //      let result = try service.getSeasons(parentId!)
-  //      let seasons = result["movies"] as! [Any]
-  //
-  //      if seasons.count == 1 {
-  //        let episodes = (seasons[0] as! [String: Any])["episodes"]
-  //
-  //        result = ["movies": episodes!]
-  //      }
 
       case "EPISODES":
         var movies: [MediaItem] = []

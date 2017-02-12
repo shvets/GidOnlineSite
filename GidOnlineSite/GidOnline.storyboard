@@ -105,7 +105,7 @@
         <!--Genres Controller-->
         <scene sceneID="e9Q-yy-EOC">
             <objects>
-                <collectionViewController id="B6l-i6-vHL" customClass="GOGenresController" customModule="EtvnetApp" sceneMemberID="viewController">
+                <collectionViewController id="B6l-i6-vHL" customClass="GOGenresController" customModule="GidOnlineSite" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="IwJ-JP-lig">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
