@@ -106,9 +106,7 @@ class GidOnlineDataSource: DataSource {
         }
 
       case "EPISODES":
-        let parentId = selectedItem.parentId
-
-        let episodes = try service.getEpisodes(parentId!, seasonNumber: selectedItem!.id!, thumb: selectedItem?.thumb)
+        let episodes = try service.getEpisodes(selectedItem!.parentId!, seasonNumber: selectedItem!.id!, thumb: selectedItem?.thumb)
 
         result = ["movies": episodes]
 
