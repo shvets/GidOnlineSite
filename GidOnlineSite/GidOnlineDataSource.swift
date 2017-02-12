@@ -97,56 +97,20 @@ class GidOnlineDataSource: DataSource {
 
       case "SEASONS":
         do {
-          var movies: [MediaItem] = []
+          let seasons = try service.getSeasons(identifier!, parentName: params.parentName!, thumb: selectedItem?.thumb)
 
-          let index1 = identifier!.index(identifier!.startIndex, offsetBy: GidOnlineAPI.SITE_URL.characters.count)
-          let index2 = identifier!.endIndex
-          let path = identifier![index1 ..< index2]
-          let seasons = try service.getSeasons(path) as! [[String: String]]
-
-          for season  in seasons {
-            let mediaItem = GidOnlineMediaItem(data: JSON(["name": season["name"]!, "id": season["id"]!]))
-
-            mediaItem.type = "season"
-            mediaItem.thumb = selectedItem?.thumb
-            mediaItem.parentName = params.parentName!
-            mediaItem.parentId = identifier!
-
-            movies.append(mediaItem)
-          }
-
-          result = ["seasons": movies]
+          result = ["movies": seasons]
         }
         catch {
           print("Error getting seasons")
         }
 
       case "EPISODES":
-        var movies: [MediaItem] = []
+        let parentId = selectedItem.parentId
 
-        let parentId = (selectedItem as! GidOnlineMediaItem).parentId
+        let episodes = try service.getEpisodes(parentId!, seasonNumber: selectedItem!.id!, thumb: selectedItem?.thumb)
 
-        let serialInfo = try service.getSerialInfo(parentId!, season: selectedItem!.id!, episode: "1")
-
-        let episodes = serialInfo["episodes"] as! [String]
-
-        for episode in episodes {
-          let index1 = episode.index(episode.startIndex, offsetBy: 6)
-          let index2 = episode.endIndex
-
-          let episodeNumber = episode[index1..<index2]
-
-          let mediaItem = GidOnlineMediaItem(data: JSON(["name": episode, "id": parentId!]))
-
-          mediaItem.type = "episode"
-          mediaItem.thumb = selectedItem?.thumb
-          mediaItem.seasonNumber = selectedItem!.id!
-          mediaItem.episodeNumber = episodeNumber
-
-          movies.append(mediaItem)
-        }
-
-        result = ["episodes": movies]
+        result = ["movies": episodes]
 
       case "SEARCH":
         let query = identifier!
@@ -173,12 +137,6 @@ class GidOnlineDataSource: DataSource {
 
         newItems += [movie]
       }
-    }
-    else if result["seasons"] != nil {
-      newItems = result["seasons"] as! [MediaItem]
-    }
-    else if result["episodes"] != nil {
-      newItems = result["episodes"] as! [MediaItem]
     }
 
     return newItems
