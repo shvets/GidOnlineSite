@@ -124,7 +124,7 @@
 			children = (
 				FA695E641E4F9CA500E148A5 /* WebAPI.xcodeproj */,
 				FA695E591E4F9C9B00E148A5 /* TVSetKit.xcodeproj */,
-				FA695E381E4F9C3100E148A5 /* GidOnlineSite */,
+				FA695E381E4F9C3100E148A5 /* Sources */,
 				FA695E371E4F9C3100E148A5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -137,7 +137,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FA695E381E4F9C3100E148A5 /* GidOnlineSite */ = {
+		FA695E381E4F9C3100E148A5 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				FA695E781E4F9D6500E148A5 /* filter */,
@@ -160,6 +160,7 @@
 				2DBA1D2040C5D810678A98B8 /* YearsController.swift */,
 				2DBA16F3B5AA43BDF119E7DB /* SearchController.swift */,
 			);
+			name = Sources;
 			path = GidOnlineSite;
 			sourceTree = "<group>";
 		};
