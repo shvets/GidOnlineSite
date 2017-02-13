@@ -449,5 +449,70 @@
             </objects>
             <point key="canvasLocation" x="8119" y="591"/>
         </scene>
+        <!--Search-->
+        <scene sceneID="dsI-3c-aKe">
+            <objects>
+                <viewController storyboardIdentifier="SearchController" id="6GL-WR-Uee" customClass="SearchController" customModule="GidOnlineSite" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ltB-pu-CEx"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fav-l7-PVs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9Dx-dx-I5x">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Query" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="RrI-5j-vcQ">
+                                <rect key="frame" x="590" y="318" width="1200" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xrx-vD-CA1">
+                                <rect key="frame" x="590" y="683" width="400" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="onSearchAction:" destination="6GL-WR-Uee" eventType="primaryActionTriggered" id="HoM-9V-jgM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrZ-3j-q17">
+                                <rect key="frame" x="590" y="533" width="164" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <connections>
+                                    <action selector="onUseRunglish:" destination="6GL-WR-Uee" eventType="primaryActionTriggered" id="Z6B-fz-Nfb"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VrX-Fw-yT1">
+                                <rect key="frame" x="590" y="422" width="1200" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use Runglish?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgC-H4-Ibk">
+                                <rect key="frame" x="60" y="533" width="522" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Search" id="Ivm-Xk-1cT"/>
+                    <connections>
+                        <outlet property="query" destination="RrI-5j-vcQ" id="hmw-GH-luF"/>
+                        <outlet property="searchButton" destination="Xrx-vD-CA1" id="oAU-bF-MBq"/>
+                        <outlet property="transcodedQuery" destination="VrX-Fw-yT1" id="BZq-oj-0OR"/>
+                        <outlet property="useRunglish" destination="hrZ-3j-q17" id="A0Y-D4-knx"/>
+                        <outlet property="useRunglishLabel" destination="CgC-H4-Ibk" id="Pm3-Py-cSd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2d2-yL-PIQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3235" y="-2436"/>
+        </scene>
     </scenes>
 </document>

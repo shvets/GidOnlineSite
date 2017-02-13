@@ -11,6 +11,7 @@
 		2DBA13399E9BCFCB1CF7AD2E /* LetterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1684B4B4B69805A3175F /* LetterController.swift */; };
 		2DBA1440C6817D786261258D /* YearsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1D2040C5D810678A98B8 /* YearsController.swift */; };
 		2DBA1705B9C4FF40C5113DF5 /* LettersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA14BAC1A5E67170D4CAB6 /* LettersController.swift */; };
+		2DBA1C62F63FFB5ECCB43084 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA16F3B5AA43BDF119E7DB /* SearchController.swift */; };
 		2DBA1D024EB724D14FEEBCDA /* FiltersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1310A6FF8A1F25061145 /* FiltersController.swift */; };
 		FA695E3B1E4F9C3100E148A5 /* GidOnlineSite.h in Headers */ = {isa = PBXBuildFile; fileRef = FA695E391E4F9C3100E148A5 /* GidOnlineSite.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA695E4B1E4F9C6F00E148A5 /* GenresGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA695E411E4F9C6F00E148A5 /* GenresGroupController.swift */; };
@@ -85,6 +86,7 @@
 		2DBA1310A6FF8A1F25061145 /* FiltersController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FiltersController.swift; path = filter/FiltersController.swift; sourceTree = "<group>"; };
 		2DBA14BAC1A5E67170D4CAB6 /* LettersController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LettersController.swift; path = filter/LettersController.swift; sourceTree = "<group>"; };
 		2DBA1684B4B4B69805A3175F /* LetterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LetterController.swift; path = filter/LetterController.swift; sourceTree = "<group>"; };
+		2DBA16F3B5AA43BDF119E7DB /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		2DBA1D2040C5D810678A98B8 /* YearsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YearsController.swift; path = filter/YearsController.swift; sourceTree = "<group>"; };
 		FA695E361E4F9C3100E148A5 /* GidOnlineSite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GidOnlineSite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA695E391E4F9C3100E148A5 /* GidOnlineSite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GidOnlineSite.h; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				2DBA1684B4B4B69805A3175F /* LetterController.swift */,
 				2DBA14BAC1A5E67170D4CAB6 /* LettersController.swift */,
 				2DBA1D2040C5D810678A98B8 /* YearsController.swift */,
+				2DBA16F3B5AA43BDF119E7DB /* SearchController.swift */,
 			);
 			path = GidOnlineSite;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				2DBA13399E9BCFCB1CF7AD2E /* LetterController.swift in Sources */,
 				2DBA1705B9C4FF40C5113DF5 /* LettersController.swift in Sources */,
 				2DBA1440C6817D786261258D /* YearsController.swift in Sources */,
+				2DBA1C62F63FFB5ECCB43084 /* SearchController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -111,9 +111,9 @@ class GidOnlineDataSource: DataSource {
         result = ["movies": episodes]
 
       case "SEARCH":
-        let query = identifier!
-
-        result = try service.search(query, page: currentPage)
+        if !identifier!.isEmpty {
+          result = try service.search(identifier!, page: currentPage)
+        }
 
       default:
         result = [:]
