@@ -91,7 +91,7 @@ open class GidOnlineController: BaseCollectionViewController {
       performSegue(withIdentifier: GenresGroupController.SEGUE_IDENTIFIER, sender: gesture.view)
     }
     else if requestType == "THEMES" {
-      performSegue(withIdentifier: GOThemesController.SEGUE_IDENTIFIER, sender: gesture.view)
+      performSegue(withIdentifier: ThemesController.SEGUE_IDENTIFIER, sender: gesture.view)
     }
     else if requestType == "FILTERS" {
       performSegue(withIdentifier: FiltersController.SEGUE_IDENTIFIER, sender: gesture.view)
@@ -132,8 +132,8 @@ open class GidOnlineController: BaseCollectionViewController {
           if let destination = segue.destination as? GenresGroupController {
             destination.document = document
           }
-        case GOThemesController.SEGUE_IDENTIFIER:
-          if let destination = segue.destination as? GOThemesController {
+        case ThemesController.SEGUE_IDENTIFIER:
+          if let destination = segue.destination as? ThemesController {
             destination.document = document
           }
         case FiltersController.SEGUE_IDENTIFIER:

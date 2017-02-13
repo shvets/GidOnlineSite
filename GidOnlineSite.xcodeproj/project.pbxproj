@@ -20,9 +20,9 @@
 		FA695E4F1E4F9C6F00E148A5 /* GidOnlineMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA695E451E4F9C6F00E148A5 /* GidOnlineMediaItem.swift */; };
 		FA695E501E4F9C6F00E148A5 /* GidOnlineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA695E461E4F9C6F00E148A5 /* GidOnlineService.swift */; };
 		FA695E511E4F9C6F00E148A5 /* GidOnlineServiceAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA695E471E4F9C6F00E148A5 /* GidOnlineServiceAdapter.swift */; };
-		FA695E521E4F9C6F00E148A5 /* GidOnlineSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA695E481E4F9C6F00E148A5 /* GidOnlineSettingsController.swift */; };
-		FA695E531E4F9C6F00E148A5 /* GOGenresController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA695E491E4F9C6F00E148A5 /* GOGenresController.swift */; };
-		FA695E541E4F9C6F00E148A5 /* GOThemesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA695E4A1E4F9C6F00E148A5 /* GOThemesController.swift */; };
+		FA695E521E4F9C6F00E148A5 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA695E481E4F9C6F00E148A5 /* SettingsController.swift */; };
+		FA695E531E4F9C6F00E148A5 /* GenresController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA695E491E4F9C6F00E148A5 /* GenresController.swift */; };
+		FA695E541E4F9C6F00E148A5 /* ThemesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA695E4A1E4F9C6F00E148A5 /* ThemesController.swift */; };
 		FA695E761E4F9CC200E148A5 /* TVSetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA695E611E4F9C9C00E148A5 /* TVSetKit.framework */; };
 		FA695E771E4F9CC200E148A5 /* WebAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA695E731E4F9CA500E148A5 /* WebAPI.framework */; };
 		FA695E791E4F9D6500E148A5 /* filter in Resources */ = {isa = PBXBuildFile; fileRef = FA695E781E4F9D6500E148A5 /* filter */; };
@@ -96,9 +96,9 @@
 		FA695E451E4F9C6F00E148A5 /* GidOnlineMediaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GidOnlineMediaItem.swift; sourceTree = "<group>"; };
 		FA695E461E4F9C6F00E148A5 /* GidOnlineService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GidOnlineService.swift; sourceTree = "<group>"; };
 		FA695E471E4F9C6F00E148A5 /* GidOnlineServiceAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GidOnlineServiceAdapter.swift; sourceTree = "<group>"; };
-		FA695E481E4F9C6F00E148A5 /* GidOnlineSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GidOnlineSettingsController.swift; sourceTree = "<group>"; };
-		FA695E491E4F9C6F00E148A5 /* GOGenresController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GOGenresController.swift; sourceTree = "<group>"; };
-		FA695E4A1E4F9C6F00E148A5 /* GOThemesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GOThemesController.swift; sourceTree = "<group>"; };
+		FA695E481E4F9C6F00E148A5 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		FA695E491E4F9C6F00E148A5 /* GenresController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresController.swift; sourceTree = "<group>"; };
+		FA695E4A1E4F9C6F00E148A5 /* ThemesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemesController.swift; sourceTree = "<group>"; };
 		FA695E591E4F9C9B00E148A5 /* TVSetKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TVSetKit.xcodeproj; path = ../TVSetKit/TVSetKit.xcodeproj; sourceTree = "<group>"; };
 		FA695E641E4F9CA500E148A5 /* WebAPI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WebAPI.xcodeproj; path = ../WebAPI/WebAPI.xcodeproj; sourceTree = "<group>"; };
 		FA695E781E4F9D6500E148A5 /* filter */ = {isa = PBXFileReference; lastKnownFileType = folder; path = filter; sourceTree = "<group>"; };
@@ -146,9 +146,9 @@
 				FA695E451E4F9C6F00E148A5 /* GidOnlineMediaItem.swift */,
 				FA695E461E4F9C6F00E148A5 /* GidOnlineService.swift */,
 				FA695E471E4F9C6F00E148A5 /* GidOnlineServiceAdapter.swift */,
-				FA695E481E4F9C6F00E148A5 /* GidOnlineSettingsController.swift */,
-				FA695E491E4F9C6F00E148A5 /* GOGenresController.swift */,
-				FA695E4A1E4F9C6F00E148A5 /* GOThemesController.swift */,
+				FA695E481E4F9C6F00E148A5 /* SettingsController.swift */,
+				FA695E491E4F9C6F00E148A5 /* GenresController.swift */,
+				FA695E4A1E4F9C6F00E148A5 /* ThemesController.swift */,
 				FA695E391E4F9C3100E148A5 /* GidOnlineSite.h */,
 				FA695E3A1E4F9C3100E148A5 /* Info.plist */,
 				2DBA10AD207E128FFF893664 /* CountriesController.swift */,
@@ -327,11 +327,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA695E4B1E4F9C6F00E148A5 /* GenresGroupController.swift in Sources */,
-				FA695E531E4F9C6F00E148A5 /* GOGenresController.swift in Sources */,
-				FA695E521E4F9C6F00E148A5 /* GidOnlineSettingsController.swift in Sources */,
+				FA695E531E4F9C6F00E148A5 /* GenresController.swift in Sources */,
+				FA695E521E4F9C6F00E148A5 /* SettingsController.swift in Sources */,
 				FA695E511E4F9C6F00E148A5 /* GidOnlineServiceAdapter.swift in Sources */,
 				FA695E4D1E4F9C6F00E148A5 /* GidOnlineController.swift in Sources */,
-				FA695E541E4F9C6F00E148A5 /* GOThemesController.swift in Sources */,
+				FA695E541E4F9C6F00E148A5 /* ThemesController.swift in Sources */,
 				FA695E4E1E4F9C6F00E148A5 /* GidOnlineDataSource.swift in Sources */,
 				FA695E4F1E4F9C6F00E148A5 /* GidOnlineMediaItem.swift in Sources */,
 				FA695E501E4F9C6F00E148A5 /* GidOnlineService.swift in Sources */,

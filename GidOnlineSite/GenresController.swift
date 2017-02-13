@@ -4,9 +4,9 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-class GOGenresController: BaseCollectionViewController {
+class GenresController: BaseCollectionViewController {
   static let SEGUE_IDENTIFIER = "Genres"
-  let CELL_IDENTIFIER = "GOGenreCell"
+  let CELL_IDENTIFIER = "GenreCell"
 
   let service = GidOnlineService.shared
 

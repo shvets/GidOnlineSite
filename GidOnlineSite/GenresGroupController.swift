@@ -65,7 +65,7 @@ class GenresGroupController: BaseCollectionViewController {
   }
 
   func tapped(_ gesture: UITapGestureRecognizer) {
-    performSegue(withIdentifier: GOGenresController.SEGUE_IDENTIFIER, sender: gesture.view)
+    performSegue(withIdentifier: GenresController.SEGUE_IDENTIFIER, sender: gesture.view)
   }
 
   // MARK: - Navigation
@@ -73,8 +73,8 @@ class GenresGroupController: BaseCollectionViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let identifier = segue.identifier {
       switch identifier {
-        case GOGenresController.SEGUE_IDENTIFIER:
-          if let destination = segue.destination as? GOGenresController,
+        case GenresController.SEGUE_IDENTIFIER:
+          if let destination = segue.destination as? GenresController,
              let selectedCell = sender as? MediaNameCell {
             adapter.requestType = "GENRES"
             adapter.parentId = selectedCell.item!.name

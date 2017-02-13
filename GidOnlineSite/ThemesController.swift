@@ -4,9 +4,9 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-class GOThemesController: BaseCollectionViewController {
+class ThemesController: BaseCollectionViewController {
   static let SEGUE_IDENTIFIER = "Themes"
-  let CELL_IDENTIFIER = "GOThemeCell"
+  let CELL_IDENTIFIER = "ThemeCell"
 
   let THEMES_MENU = [
     "TOP_SEVEN",

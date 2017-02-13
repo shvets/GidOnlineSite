@@ -1,8 +1,8 @@
 import UIKit
 import TVSetKit
 
-class GidOnlineSettingsController: UICollectionViewController {
-  let CELL_IDENTIFIER = "GidOnlineSettingCell"
+class SettingsController: UICollectionViewController {
+  let CELL_IDENTIFIER = "SettingCell"
 
   public var adapter: ServiceAdapter!
 
