@@ -70,9 +70,7 @@ class ThemesController: BaseCollectionViewController {
 
     adapter.requestType = "THEMES"
 
-    let mediaItem = MediaItem(name: selectedCell.item!.name!)
-
-    adapter.selectedItem = mediaItem
+    adapter.selectedItem =  getItem(for: selectedCell)
 
     destination.adapter = adapter
 

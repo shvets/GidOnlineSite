@@ -77,8 +77,11 @@ class GenresGroupController: BaseCollectionViewController {
           if let destination = segue.destination as? GenresController,
              let selectedCell = sender as? MediaNameCell {
             adapter.requestType = "GENRES"
-            adapter.parentId = selectedCell.item!.name
-            adapter.parentName = selectedCell.item!.name
+
+            let mediaItem = getItem(for: selectedCell)
+
+            adapter.parentId = mediaItem.name
+            adapter.parentName = mediaItem.name
 
             destination.adapter = adapter
             destination.document = document

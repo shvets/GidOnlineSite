@@ -85,7 +85,7 @@ open class GidOnlineController: BaseCollectionViewController {
   func tapped(_ gesture: UITapGestureRecognizer) {
     let selectedCell = gesture.view as! MediaNameCell
 
-    let requestType = selectedCell.item!.name
+    let requestType = getItem(for: selectedCell).name
 
     if requestType == "GENRES" {
       performSegue(withIdentifier: GenresGroupController.SEGUE_IDENTIFIER, sender: gesture.view)

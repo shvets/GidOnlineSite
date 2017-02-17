@@ -75,9 +75,7 @@ class GenresController: BaseCollectionViewController {
 
     adapter.requestType = "MOVIES"
 
-    let mediaItem = MediaItem(name: selectedCell.item!.name!, id: selectedCell.item!.id!)
-
-    adapter.selectedItem = mediaItem
+    adapter.selectedItem = getItem(for: selectedCell)
 
     destination.adapter = adapter
 

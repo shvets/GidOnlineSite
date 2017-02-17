@@ -1,12 +1,12 @@
 import UIKit
 import TVSetKit
 
-class SettingsController: UICollectionViewController {
+class SettingsController: BaseCollectionViewController {
   let CELL_IDENTIFIER = "SettingCell"
 
-  public var adapter: ServiceAdapter!
+  //public var adapter: ServiceAdapter!
 
-  var items = [MediaName]()
+  //var items = [MediaName]()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -28,8 +28,8 @@ class SettingsController: UICollectionViewController {
   }
 
   func loadSettingsMenu() {
-    let resetHistory = MediaName(name: "RESET_HISTORY")
-    let resetQueue = MediaName(name: "RESET_BOOKMARKS")
+    let resetHistory = MediaItem(name: "RESET_HISTORY")
+    let resetQueue = MediaItem(name: "RESET_BOOKMARKS")
 
     items = [
       resetHistory, resetQueue
@@ -61,7 +61,7 @@ class SettingsController: UICollectionViewController {
   func tapped(_ gesture: UITapGestureRecognizer) {
     let selectedCell = gesture.view as! MediaNameCell
 
-    let settingsMode = selectedCell.item!.name
+    let settingsMode = getItem(for: selectedCell).name
 
     if settingsMode == "RESET_HISTORY" {
       self.present(buildResetHistoryController(), animated: false, completion: nil)

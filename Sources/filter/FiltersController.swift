@@ -67,7 +67,7 @@ class FiltersController: BaseCollectionViewController {
   func tapped(_ gesture: UITapGestureRecognizer) {
     let selectedCell = gesture.view as! MediaNameCell
 
-    let requestType = selectedCell.item!.name
+    let requestType = getItem(for: selectedCell).name
 
     if requestType == "BY_ACTORS" {
       performSegue(withIdentifier: LettersController.SEGUE_IDENTIFIER, sender: gesture.view)
@@ -91,7 +91,8 @@ class FiltersController: BaseCollectionViewController {
         case LettersController.SEGUE_IDENTIFIER:
           if let destination = segue.destination as? LettersController,
              let selectedCell = sender as? MediaNameCell {
-            let requestType = selectedCell.item!.name
+
+            let requestType = getItem(for: selectedCell).name
 
             destination.document = document
             destination.requestType = requestType
