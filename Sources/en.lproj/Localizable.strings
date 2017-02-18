@@ -2,6 +2,8 @@ BOOKMARKS="Bookmarks";
 HISTORY="History";
 SEARCH="Search";
 SETTINGS="Settings";
+RESET_HISTORY="Reset History";
+RESET_BOOKMARKS="Reset Bookmarks";
 
 ALL_MOVIES="All Movies";
 GENRES="Genres";

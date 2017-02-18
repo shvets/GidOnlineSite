@@ -2,6 +2,8 @@ BOOKMARKS="Очередь";
 HISTORY="История Просмотров";
 SEARCH="Поиск";
 SETTINGS="Настройки";
+RESET_HISTORY="Очистить Историю";
+RESET_BOOKMARKS="Очистить Очередь";
 
 ALL_MOVIES="Все Фильмы";
 GENRES="Жанры";

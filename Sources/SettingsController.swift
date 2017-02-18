@@ -74,7 +74,7 @@ class SettingsController: BaseCollectionViewController {
   }
 
   func buildResetHistoryController() -> UIAlertController {
-    let bundle = Bundle(identifier: "com.rubikon.GidOnlineSite")!
+    let bundle = Bundle(identifier: "com.rubikon.TVSetKit")!
 
     let title = adapter?.languageManager?.localize("HISTORY_WILL_BE_RESET", bundle: bundle)
     let message = adapter?.languageManager?.localize("CONFIRM_YOUR_CHOICE", bundle: bundle)
@@ -97,7 +97,7 @@ class SettingsController: BaseCollectionViewController {
   }
 
   func buildResetQueueController() -> UIAlertController {
-    let bundle = Bundle(identifier: "com.rubikon.GidOnlineSite")!
+    let bundle = Bundle(identifier: "com.rubikon.TVSetKit")!
 
     let title = adapter?.languageManager?.localize("BOOKMARKS_WILL_BE_RESET", bundle: bundle)
     let message = adapter?.languageManager?.localize("CONFIRM_YOUR_CHOICE", bundle: bundle)
