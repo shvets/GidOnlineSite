@@ -1,0 +1,31 @@
+BOOKMARKS="Очередь";
+HISTORY="История Просмотров";
+SEARCH="Поиск";
+SETTINGS="Настройки";
+RESET_HISTORY="Очистить Историю";
+RESET_BOOKMARKS="Очистить Очередь";
+HISTORY_WILL_BE_RESET="История Просмотров Будет Очищена";
+BOOKMARKS_WILL_BE_RESET="Очередь Будет Очищена";
+CONFIRM_YOUR_CHOICE="Пожалуйста Подтвердите Ваш Выбор";
+
+ALL_MOVIES="Все Фильмы";
+GENRES="Жанры";
+THEMES="Темы";
+BY_ACTORS="По Актерам";
+BY_DIRECTORS="По Режиссерам";
+BY_COUNTRIES="По Странам";
+BY_YEARS="По Годам";
+FAMILY="Семейные";
+CRIME="Детективы и Преступления";
+FICTION="Фантастика";
+EDUCATION="Образовательные";
+TOP_SEVEN="Семерка";
+NEW_MOVIES="Новинки";
+PREMIERS="Премьеры";
+FILTERS="Фильтры";
+
+"Use Runglish?" = "Использовать Runglish?";
+"Enter Query" = "Введите Запрос";
+"Search" = "Поиск";
+
+

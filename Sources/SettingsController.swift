@@ -51,7 +51,9 @@ class SettingsController: BaseCollectionViewController {
 
     let item = items[indexPath.row]
 
-    let localizedName = adapter?.languageManager?.localize(item.name!) ?? "Unknown"
+    let bundle = Bundle(identifier: "com.rubikon.GidOnlineSite")!
+
+    let localizedName = adapter?.languageManager?.localize(item.name!, bundle: bundle) ?? "Unknown"
 
     cell.configureCell(item: item, localizedName: localizedName, target: self, action: #selector(self.tapped(_:)))
 
@@ -72,8 +74,10 @@ class SettingsController: BaseCollectionViewController {
   }
 
   func buildResetHistoryController() -> UIAlertController {
-    let title = adapter?.languageManager?.localize("HISTORY_WILL_BE_RESET")
-    let message = adapter?.languageManager?.localize("CONFIRM_YOUR_CHOICE")
+    let bundle = Bundle(identifier: "com.rubikon.GidOnlineSite")!
+
+    let title = adapter?.languageManager?.localize("HISTORY_WILL_BE_RESET", bundle: bundle)
+    let message = adapter?.languageManager?.localize("CONFIRM_YOUR_CHOICE", bundle: bundle)
 
     let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
@@ -93,8 +97,10 @@ class SettingsController: BaseCollectionViewController {
   }
 
   func buildResetQueueController() -> UIAlertController {
-    let title = adapter?.languageManager?.localize("BOOKMARKS_WILL_BE_RESET")
-    let message = adapter?.languageManager?.localize("CONFIRM_YOUR_CHOICE")
+    let bundle = Bundle(identifier: "com.rubikon.GidOnlineSite")!
+
+    let title = adapter?.languageManager?.localize("BOOKMARKS_WILL_BE_RESET", bundle: bundle)
+    let message = adapter?.languageManager?.localize("CONFIRM_YOUR_CHOICE", bundle: bundle)
 
     let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 

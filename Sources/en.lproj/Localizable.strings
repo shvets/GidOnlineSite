@@ -1,0 +1,30 @@
+BOOKMARKS="Bookmarks";
+HISTORY="History";
+SEARCH="Search";
+SETTINGS="Settings";
+
+RESET_HISTORY="Reset History";
+RESET_BOOKMARKS="Reset Bookmarks";
+HISTORY_WILL_BE_RESET="History will be Reset";
+BOOKMARKS_WILL_BE_RESET="Bookmarks will be Reset";
+CONFIRM_YOUR_CHOICE="Please Confirm Your Choice";
+
+ALL_MOVIES="All Movies";
+GENRES="Genres";
+THEMES="Themes";
+BY_ACTORS="By Actors";
+BY_DIRECTORS="By Directors";
+BY_COUNTRIES="By Countries";
+BY_YEARS="By Years";
+FAMILY="Family";
+CRIME="Crime";
+FICTION="Fiction";
+EDUCATION="Education";
+TOP_SEVEN="Top Seven";
+NEW_MOVIES="New Movies";
+PREMIERS="Premiers";
+FILTERS="Filters";
+
+"Use Runglish?" = "Use Runglish?";
+"Enter Query" = "Enter Query";
+"Search" = "Search";
