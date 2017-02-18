@@ -5,8 +5,8 @@ import WebAPI
 import TVSetKit
 
 class YearsController: BaseCollectionViewController {
-  static let SEGUE_IDENTIFIER = "Years"
-  let CELL_IDENTIFIER = "YearCell"
+  static let SegueIdentifier = "Years"
+  let CellIdentifier = "YearCell"
 
   let service = GidOnlineService.shared
 
@@ -56,7 +56,7 @@ class YearsController: BaseCollectionViewController {
   }
 
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_IDENTIFIER, for: indexPath) as! MediaNameCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath) as! MediaNameCell
 
     let item = items[indexPath.row]
 

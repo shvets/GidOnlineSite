@@ -39,7 +39,7 @@ class GidOnlineDataSource: DataSource {
       case "MOVIES":
         let id = selectedItem!.id
 
-        let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SITE_URL + "/" + id!, page: currentPage))
+        let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + "/" + id!, page: currentPage))
 
         result = try service.getMovies(document!, path: id!)
 
@@ -55,14 +55,14 @@ class GidOnlineDataSource: DataSource {
         else if theme == "NEW_MOVIES" {
           let id = "/new/"
 
-          let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SITE_URL + id, page: currentPage))
+          let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + id, page: currentPage))
 
           result = try service.getMovies(document!, path: id)
         }
         else if theme == "PREMIERS" {
           let id = "/premiers/"
 
-          let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SITE_URL + id, page: currentPage))
+          let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + id, page: currentPage))
 
           result = try service.getMovies(document!, path: id)
         }
@@ -76,21 +76,21 @@ class GidOnlineDataSource: DataSource {
         else if theme == "BY_DIRECTORS" {
           let id = "/new/"
 
-          let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SITE_URL + id, page: currentPage))
+          let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + id, page: currentPage))
 
           result = try service.getMovies(document!, path: id)
         }
         else if theme == "BY_COUNTRIES" {
           let id = "/premiers/"
 
-          let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SITE_URL + id, page: currentPage))
+          let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + id, page: currentPage))
 
           result = try service.getMovies(document!, path: id)
         }
         else if theme == "BY_YEARS" {
           let id = "/premiers/"
 
-          let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SITE_URL + id, page: currentPage))
+          let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + id, page: currentPage))
 
           result = try service.getMovies(document!, path: id)
         }

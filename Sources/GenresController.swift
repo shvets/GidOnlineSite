@@ -5,8 +5,8 @@ import WebAPI
 import TVSetKit
 
 class GenresController: BaseCollectionViewController {
-  static let SEGUE_IDENTIFIER = "Genres"
-  let CELL_IDENTIFIER = "GenreCell"
+  static let SegueIdentifier = "Genres"
+  let CellIdentifier = "GenreCell"
 
   let service = GidOnlineService.shared
 
@@ -57,7 +57,7 @@ class GenresController: BaseCollectionViewController {
   }
 
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_IDENTIFIER, for: indexPath) as! MediaNameCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath) as! MediaNameCell
 
     let item = items[indexPath.row]
 

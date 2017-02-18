@@ -5,8 +5,8 @@ import WebAPI
 import TVSetKit
 
 class LettersController: BaseCollectionViewController {
-  static let SEGUE_IDENTIFIER = "Letters"
-  let CELL_IDENTIFIER = "LettersCell"
+  static let SegueIdentifier = "Letters"
+  let CellIdentifier = "LettersCell"
 
   let service = GidOnlineService.shared
 
@@ -29,7 +29,7 @@ class LettersController: BaseCollectionViewController {
 
     adapter = GidOnlineServiceAdapter()
 
-    for letter in GidOnlineAPI.CYRILLIC_LETTERS {
+    for letter in GidOnlineAPI.CyrillicLetters {
       if !["Ё", "Й", "Щ", "Ъ", "Ы", "Ь"].contains(letter) {
         items.append(MediaItem(name: letter))
       }
@@ -47,7 +47,7 @@ class LettersController: BaseCollectionViewController {
   }
 
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_IDENTIFIER, for: indexPath) as! MediaNameCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath) as! MediaNameCell
 
     let item = items[indexPath.row]
 
@@ -67,7 +67,7 @@ class LettersController: BaseCollectionViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let identifier = segue.identifier {
       switch identifier {
-      case LetterController.SEGUE_IDENTIFIER:
+      case LetterController.SegueIdentifier:
         if let destination = segue.destination as? LetterController,
            let selectedCell = sender as? MediaNameCell {
           adapter.requestType = "LETTER"

@@ -2,7 +2,7 @@ import UIKit
 import TVSetKit
 
 class SettingsController: BaseCollectionViewController {
-  let CELL_IDENTIFIER = "SettingCell"
+  let CellIdentifier = "SettingCell"
 
   //public var adapter: ServiceAdapter!
 
@@ -47,7 +47,7 @@ class SettingsController: BaseCollectionViewController {
   }
 
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_IDENTIFIER, for: indexPath) as! MediaNameCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath) as! MediaNameCell
 
     let item = items[indexPath.row]
 

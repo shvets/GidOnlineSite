@@ -5,8 +5,8 @@ import WebAPI
 import TVSetKit
 
 class LetterController: BaseCollectionViewController {
-  static let SEGUE_IDENTIFIER = "Letter"
-  let CELL_IDENTIFIER = "LetterCell"
+  static let SegueIdentifier = "Letter"
+  let CellIdentifier = "LetterCell"
 
   let service = GidOnlineService.shared
 
@@ -64,7 +64,7 @@ class LetterController: BaseCollectionViewController {
   }
 
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_IDENTIFIER, for: indexPath) as! MediaNameCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath) as! MediaNameCell
 
     let item = items[indexPath.row]
 

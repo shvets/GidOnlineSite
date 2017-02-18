@@ -5,9 +5,9 @@ import WebAPI
 import TVSetKit
 
 open class GidOnlineController: BaseCollectionViewController {
-  let CELL_IDENTIFIER = "GidOnlineCell"
+  let CellIdentifier = "GidOnlineCell"
 
-  let MAIN_MENU_ITEMS = [
+  let MainMenuItems = [
     "BOOKMARKS",
     "HISTORY",
     "ALL_MOVIES",
@@ -46,14 +46,14 @@ open class GidOnlineController: BaseCollectionViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
-    for name in MAIN_MENU_ITEMS {
+    for name in MainMenuItems {
       let item = MediaItem(name: name)
 
       items.append(item)
     }
 
     do {
-      document = try service.fetchDocument(GidOnlineAPI.SITE_URL)
+      document = try service.fetchDocument(GidOnlineAPI.SiteUrl)
     }
     catch {
       print("Cannot load document")
@@ -71,7 +71,7 @@ open class GidOnlineController: BaseCollectionViewController {
   }
 
   override open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_IDENTIFIER, for: indexPath) as! MediaNameCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath) as! MediaNameCell
 
     let item = items[indexPath.row]
 
@@ -88,13 +88,13 @@ open class GidOnlineController: BaseCollectionViewController {
     let requestType = getItem(for: selectedCell).name
 
     if requestType == "GENRES" {
-      performSegue(withIdentifier: GenresGroupController.SEGUE_IDENTIFIER, sender: gesture.view)
+      performSegue(withIdentifier: GenresGroupController.SegueIdentifier, sender: gesture.view)
     }
     else if requestType == "THEMES" {
-      performSegue(withIdentifier: ThemesController.SEGUE_IDENTIFIER, sender: gesture.view)
+      performSegue(withIdentifier: ThemesController.SegueIdentifier, sender: gesture.view)
     }
     else if requestType == "FILTERS" {
-      performSegue(withIdentifier: FiltersController.SEGUE_IDENTIFIER, sender: gesture.view)
+      performSegue(withIdentifier: FiltersController.SegueIdentifier, sender: gesture.view)
     }
     else if requestType == "SETTINGS" {
       performSegue(withIdentifier: "Settings", sender: gesture.view)
@@ -128,15 +128,15 @@ open class GidOnlineController: BaseCollectionViewController {
   override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let identifier = segue.identifier {
       switch identifier {
-        case GenresGroupController.SEGUE_IDENTIFIER:
+        case GenresGroupController.SegueIdentifier:
           if let destination = segue.destination as? GenresGroupController {
             destination.document = document
           }
-        case ThemesController.SEGUE_IDENTIFIER:
+        case ThemesController.SegueIdentifier:
           if let destination = segue.destination as? ThemesController {
             destination.document = document
           }
-        case FiltersController.SEGUE_IDENTIFIER:
+        case FiltersController.SegueIdentifier:
           if let destination = segue.destination as? FiltersController {
             destination.document = document
           }

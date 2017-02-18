@@ -5,10 +5,10 @@ import WebAPI
 import TVSetKit
 
 class FiltersController: BaseCollectionViewController {
-  static let SEGUE_IDENTIFIER = "Filters"
-  let CELL_IDENTIFIER = "FilterCell"
+  static let SegueIdentifier = "Filters"
+  let CellIdentifier = "FilterCell"
 
-  let FILTERS_MENU = [
+  let FiltersMenu = [
     "BY_ACTORS",
     "BY_DIRECTORS",
     "BY_COUNTRIES",
@@ -35,7 +35,7 @@ class FiltersController: BaseCollectionViewController {
 
     collectionView?.collectionViewLayout = layout
 
-    for name in FILTERS_MENU {
+    for name in FiltersMenu {
       let item = MediaItem(name: name)
 
       items.append(item)
@@ -53,7 +53,7 @@ class FiltersController: BaseCollectionViewController {
   }
 
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_IDENTIFIER, for: indexPath) as! MediaNameCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath) as! MediaNameCell
 
     let item = items[indexPath.row]
 
@@ -70,16 +70,16 @@ class FiltersController: BaseCollectionViewController {
     let requestType = getItem(for: selectedCell).name
 
     if requestType == "BY_ACTORS" {
-      performSegue(withIdentifier: LettersController.SEGUE_IDENTIFIER, sender: gesture.view)
+      performSegue(withIdentifier: LettersController.SegueIdentifier, sender: gesture.view)
     }
     else if requestType == "BY_DIRECTORS" {
-      performSegue(withIdentifier: LettersController.SEGUE_IDENTIFIER, sender: gesture.view)
+      performSegue(withIdentifier: LettersController.SegueIdentifier, sender: gesture.view)
     }
     else if requestType == "BY_COUNTRIES" {
-      performSegue(withIdentifier: CountriesController.SEGUE_IDENTIFIER, sender: gesture.view)
+      performSegue(withIdentifier: CountriesController.SegueIdentifier, sender: gesture.view)
     }
     else if requestType == "BY_Years" {
-      performSegue(withIdentifier: YearsController.SEGUE_IDENTIFIER, sender: gesture.view)
+      performSegue(withIdentifier: YearsController.SegueIdentifier, sender: gesture.view)
     }
   }
 
@@ -88,7 +88,7 @@ class FiltersController: BaseCollectionViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let identifier = segue.identifier {
       switch identifier {
-        case LettersController.SEGUE_IDENTIFIER:
+        case LettersController.SegueIdentifier:
           if let destination = segue.destination as? LettersController,
              let selectedCell = sender as? MediaNameCell {
 
@@ -97,11 +97,11 @@ class FiltersController: BaseCollectionViewController {
             destination.document = document
             destination.requestType = requestType
           }
-        case CountriesController.SEGUE_IDENTIFIER:
+        case CountriesController.SegueIdentifier:
           if let destination = segue.destination as? CountriesController {
             destination.document = document
           }
-        case YearsController.SEGUE_IDENTIFIER:
+        case YearsController.SegueIdentifier:
           if let destination = segue.destination as? YearsController {
             destination.document = document
           }

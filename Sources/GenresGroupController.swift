@@ -5,8 +5,8 @@ import WebAPI
 import TVSetKit
 
 class GenresGroupController: BaseCollectionViewController {
-  static let SEGUE_IDENTIFIER = "GenresGroup"
-  let CELL_IDENTIFIER = "GenreGroupCell"
+  static let SegueIdentifier = "GenresGroup"
+  let CellIdentifier = "GenreGroupCell"
 
   let GENRES_MENU = [
     "FAMILY",
@@ -53,7 +53,7 @@ class GenresGroupController: BaseCollectionViewController {
   }
 
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_IDENTIFIER, for: indexPath) as! MediaNameCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath) as! MediaNameCell
 
     let item = items[indexPath.row]
 
@@ -65,7 +65,7 @@ class GenresGroupController: BaseCollectionViewController {
   }
 
   func tapped(_ gesture: UITapGestureRecognizer) {
-    performSegue(withIdentifier: GenresController.SEGUE_IDENTIFIER, sender: gesture.view)
+    performSegue(withIdentifier: GenresController.SegueIdentifier, sender: gesture.view)
   }
 
   // MARK: - Navigation
@@ -73,7 +73,7 @@ class GenresGroupController: BaseCollectionViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let identifier = segue.identifier {
       switch identifier {
-        case GenresController.SEGUE_IDENTIFIER:
+        case GenresController.SegueIdentifier:
           if let destination = segue.destination as? GenresController,
              let selectedCell = sender as? MediaNameCell {
             adapter.requestType = "GENRES"

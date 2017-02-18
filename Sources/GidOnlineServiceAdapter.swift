@@ -24,7 +24,7 @@ class GidOnlineServiceAdapter: ServiceAdapter {
     history.load()
 
     do {
-      document = try service.fetchDocument(GidOnlineAPI.SITE_URL)!
+      document = try service.fetchDocument(GidOnlineAPI.SiteUrl)!
     }
     catch {
       print("Error fetching document")

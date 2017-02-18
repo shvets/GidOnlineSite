@@ -5,10 +5,10 @@ import WebAPI
 import TVSetKit
 
 class ThemesController: BaseCollectionViewController {
-  static let SEGUE_IDENTIFIER = "Themes"
-  let CELL_IDENTIFIER = "ThemeCell"
+  static let SegueIdentifier = "Themes"
+  let CellIdentifier = "ThemeCell"
 
-  let THEMES_MENU = [
+  let ThemesMenu = [
     "TOP_SEVEN",
     "NEW_MOVIES",
     "PREMIERS"
@@ -34,7 +34,7 @@ class ThemesController: BaseCollectionViewController {
 
     adapter = GidOnlineServiceAdapter()
 
-    for name in THEMES_MENU {
+    for name in ThemesMenu {
       let item = MediaItem(name: name)
 
       items.append(item)
@@ -52,7 +52,7 @@ class ThemesController: BaseCollectionViewController {
   }
 
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_IDENTIFIER, for: indexPath) as! MediaNameCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath) as! MediaNameCell
 
     let item = items[indexPath.row]
 
