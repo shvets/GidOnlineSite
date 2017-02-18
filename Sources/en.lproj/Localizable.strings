@@ -3,12 +3,6 @@ HISTORY="History";
 SEARCH="Search";
 SETTINGS="Settings";
 
-RESET_HISTORY="Reset History";
-RESET_BOOKMARKS="Reset Bookmarks";
-HISTORY_WILL_BE_RESET="History will be Reset";
-BOOKMARKS_WILL_BE_RESET="Bookmarks will be Reset";
-CONFIRM_YOUR_CHOICE="Please Confirm Your Choice";
-
 ALL_MOVIES="All Movies";
 GENRES="Genres";
 THEMES="Themes";
@@ -26,5 +20,3 @@ PREMIERS="Premiers";
 FILTERS="Filters";
 
 "Use Runglish?" = "Use Runglish?";
-"Enter Query" = "Enter Query";
-"Search" = "Search";
