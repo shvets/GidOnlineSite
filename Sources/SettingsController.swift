@@ -4,9 +4,7 @@ import TVSetKit
 class SettingsController: BaseCollectionViewController {
   let CellIdentifier = "SettingCell"
 
-  //public var adapter: ServiceAdapter!
-
-  //var items = [MediaName]()
+  var localizer = Localizer("com.rubikon.GidOnlineSite")
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -51,9 +49,7 @@ class SettingsController: BaseCollectionViewController {
 
     let item = items[indexPath.row]
 
-    let bundle = Bundle(identifier: "com.rubikon.GidOnlineSite")!
-
-    let localizedName = adapter?.languageManager?.localize(item.name!, bundle: bundle) ?? "Unknown"
+    let localizedName = localizer.localize(item.name!) ?? "Unknown"
 
     cell.configureCell(item: item, localizedName: localizedName, target: self, action: #selector(self.tapped(_:)))
 
@@ -74,10 +70,8 @@ class SettingsController: BaseCollectionViewController {
   }
 
   func buildResetHistoryController() -> UIAlertController {
-    let bundle = Bundle(identifier: "com.rubikon.TVSetKit")!
-
-    let title = adapter?.languageManager?.localize("HISTORY_WILL_BE_RESET", bundle: bundle)
-    let message = adapter?.languageManager?.localize("CONFIRM_YOUR_CHOICE", bundle: bundle)
+    let title = localizer.localize("HISTORY_WILL_BE_RESET")
+    let message = localizer.localize("CONFIRM_YOUR_CHOICE")
 
     let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
@@ -97,10 +91,8 @@ class SettingsController: BaseCollectionViewController {
   }
 
   func buildResetQueueController() -> UIAlertController {
-    let bundle = Bundle(identifier: "com.rubikon.TVSetKit")!
-
-    let title = adapter?.languageManager?.localize("BOOKMARKS_WILL_BE_RESET", bundle: bundle)
-    let message = adapter?.languageManager?.localize("CONFIRM_YOUR_CHOICE", bundle: bundle)
+    let title = localizer.localize("BOOKMARKS_WILL_BE_RESET")
+    let message = localizer.localize("CONFIRM_YOUR_CHOICE")
 
     let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 

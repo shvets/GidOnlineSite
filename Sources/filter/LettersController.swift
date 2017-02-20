@@ -9,6 +9,7 @@ class LettersController: BaseCollectionViewController {
   let CellIdentifier = "LettersCell"
 
   let service = GidOnlineService.shared
+  var localizer = Localizer("com.rubikon.GidOnlineSite")
 
   var document: Document?
   var requestType: String?
@@ -51,9 +52,7 @@ class LettersController: BaseCollectionViewController {
 
     let item = items[indexPath.row]
 
-    let bundle = Bundle(identifier: "com.rubikon.GidOnlineSite")!
-
-    let localizedName = adapter?.languageManager?.localize(item.name!, bundle: bundle) ?? "Unknown"
+    let localizedName = localizer.localize(item.name!) ?? "Unknown"
 
     cell.configureCell(item: item, localizedName: localizedName, target: self, action: #selector(self.tapped(_:)))
 

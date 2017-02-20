@@ -9,6 +9,7 @@ class YearsController: BaseCollectionViewController {
   let CellIdentifier = "YearCell"
 
   let service = GidOnlineService.shared
+  var localizer = Localizer("com.rubikon.GidOnlineSite")
 
   var document: Document?
 
@@ -60,9 +61,7 @@ class YearsController: BaseCollectionViewController {
 
     let item = items[indexPath.row]
 
-    let bundle = Bundle(identifier: "com.rubikon.GidOnlineSite")!
-
-    let localizedName = adapter?.languageManager?.localize(item.name!, bundle: bundle) ?? "Unknown"
+    let localizedName = localizer.localize(item.name!) ?? "Unknown"
 
     cell.configureCell(item: item, localizedName: localizedName, target: self, action: #selector(self.tapped(_:)))
 

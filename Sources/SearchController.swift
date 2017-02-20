@@ -10,6 +10,7 @@ class SearchController: UIViewController {
   @IBOutlet weak var searchButton: UIButton!
 
   public var adapter: ServiceAdapter!
+  var localizer = Localizer("com.rubikon.GidOnlineSite")
 
   var params = [String: Any]()
 
@@ -38,11 +39,9 @@ class SearchController: UIViewController {
 
     isChecked = true
 
-    let bundle = Bundle(identifier: "com.rubikon.GidOnlineSite")!
-
-    useRunglishLabel.text = adapter?.languageManager?.localize(useRunglishLabel.text!, bundle: bundle)
-    searchButton.setTitle(adapter?.languageManager?.localize(searchButton.title(for: .normal)!, bundle: bundle), for: .normal)
-    query.placeholder = adapter?.languageManager?.localize(query.placeholder!, bundle: bundle)
+    useRunglishLabel.text = localizer.localize(useRunglishLabel.text!)
+    searchButton.setTitle(localizer.localize(searchButton.title(for: .normal)!), for: .normal)
+    query.placeholder = localizer.localize(query.placeholder!)
     
     query.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
   }
