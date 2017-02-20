@@ -27,17 +27,11 @@ class GenresController: BaseCollectionViewController {
 
     collectionView?.collectionViewLayout = layout
 
-    //adapter = GidOnlineServiceAdapter()
-
     do {
       let genres = try service.getGenres(document!, type: adapter.parentId!) as! [[String: String]]
 
       for genre in genres {
-//        if adapter?.languageManager?.getLocale() == "en" {
-//          name = (GENRES_MAP[name] != nil) ? GENRES_MAP[name]! : name
-//        }
-
-        let item = MediaItem(name: genre["name"]!, id: genre["id"]!)
+        let item = MediaItem(name: localizer.localize(genre["name"]!), id: genre["id"]!)
 
         items.append(item)
       }
