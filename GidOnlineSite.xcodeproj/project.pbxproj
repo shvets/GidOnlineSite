@@ -80,6 +80,20 @@
 			remoteGlobalIDString = OBJ_104;
 			remoteInfo = WebAPITests;
 		};
+		FA9A1A7D1E5B3C1000DC0DCE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA9A1A781E5B3C0F00DC0DCE /* Runglish.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = OBJ_17;
+			remoteInfo = Runglish;
+		};
+		FA9A1A7F1E5B3C1000DC0DCE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA9A1A781E5B3C0F00DC0DCE /* Runglish.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = OBJ_18;
+			remoteInfo = RunglishTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +121,7 @@
 		FA695E781E4F9D6500E148A5 /* filter */ = {isa = PBXFileReference; lastKnownFileType = folder; path = filter; sourceTree = "<group>"; };
 		FA9A188C1E588DB900DC0DCE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FA9A188E1E588DD400DC0DCE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FA9A1A781E5B3C0F00DC0DCE /* Runglish.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Runglish.xcodeproj; path = ../Runglish/Runglish.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +140,7 @@
 		FA695E2C1E4F9C3100E148A5 = {
 			isa = PBXGroup;
 			children = (
+				FA9A1A781E5B3C0F00DC0DCE /* Runglish.xcodeproj */,
 				FA695E641E4F9CA500E148A5 /* WebAPI.xcodeproj */,
 				FA695E591E4F9C9B00E148A5 /* TVSetKit.xcodeproj */,
 				FA695E381E4F9C3100E148A5 /* Sources */,
@@ -184,6 +200,15 @@
 				FA695E711E4F9CA500E148A5 /* SwiftSoup.framework */,
 				FA695E731E4F9CA500E148A5 /* WebAPI.framework */,
 				FA695E751E4F9CA500E148A5 /* WebAPITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA9A1A791E5B3C0F00DC0DCE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA9A1A7E1E5B3C1000DC0DCE /* Runglish.framework */,
+				FA9A1A801E5B3C1000DC0DCE /* RunglishTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -250,6 +275,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = FA9A1A791E5B3C0F00DC0DCE /* Products */;
+					ProjectRef = FA9A1A781E5B3C0F00DC0DCE /* Runglish.xcodeproj */;
+				},
+				{
 					ProductGroup = FA695E5A1E4F9C9B00E148A5 /* Products */;
 					ProjectRef = FA695E591E4F9C9B00E148A5 /* TVSetKit.xcodeproj */;
 				},
@@ -313,6 +342,20 @@
 			fileType = file;
 			path = WebAPITests.xctest;
 			remoteRef = FA695E741E4F9CA500E148A5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FA9A1A7E1E5B3C1000DC0DCE /* Runglish.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Runglish.framework;
+			remoteRef = FA9A1A7D1E5B3C1000DC0DCE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FA9A1A801E5B3C1000DC0DCE /* RunglishTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = file;
+			path = RunglishTests.xctest;
+			remoteRef = FA9A1A7F1E5B3C1000DC0DCE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
