@@ -61,7 +61,7 @@ class CountriesController: BaseCollectionViewController {
 
     let item = items[indexPath.row]
 
-    let localizedName = localizer.localize(item.name!) ?? "Unknown"
+    let localizedName = localizer.localize(item.name!)
 
     cell.configureCell(item: item, localizedName: localizedName, target: self, action: #selector(self.tapped(_:)))
 

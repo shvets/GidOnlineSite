@@ -57,9 +57,7 @@ class ThemesController: BaseCollectionViewController {
 
     let item = items[indexPath.row]
 
-    let bundle = Bundle(identifier: "com.rubikon.GidOnlineSite")!
-
-    let localizedName = localizer.localize(item.name!) ?? "Unknown"
+    let localizedName = localizer.localize(item.name!)
 
     cell.configureCell(item: item, localizedName: localizedName, target: self, action: #selector(self.tapped(_:)))
 
