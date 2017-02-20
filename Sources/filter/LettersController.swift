@@ -76,7 +76,7 @@ class LettersController: BaseCollectionViewController {
           let mediaItem =  getItem(for: selectedCell)
 
           adapter.parentId = mediaItem.name
-          adapter.parentName = mediaItem.name
+          adapter.parentName = localizer.localize(requestType!)
 
           destination.adapter = adapter
           destination.document = document

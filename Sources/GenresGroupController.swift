@@ -82,7 +82,7 @@ class GenresGroupController: BaseCollectionViewController {
             let mediaItem = getItem(for: selectedCell)
 
             adapter.parentId = mediaItem.name
-            adapter.parentName = mediaItem.name
+            adapter.parentName = localizer.localize(mediaItem.name!)
 
             destination.adapter = adapter
             destination.document = document

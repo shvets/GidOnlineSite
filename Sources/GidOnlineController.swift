@@ -104,7 +104,7 @@ open class GidOnlineController: BaseCollectionViewController {
       let destination = SearchController.instantiate()
 
       adapter.requestType = "SEARCH"
-      adapter.parentName = "SEARCH"
+      adapter.parentName = localizer.localize("SEARCH")
 
       destination.adapter = adapter
 
@@ -114,7 +114,7 @@ open class GidOnlineController: BaseCollectionViewController {
       let destination = MediaItemsController.instantiate()
 
       adapter.requestType = requestType
-      adapter.parentName = requestType
+      adapter.parentName = localizer.localize(requestType!)
 
       destination.adapter = adapter
 
