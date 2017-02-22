@@ -27,6 +27,10 @@
 		FA695E761E4F9CC200E148A5 /* TVSetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA695E611E4F9C9C00E148A5 /* TVSetKit.framework */; };
 		FA695E771E4F9CC200E148A5 /* WebAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA695E731E4F9CA500E148A5 /* WebAPI.framework */; };
 		FA695E791E4F9D6500E148A5 /* filter in Resources */ = {isa = PBXBuildFile; fileRef = FA695E781E4F9D6500E148A5 /* filter */; };
+		FA7574111E5D2B3700C705C6 /* Just.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA695E6D1E4F9CA500E148A5 /* Just.framework */; };
+		FA7574121E5D2B3700C705C6 /* Runglish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9A1A7E1E5B3C1000DC0DCE /* Runglish.framework */; };
+		FA7574131E5D2B3700C705C6 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA695E711E4F9CA500E148A5 /* SwiftSoup.framework */; };
+		FA7574141E5D2B3700C705C6 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA695E6F1E4F9CA500E148A5 /* SwiftyJSON.framework */; };
 		FA9A188B1E588DB900DC0DCE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA9A188D1E588DB900DC0DCE /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +133,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA7574111E5D2B3700C705C6 /* Just.framework in Frameworks */,
+				FA7574121E5D2B3700C705C6 /* Runglish.framework in Frameworks */,
+				FA7574131E5D2B3700C705C6 /* SwiftSoup.framework in Frameworks */,
+				FA7574141E5D2B3700C705C6 /* SwiftyJSON.framework in Frameworks */,
 				FA695E761E4F9CC200E148A5 /* TVSetKit.framework in Frameworks */,
 				FA695E771E4F9CC200E148A5 /* WebAPI.framework in Frameworks */,
 			);
