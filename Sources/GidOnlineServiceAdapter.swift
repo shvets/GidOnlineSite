@@ -17,9 +17,9 @@ class GidOnlineServiceAdapter: ServiceAdapter {
 
   var document: Document?
 
-  init() {
-    super.init(configName: NSHomeDirectory() + "/Library/Caches/gidonline-settings.json")
-
+  public override init() {
+    super.init()
+    
     bookmarks.load()
     history.load()
 
@@ -29,8 +29,6 @@ class GidOnlineServiceAdapter: ServiceAdapter {
     catch {
       print("Error fetching document")
     }
-
-    provider = "GID_ONLINE"
 
     pageSize = 12
     rowSize = 6
@@ -56,7 +54,7 @@ class GidOnlineServiceAdapter: ServiceAdapter {
     params.selectedItem = selectedItem
     params.document = document
 
-    return try dataSource.load(requestType!, params: params, pageSize: pageSize, currentPage: currentPage)
+    return try dataSource.load(requestType!, params: params, pageSize: pageSize!, currentPage: currentPage)
   }
 
   override func buildLayout() -> UICollectionViewFlowLayout? {
