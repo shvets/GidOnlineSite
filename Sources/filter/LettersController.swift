@@ -54,7 +54,8 @@ class LettersController: BaseCollectionViewController {
 
     let localizedName = localizer.localize(item.name!)
 
-    cell.configureCell(item: item, localizedName: localizedName, target: self, action: #selector(self.tapped(_:)))
+    cell.configureCell(item: item, localizedName: localizedName, target: self)
+    CellHelper.shared.addGestureRecognizer(view: cell, target: self, action: #selector(self.tapped(_:)))
 
     return cell
   }
