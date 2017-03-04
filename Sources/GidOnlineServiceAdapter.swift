@@ -17,8 +17,8 @@ class GidOnlineServiceAdapter: ServiceAdapter {
 
   var document: Document?
 
-  public override init() {
-    super.init()
+  public override init(mobile: Bool=false) {
+    super.init(mobile: mobile)
     
     bookmarks.load()
     history.load()
