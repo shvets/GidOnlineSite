@@ -68,7 +68,7 @@ class ThemesController: BaseCollectionViewController {
   func tapped(_ gesture: UITapGestureRecognizer) {
     let selectedCell = gesture.view as! MediaNameCell
 
-    let controller = MediaItemsController.instantiate().getActionController()
+    let controller = MediaItemsController.instantiate(adapter).getActionController()
     let destination = controller as! MediaItemsController
 
     adapter.requestType = "THEMES"

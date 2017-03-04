@@ -58,7 +58,7 @@ class SearchController: UIViewController {
   }
 
   @IBAction func onSearchAction(_ sender: UIButton) {
-    let controller = MediaItemsController.instantiate().getActionController()
+    let controller = MediaItemsController.instantiate(adapter).getActionController()
     let destination = controller as! MediaItemsController
 
     if isChecked {

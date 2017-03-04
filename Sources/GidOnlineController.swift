@@ -112,7 +112,7 @@ open class GidOnlineController: BaseCollectionViewController {
       self.present(destination, animated: false, completion: nil)
     }
     else {
-      let controller = MediaItemsController.instantiate().getActionController()
+      let controller = MediaItemsController.instantiate(adapter).getActionController()
       let destination = controller as! MediaItemsController
 
       adapter.requestType = requestType
