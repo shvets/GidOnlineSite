@@ -112,7 +112,8 @@ open class GidOnlineController: BaseCollectionViewController {
       self.present(destination, animated: false, completion: nil)
     }
     else {
-      let destination = MediaItemsController.instantiate()
+      let controller = MediaItemsController.instantiate().getActionController()
+      let destination = controller as! MediaItemsController
 
       adapter.requestType = requestType
       adapter.parentName = localizer.localize(requestType!)
@@ -121,7 +122,7 @@ open class GidOnlineController: BaseCollectionViewController {
 
       destination.collectionView?.collectionViewLayout = adapter.buildLayout()!
 
-      self.show(destination, sender: destination)
+      show(controller!, sender: destination)
     }
   }
 

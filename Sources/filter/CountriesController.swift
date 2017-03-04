@@ -72,7 +72,8 @@ class CountriesController: BaseCollectionViewController {
   func tapped(_ gesture: UITapGestureRecognizer) {
     let selectedCell = gesture.view as! MediaNameCell
 
-    let destination = MediaItemsController.instantiate()
+    let controller = MediaItemsController.instantiate().getActionController()
+    let destination = controller as! MediaItemsController
 
     adapter.requestType = "MOVIES"
 
@@ -82,6 +83,6 @@ class CountriesController: BaseCollectionViewController {
 
     destination.collectionView?.collectionViewLayout = adapter.buildLayout()!
 
-    self.show(destination, sender: destination)
+    show(controller!, sender: destination)
   }
 }

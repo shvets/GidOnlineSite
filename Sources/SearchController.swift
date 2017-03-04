@@ -58,7 +58,8 @@ class SearchController: UIViewController {
   }
 
   @IBAction func onSearchAction(_ sender: UIButton) {
-    let destination = MediaItemsController.instantiate()
+    let controller = MediaItemsController.instantiate().getActionController()
+    let destination = controller as! MediaItemsController
 
     if isChecked {
       let transcoded = LatToRusConverter().transliterate(query.text!)
@@ -74,7 +75,7 @@ class SearchController: UIViewController {
 
     destination.collectionView?.collectionViewLayout = adapter.buildLayout()!
 
-    self.show(destination, sender: destination)
+    show(controller!, sender: destination)
   }
   
   @IBAction func onUseRunglish(_ sender: UIButton) {
