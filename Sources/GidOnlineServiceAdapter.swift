@@ -5,6 +5,11 @@ import WebAPI
 import TVSetKit
 
 class GidOnlineServiceAdapter: ServiceAdapter {
+  public struct Identifiers {
+    static let StoryboardId = "GidOnline"
+    static let BundleId = "com.rubikon.GidOnlineSite"
+  }
+
   let service = GidOnlineService.shared
 
   static let bookmarksFileName = NSHomeDirectory() + "/Library/Caches/gidonline-bookmarks.json"
@@ -40,6 +45,13 @@ class GidOnlineServiceAdapter: ServiceAdapter {
     cloned.clear()
 
     return cloned
+  }
+
+  open func instantiateController(controllerId: String) -> UIViewController {
+    return UIViewController.instantiate(
+      controllerId: controllerId,
+      storyboardId: Identifiers.StoryboardId,
+      bundleId: Identifiers.BundleId)
   }
 
   override func load() throws -> [MediaItem] {

@@ -10,18 +10,12 @@ class SearchController: UIViewController {
   @IBOutlet weak var searchButton: UIButton!
 
   public var adapter: ServiceAdapter!
-  var localizer = Localizer("com.rubikon.GidOnlineSite")
+  var localizer = Localizer(GidOnlineServiceAdapter.Identifiers.BundleId)
 
   var params = [String: Any]()
 
   let checkedImage = UIImage(named: "ic_check_box")! as UIImage
   let uncheckedImage = UIImage(named: "ic_check_box_outline_blank")! as UIImage
-
-  static public func instantiate() -> Self {
-    let bundle = Bundle(identifier: "com.rubikon.GidOnlineSite")!
-
-    return AppStoryboard.instantiateController( "GidOnline", bundle: bundle, viewControllerClass: self)
-  }
 
   var isChecked: Bool = false {
     didSet {

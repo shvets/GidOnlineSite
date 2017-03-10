@@ -19,15 +19,9 @@ open class GidOnlineController: BaseCollectionViewController {
   ]
 
   let service = GidOnlineService.shared
-  var localizer = Localizer("com.rubikon.GidOnlineSite")
+  var localizer = Localizer(GidOnlineServiceAdapter.Identifiers.BundleId)
 
   var document: Document?
-
-  static public func instantiate() -> Self {
-    let bundle = Bundle(identifier: "com.rubikon.GidOnlineSite")!
-
-    return AppStoryboard.instantiateController("GidOnline", bundle: bundle, viewControllerClass: self)
-  }
 
   override open func viewDidLoad() {
     super.viewDidLoad()
@@ -102,7 +96,8 @@ open class GidOnlineController: BaseCollectionViewController {
       performSegue(withIdentifier: "Settings", sender: gesture.view)
     }
     else if requestType == "SEARCH" {
-      let destination = SearchController.instantiate()
+      let destination = adapter.instantiateController(controllerId: "SearchController",
+        storyboardId: "GidOnline", bundleId: "com.rubikon.GidOnlineSite") as! SearchController
 
       adapter.requestType = "SEARCH"
       adapter.parentName = localizer.localize("SEARCH")
