@@ -60,7 +60,7 @@ class LettersController: BaseCollectionViewController {
     return cell
   }
 
-  func tapped(_ gesture: UITapGestureRecognizer) {
+  override func tapped(_ gesture: UITapGestureRecognizer) {
     performSegue(withIdentifier: "Letter", sender: gesture.view)
   }
 

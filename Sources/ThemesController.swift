@@ -65,7 +65,7 @@ class ThemesController: BaseCollectionViewController {
     return cell
   }
 
-  func tapped(_ gesture: UITapGestureRecognizer) {
+  override open func tapped(_ gesture: UITapGestureRecognizer) {
     let selectedCell = gesture.view as! MediaNameCell
 
     let controller = MediaItemsController.instantiate(adapter).getActionController()

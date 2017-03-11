@@ -66,7 +66,7 @@ class GenresGroupController: BaseCollectionViewController {
     return cell
   }
 
-  func tapped(_ gesture: UITapGestureRecognizer) {
+  override open func tapped(_ gesture: UITapGestureRecognizer) {
     performSegue(withIdentifier: GenresController.SegueIdentifier, sender: gesture.view)
   }
 
