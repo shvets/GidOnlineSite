@@ -34,7 +34,7 @@ class GidOnlineServiceAdapter: ServiceAdapter {
     rowSize = 6
 
     playerStoryboardId = "GidOnline"
-    playerBundleId = "com.rubikon.EtvnetApp"
+    //playerBundleId = "com.rubikon.EtvnetApp"
   }
 
   override open func clone() -> ServiceAdapter {
