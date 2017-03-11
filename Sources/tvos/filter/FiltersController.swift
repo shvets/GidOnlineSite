@@ -4,9 +4,10 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-class FiltersController: BaseCollectionViewController {
+class FiltersController: MyHitCollectionViewController {
   static let SegueIdentifier = "Filters"
-  let CellIdentifier = "FilterCell"
+
+  override open var CellIdentifier: String { return "FilterCell" }
 
   let FiltersMenu = [
     "BY_ACTORS",
@@ -14,9 +15,6 @@ class FiltersController: BaseCollectionViewController {
     "BY_COUNTRIES",
     "BY_YEARS"
   ]
-
-  let service = GidOnlineService.shared
-  var localizer = Localizer("com.rubikon.GidOnlineSite")
 
   var document: Document?
 
@@ -58,9 +56,9 @@ class FiltersController: BaseCollectionViewController {
 
     let item = items[indexPath.row]
 
-    let localizedName = localizer.localize(item.name!)
+    let localizedName = localizer?.localize(item.name!)
 
-    cell.configureCell(item: item, localizedName: localizedName, target: self)
+    cell.configureCell(item: item, localizedName: localizedName!, target: self)
     CellHelper.shared.addGestureRecognizer(view: cell, target: self, action: #selector(self.tapped(_:)))
 
     return cell

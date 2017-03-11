@@ -4,12 +4,10 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-class LettersController: BaseCollectionViewController {
+class LettersController: MyHitCollectionViewController {
   static let SegueIdentifier = "Letters"
-  let CellIdentifier = "LettersCell"
 
-  let service = GidOnlineService.shared
-  var localizer = Localizer("com.rubikon.GidOnlineSite")
+  override open var CellIdentifier: String { return "LettersCell" }
 
   var document: Document?
   var requestType: String?
@@ -52,9 +50,9 @@ class LettersController: BaseCollectionViewController {
 
     let item = items[indexPath.row]
 
-    let localizedName = localizer.localize(item.name!)
+    let localizedName = localizer?.localize(item.name!)
 
-    cell.configureCell(item: item, localizedName: localizedName, target: self)
+    cell.configureCell(item: item, localizedName: localizedName!, target: self)
     CellHelper.shared.addGestureRecognizer(view: cell, target: self, action: #selector(self.tapped(_:)))
 
     return cell
@@ -77,7 +75,7 @@ class LettersController: BaseCollectionViewController {
           let mediaItem =  getItem(for: selectedCell)
 
           adapter.parentId = mediaItem.name
-          adapter.parentName = localizer.localize(requestType!)
+          adapter.parentName = localizer?.localize(requestType!)
 
           destination.adapter = adapter
           destination.document = document

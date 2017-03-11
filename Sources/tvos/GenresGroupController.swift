@@ -4,9 +4,10 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-class GenresGroupController: BaseCollectionViewController {
+class GenresGroupController: MyHitCollectionViewController {
   static let SegueIdentifier = "GenresGroup"
-  let CellIdentifier = "GenreGroupCell"
+
+  override open var CellIdentifier: String { return "CellIdentifier" }
 
   let GENRES_MENU = [
     "FAMILY",
@@ -14,9 +15,6 @@ class GenresGroupController: BaseCollectionViewController {
     "FICTION",
     "EDUCATION"
   ]
-
-  let service = GidOnlineService.shared
-  var localizer = Localizer("com.rubikon.GidOnlineSite")
 
   var document: Document?
 
@@ -58,9 +56,9 @@ class GenresGroupController: BaseCollectionViewController {
 
     let item = items[indexPath.row]
 
-    let localizedName = localizer.localize(item.name!)
+    let localizedName = localizer?.localize(item.name!)
 
-    cell.configureCell(item: item, localizedName: localizedName, target: self)
+    cell.configureCell(item: item, localizedName: localizedName!, target: self)
     CellHelper.shared.addGestureRecognizer(view: cell, target: self, action: #selector(self.tapped(_:)))
 
     return cell
@@ -83,7 +81,7 @@ class GenresGroupController: BaseCollectionViewController {
             let mediaItem = getItem(for: selectedCell)
 
             adapter.parentId = mediaItem.name
-            adapter.parentName = localizer.localize(mediaItem.name!)
+            adapter.parentName = localizer?.localize(mediaItem.name!)
 
             destination.adapter = adapter
             destination.document = document

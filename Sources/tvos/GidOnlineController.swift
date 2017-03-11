@@ -4,8 +4,8 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-open class GidOnlineController: BaseCollectionViewController {
-  let CellIdentifier = "GidOnlineCell"
+open class GidOnlineController: MyHitCollectionViewController {
+  override open var CellIdentifier: String { return "GidOnlineCell" }
 
   let MainMenuItems = [
     "BOOKMARKS",
@@ -17,9 +17,6 @@ open class GidOnlineController: BaseCollectionViewController {
     "SEARCH",
     "SETTINGS"
   ]
-
-  let service = GidOnlineService.shared
-  var localizer = Localizer(GidOnlineServiceAdapter.Identifiers.BundleId)
 
   var document: Document?
 
@@ -70,9 +67,9 @@ open class GidOnlineController: BaseCollectionViewController {
 
     let item = items[indexPath.row]
 
-    let localizedName = localizer.localize(item.name!)
+    let localizedName = localizer?.localize(item.name!)
 
-    cell.configureCell(item: item, localizedName: localizedName, target: self)
+    cell.configureCell(item: item, localizedName: localizedName!, target: self)
     CellHelper.shared.addGestureRecognizer(view: cell, target: self, action: #selector(self.tapped(_:)))
 
     return cell
@@ -100,7 +97,7 @@ open class GidOnlineController: BaseCollectionViewController {
         storyboardId: "GidOnline", bundleId: "com.rubikon.GidOnlineSite") as! SearchController
 
       adapter.requestType = "SEARCH"
-      adapter.parentName = localizer.localize("SEARCH")
+      adapter.parentName = localizer?.localize("SEARCH")
 
       destination.adapter = adapter
 
@@ -111,7 +108,7 @@ open class GidOnlineController: BaseCollectionViewController {
       let destination = controller as! MediaItemsController
 
       adapter.requestType = requestType
-      adapter.parentName = localizer.localize(requestType!)
+      adapter.parentName = localizer?.localize(requestType!)
 
       destination.adapter = adapter
 

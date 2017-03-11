@@ -4,18 +4,15 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-class ThemesController: BaseCollectionViewController {
+class ThemesController: MyHitCollectionViewController {
   static let SegueIdentifier = "Themes"
-  let CellIdentifier = "ThemeCell"
+  override open var CellIdentifier: String { return "ThemeCell" }
 
   let ThemesMenu = [
     "TOP_SEVEN",
     "NEW_MOVIES",
     "PREMIERS"
   ]
-
-  let service = GidOnlineService.shared
-  var localizer = Localizer("com.rubikon.GidOnlineSite")
 
   var document: Document?
 
@@ -57,9 +54,9 @@ class ThemesController: BaseCollectionViewController {
 
     let item = items[indexPath.row]
 
-    let localizedName = localizer.localize(item.name!)
+    let localizedName = localizer?.localize(item.name!)
 
-    cell.configureCell(item: item, localizedName: localizedName, target: self)
+    cell.configureCell(item: item, localizedName: localizedName!, target: self)
     CellHelper.shared.addGestureRecognizer(view: cell, target: self, action: #selector(self.tapped(_:)))
 
     return cell

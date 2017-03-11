@@ -10,7 +10,7 @@ class SearchController: UIViewController {
   @IBOutlet weak var searchButton: UIButton!
 
   public var adapter: ServiceAdapter!
-  var localizer = Localizer(GidOnlineServiceAdapter.Identifiers.BundleId)
+  var localizer = Localizer("com.rubikon.GidOnlineSite")
 
   var params = [String: Any]()
 
