@@ -105,7 +105,7 @@ open class GidOnlineController: MyHitCollectionViewController {
             let adapter = GidOnlineServiceAdapter()
 
             adapter.requestType = mediaItem.name
-            adapter.parentName = localizer?.localize(mediaItem.name!)
+            adapter.parentName = localizer.localize(mediaItem.name!)
 
             destination.adapter = adapter
             destination.collectionView?.collectionViewLayout = adapter.buildLayout()!
@@ -117,7 +117,7 @@ open class GidOnlineController: MyHitCollectionViewController {
             let adapter = GidOnlineServiceAdapter()
 
             adapter.requestType = "SEARCH"
-            adapter.parentName = localizer?.localize("SEARCH_RESULTS")
+            adapter.parentName = localizer.localize("SEARCH_RESULTS")
 
             destination.adapter = adapter
           }

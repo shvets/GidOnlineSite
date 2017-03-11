@@ -47,9 +47,9 @@ class SettingsController: MyHitCollectionViewController {
 
     let item = items[indexPath.row]
 
-    let localizedName = localizer?.localize(item.name!)
+    let localizedName = localizer.localize(item.name!)
 
-    cell.configureCell(item: item, localizedName: localizedName!, target: self)
+    cell.configureCell(item: item, localizedName: localizedName, target: self)
     CellHelper.shared.addGestureRecognizer(view: cell, target: self, action: #selector(self.tapped(_:)))
 
     return cell
@@ -69,10 +69,10 @@ class SettingsController: MyHitCollectionViewController {
   }
 
   func buildResetHistoryController() -> UIAlertController {
-    let title = localizer?.localize("HISTORY_WILL_BE_RESET")
-    let message = localizer?.localize("CONFIRM_YOUR_CHOICE")
+    let title = localizer.localize("HISTORY_WILL_BE_RESET")
+    let message = localizer.localize("CONFIRM_YOUR_CHOICE")
 
-    let alertController = UIAlertController(title: title!, message: message!, preferredStyle: .alert)
+    let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
     let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
       let history = (self.adapter as! GidOnlineServiceAdapter).history
@@ -90,10 +90,10 @@ class SettingsController: MyHitCollectionViewController {
   }
 
   func buildResetQueueController() -> UIAlertController {
-    let title = localizer?.localize("BOOKMARKS_WILL_BE_RESET")
-    let message = localizer?.localize("CONFIRM_YOUR_CHOICE")
+    let title = localizer.localize("BOOKMARKS_WILL_BE_RESET")
+    let message = localizer.localize("CONFIRM_YOUR_CHOICE")
 
-    let alertController = UIAlertController(title: title!, message: message!, preferredStyle: .alert)
+    let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
     let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
       let bookmarks = (self.adapter as! GidOnlineServiceAdapter).bookmarks

@@ -56,9 +56,9 @@ class GenresGroupController: MyHitCollectionViewController {
 
     let item = items[indexPath.row]
 
-    let localizedName = localizer?.localize(item.name!)
+    let localizedName = localizer.localize(item.name!)
 
-    cell.configureCell(item: item, localizedName: localizedName!, target: self)
+    cell.configureCell(item: item, localizedName: localizedName, target: self)
     CellHelper.shared.addGestureRecognizer(view: cell, target: self, action: #selector(self.tapped(_:)))
 
     return cell
@@ -81,7 +81,7 @@ class GenresGroupController: MyHitCollectionViewController {
             let mediaItem = getItem(for: selectedCell)
 
             adapter.parentId = mediaItem.name
-            adapter.parentName = localizer?.localize(mediaItem.name!)
+            adapter.parentName = localizer.localize(mediaItem.name!)
 
             destination.adapter = adapter
             destination.document = document
