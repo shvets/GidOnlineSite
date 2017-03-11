@@ -1,6 +1,7 @@
 BOOKMARKS="Очередь";
 HISTORY="История Просмотров";
 SEARCH="Поиск";
+SEARCH_RESULTS="Результаты Поиска";
 SETTINGS="Настройки";
 RESET_HISTORY="Очистить Историю";
 RESET_BOOKMARKS="Очистить Очередь";

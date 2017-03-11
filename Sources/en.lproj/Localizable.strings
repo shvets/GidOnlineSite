@@ -1,6 +1,7 @@
 BOOKMARKS="Bookmarks";
 HISTORY="History";
 SEARCH="Search";
+SEARCH_RESULTS="Search Results";
 SETTINGS="Settings";
 RESET_HISTORY="Reset History";
 RESET_BOOKMARKS="Reset Bookmarks";

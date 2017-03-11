@@ -52,69 +52,27 @@ open class GidOnlineController: MyHitCollectionViewController {
     }
   }
 
-  // MARK: UICollectionViewDataSource
+  override open func navigate(from view: UICollectionViewCell, playImmediately: Bool=false) {
+    let mediaItem = getItem(for: view)
 
-  override open func numberOfSections(in collectionView: UICollectionView) -> Int {
-    return 1
-  }
+    switch mediaItem.name! {
+      case "GENRES":
+        performSegue(withIdentifier: GenresGroupController.SegueIdentifier, sender: view)
 
-  override open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return items.count
-  }
+      case "THEMES":
+        performSegue(withIdentifier: ThemesController.SegueIdentifier, sender: view)
 
-  override open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath) as! MediaNameCell
+      case "FILTERS":
+        performSegue(withIdentifier: FiltersController.SegueIdentifier, sender: view)
 
-    let item = items[indexPath.row]
+      case "SETTINGS":
+        performSegue(withIdentifier: "Settings", sender: view)
 
-    let localizedName = localizer?.localize(item.name!)
+      case "SEARCH":
+        performSegue(withIdentifier: SearchController.SegueIdentifier, sender: view)
 
-    cell.configureCell(item: item, localizedName: localizedName!, target: self)
-    CellHelper.shared.addGestureRecognizer(view: cell, target: self, action: #selector(self.tapped(_:)))
-
-    return cell
-  }
-
-  override open func tapped(_ gesture: UITapGestureRecognizer) {
-    let selectedCell = gesture.view as! MediaNameCell
-
-    let requestType = getItem(for: selectedCell).name
-
-    if requestType == "GENRES" {
-      performSegue(withIdentifier: GenresGroupController.SegueIdentifier, sender: gesture.view)
-    }
-    else if requestType == "THEMES" {
-      performSegue(withIdentifier: ThemesController.SegueIdentifier, sender: gesture.view)
-    }
-    else if requestType == "FILTERS" {
-      performSegue(withIdentifier: FiltersController.SegueIdentifier, sender: gesture.view)
-    }
-    else if requestType == "SETTINGS" {
-      performSegue(withIdentifier: "Settings", sender: gesture.view)
-    }
-    else if requestType == "SEARCH" {
-      let destination = adapter.instantiateController(controllerId: "SearchController",
-        storyboardId: "GidOnline", bundleId: "com.rubikon.GidOnlineSite") as! SearchController
-
-      adapter.requestType = "SEARCH"
-      adapter.parentName = localizer?.localize("SEARCH")
-
-      destination.adapter = adapter
-
-      self.present(destination, animated: false, completion: nil)
-    }
-    else {
-      let controller = MediaItemsController.instantiate(adapter).getActionController()
-      let destination = controller as! MediaItemsController
-
-      adapter.requestType = requestType
-      adapter.parentName = localizer?.localize(requestType!)
-
-      destination.adapter = adapter
-
-      destination.collectionView?.collectionViewLayout = adapter.buildLayout()!
-
-      show(controller!, sender: destination)
+      default:
+        performSegue(withIdentifier: MediaItemsController.SegueIdentifier, sender: view)
     }
   }
 
@@ -127,15 +85,45 @@ open class GidOnlineController: MyHitCollectionViewController {
           if let destination = segue.destination as? GenresGroupController {
             destination.document = document
           }
+
         case ThemesController.SegueIdentifier:
           if let destination = segue.destination as? ThemesController {
             destination.document = document
           }
+
         case FiltersController.SegueIdentifier:
           if let destination = segue.destination as? FiltersController {
             destination.document = document
           }
-        default: break
+
+        case MediaItemsController.SegueIdentifier:
+          if let destination = segue.destination.getActionController() as? MediaItemsController,
+             let view = sender as? MediaNameCell {
+
+            let mediaItem = getItem(for: view)
+
+            let adapter = GidOnlineServiceAdapter()
+
+            adapter.requestType = mediaItem.name
+            adapter.parentName = localizer?.localize(mediaItem.name!)
+
+            destination.adapter = adapter
+            destination.collectionView?.collectionViewLayout = adapter.buildLayout()!
+          }
+
+        case SearchController.SegueIdentifier:
+          if let destination = segue.destination.getActionController() as? SearchController {
+
+            let adapter = GidOnlineServiceAdapter()
+
+            adapter.requestType = "SEARCH"
+            adapter.parentName = localizer?.localize("SEARCH_RESULTS")
+
+            destination.adapter = adapter
+          }
+
+        default:
+          break
       }
     }
    }
