@@ -4,7 +4,7 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-class YearsController: GidOnlineCollectionViewController {
+class YearsController: GidOnlineBaseCollectionViewController {
   static let SegueIdentifier = "Years"
 
   override open var CellIdentifier: String { return "YearCell" }

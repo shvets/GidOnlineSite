@@ -4,7 +4,7 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-class ThemesController: GidOnlineCollectionViewController {
+class ThemesController: GidOnlineBaseCollectionViewController {
   static let SegueIdentifier = "Themes"
   override open var CellIdentifier: String { return "ThemeCell" }
 

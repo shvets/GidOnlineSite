@@ -4,7 +4,7 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-class LettersController: GidOnlineCollectionViewController {
+class LettersController: GidOnlineBaseCollectionViewController {
   static let SegueIdentifier = "Letters"
 
   override open var CellIdentifier: String { return "LettersCell" }

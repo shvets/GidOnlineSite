@@ -4,7 +4,7 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-class CountriesController: GidOnlineCollectionViewController {
+class CountriesController: GidOnlineBaseCollectionViewController {
   static let SegueIdentifier = "Countries"
 
   override open var CellIdentifier: String { return "CountryCell" }
