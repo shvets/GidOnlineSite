@@ -1,6 +1,6 @@
 import TVSetKit
 
-open class MyHitCollectionViewController: BaseCollectionViewController {
+open class GidOnlineCollectionViewController: BaseCollectionViewController {
   let service = GidOnlineService.shared
 
   override open func viewDidLoad() {

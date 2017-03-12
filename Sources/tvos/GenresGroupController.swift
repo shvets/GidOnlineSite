@@ -4,7 +4,7 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-class GenresGroupController: MyHitCollectionViewController {
+class GenresGroupController: GidOnlineCollectionViewController {
   static let SegueIdentifier = "GenresGroup"
 
   override open var CellIdentifier: String { return "CellIdentifier" }

@@ -1,7 +1,7 @@
 import UIKit
 import TVSetKit
 
-class SettingsController: MyHitCollectionViewController {
+class SettingsController: GidOnlineCollectionViewController {
   override open var CellIdentifier: String { return "SettingCell" }
 
   override func viewDidLoad() {

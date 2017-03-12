@@ -4,7 +4,7 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-class FiltersController: MyHitCollectionViewController {
+class FiltersController: GidOnlineCollectionViewController {
   static let SegueIdentifier = "Filters"
 
   override open var CellIdentifier: String { return "FilterCell" }

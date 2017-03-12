@@ -4,7 +4,7 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-open class GidOnlineController: MyHitCollectionViewController {
+open class GidOnlineController: GidOnlineCollectionViewController {
   override open var CellIdentifier: String { return "GidOnlineCell" }
 
   let MainMenuItems = [
