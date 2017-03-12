@@ -41,21 +41,21 @@ class GenresGroupTableViewController: GidOnlineBaseTableViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let identifier = segue.identifier {
       switch identifier {
-      case GenresController.SegueIdentifier:
-        if let destination = segue.destination as? GenresController,
-           let selectedCell = sender as? MediaNameTableCell {
-          adapter.requestType = "GENRES"
+        case GenresController.SegueIdentifier:
+          if let destination = segue.destination as? GenresTableViewController,
+             let selectedCell = sender as? MediaNameTableCell {
+            adapter.requestType = "GENRES"
 
-          let mediaItem = getItem(for: selectedCell)
+            let mediaItem = getItem(for: selectedCell)
 
-          adapter.parentId = mediaItem.name
-          adapter.parentName = localizer.localize(mediaItem.name!)
+            adapter.parentId = mediaItem.name
+            adapter.parentName = localizer.localize(mediaItem.name!)
 
-          destination.adapter = adapter
-          destination.document = document
-        }
+            destination.adapter = adapter
+            destination.document = document
+          }
 
-      default: break
+        default: break
       }
     }
   }

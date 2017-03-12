@@ -74,18 +74,18 @@ open class GidOnlineTableViewController: GidOnlineBaseTableViewController {
   override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let identifier = segue.identifier {
       switch identifier {
-      case GenresGroupController.SegueIdentifier:
-        if let destination = segue.destination as? GenresGroupController {
+      case GenresGroupTableViewController.SegueIdentifier:
+        if let destination = segue.destination as? GenresGroupTableViewController {
           destination.document = document
         }
 
-      case ThemesController.SegueIdentifier:
-        if let destination = segue.destination as? ThemesController {
+      case ThemesTableController.SegueIdentifier:
+        if let destination = segue.destination as? ThemesTableController {
           destination.document = document
         }
 
-      case FiltersController.SegueIdentifier:
-        if let destination = segue.destination as? FiltersController {
+      case FiltersTableController.SegueIdentifier:
+        if let destination = segue.destination as? FiltersTableController {
           destination.document = document
         }
 
@@ -104,8 +104,8 @@ open class GidOnlineTableViewController: GidOnlineBaseTableViewController {
           destination.collectionView?.collectionViewLayout = adapter.buildLayout()!
         }
 
-      case SearchController.SegueIdentifier:
-        if let destination = segue.destination.getActionController() as? SearchController {
+      case SearchTableController.SegueIdentifier:
+        if let destination = segue.destination.getActionController() as? SearchTableController {
 
           let adapter = GidOnlineServiceAdapter()
 

@@ -27,7 +27,7 @@ class LettersTableController: GidOnlineBaseTableViewController {
   }
 
   override open func navigate(from view: UITableViewCell) {
-    performSegue(withIdentifier: LetterController.SegueIdentifier, sender: view)
+    performSegue(withIdentifier: LetterTableController.SegueIdentifier, sender: view)
   }
 
   // MARK: - Navigation
@@ -35,8 +35,8 @@ class LettersTableController: GidOnlineBaseTableViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let identifier = segue.identifier {
       switch identifier {
-        case LetterController.SegueIdentifier:
-          if let destination = segue.destination as? LetterController,
+        case LetterTableController.SegueIdentifier:
+          if let destination = segue.destination as? LetterTableController,
              let selectedCell = sender as? MediaNameTableCell {
             adapter.requestType = "LETTER"
 

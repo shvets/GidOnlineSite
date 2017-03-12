@@ -37,19 +37,19 @@ class FiltersTableController: GidOnlineBaseTableViewController {
 
     switch mediaItem.name! {
       case "BY_ACTORS":
-        performSegue(withIdentifier: LettersController.SegueIdentifier, sender: view)
+        performSegue(withIdentifier: LettersTableController.SegueIdentifier, sender: view)
 
       case "BY_DIRECTORS":
-        performSegue(withIdentifier: LettersController.SegueIdentifier, sender: view)
+        performSegue(withIdentifier: LettersTableController.SegueIdentifier, sender: view)
 
       case "BY_COUNTRIES":
-        performSegue(withIdentifier: CountriesController.SegueIdentifier, sender: view)
+        performSegue(withIdentifier: CountriesTableController.SegueIdentifier, sender: view)
 
       case "BY_Years":
-        performSegue(withIdentifier: YearsController.SegueIdentifier, sender: view)
+        performSegue(withIdentifier: YearsTableController.SegueIdentifier, sender: view)
 
       case "SEARCH":
-        performSegue(withIdentifier: SearchController.SegueIdentifier, sender: view)
+        performSegue(withIdentifier: SearchTableController.SegueIdentifier, sender: view)
 
       default:
         performSegue(withIdentifier: MediaItemsController.SegueIdentifier, sender: view)
@@ -61,8 +61,8 @@ class FiltersTableController: GidOnlineBaseTableViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let identifier = segue.identifier {
       switch identifier {
-        case LettersController.SegueIdentifier:
-          if let destination = segue.destination as? LettersController,
+        case LettersTableController.SegueIdentifier:
+          if let destination = segue.destination as? LettersTableController,
              let selectedCell = sender as? MediaNameTableCell {
 
             let requestType = getItem(for: selectedCell).name
@@ -70,12 +70,12 @@ class FiltersTableController: GidOnlineBaseTableViewController {
             destination.document = document
             destination.requestType = requestType
           }
-        case CountriesController.SegueIdentifier:
-          if let destination = segue.destination as? CountriesController {
+        case CountriesTableController.SegueIdentifier:
+          if let destination = segue.destination as? CountriesTableController {
             destination.document = document
           }
-        case YearsController.SegueIdentifier:
-          if let destination = segue.destination as? YearsController {
+        case YearsTableController.SegueIdentifier:
+          if let destination = segue.destination as? YearsTableController {
             destination.document = document
           }
         default: break
