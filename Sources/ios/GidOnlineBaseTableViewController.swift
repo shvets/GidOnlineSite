@@ -9,12 +9,6 @@ open class GidOnlineBaseTableViewController: BaseTableViewController {
 
   let localizer = Localizer("com.rubikon.GidOnlineSite")
 
-//  override open func viewDidLoad() {
-//    super.viewDidLoad()
-//
-//    localizer = Localizer("com.rubikon.GidOnlineSite")
-//  }
-
   override open func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }

@@ -32,35 +32,31 @@ class GenresGroupTableViewController: GidOnlineBaseTableViewController {
     }
   }
 
-//  override open func navigate(from view: UITableViewCell) {
-//
-//  }
+  override open func navigate(from view: UITableViewCell) {
+    performSegue(withIdentifier: GenresController.SegueIdentifier, sender: view)
+  }
 
-//  override open func tapped(_ gesture: UITapGestureRecognizer) {
-//    performSegue(withIdentifier: GenresController.SegueIdentifier, sender: gesture.view)
-//  }
-//
-//  // MARK: - Navigation
-//
-//  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//    if let identifier = segue.identifier {
-//      switch identifier {
-//      case GenresController.SegueIdentifier:
-//        if let destination = segue.destination as? GenresController,
-//           let selectedCell = sender as? MediaNameTableCell {
-//          adapter.requestType = "GENRES"
-//
-//          let mediaItem = getItem(for: selectedCell)
-//
-//          adapter.parentId = mediaItem.name
-//          adapter.parentName = localizer.localize(mediaItem.name!)
-//
-//          destination.adapter = adapter
-//          destination.document = document
-//        }
-//
-//      default: break
-//      }
-//    }
-//  }
+  // MARK: - Navigation
+
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let identifier = segue.identifier {
+      switch identifier {
+      case GenresController.SegueIdentifier:
+        if let destination = segue.destination as? GenresController,
+           let selectedCell = sender as? MediaNameTableCell {
+          adapter.requestType = "GENRES"
+
+          let mediaItem = getItem(for: selectedCell)
+
+          adapter.parentId = mediaItem.name
+          adapter.parentName = localizer.localize(mediaItem.name!)
+
+          destination.adapter = adapter
+          destination.document = document
+        }
+
+      default: break
+      }
+    }
+  }
 }

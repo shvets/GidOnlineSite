@@ -26,36 +26,32 @@ class LettersTableController: GidOnlineBaseTableViewController {
     }
   }
 
-//  override open func navigate(from view: UITableViewCell) {
-//
-//  }
-
-//  override func tapped(_ gesture: UITapGestureRecognizer) {
-//    performSegue(withIdentifier: "Letter", sender: gesture.view)
-//  }
+  override open func navigate(from view: UITableViewCell) {
+    performSegue(withIdentifier: LetterController.SegueIdentifier, sender: view)
+  }
 
   // MARK: - Navigation
 
-//  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//    if let identifier = segue.identifier {
-//      switch identifier {
-//      case LetterController.SegueIdentifier:
-//        if let destination = segue.destination as? LetterController,
-//           let selectedCell = sender as? MediaNameTableCell {
-//          adapter.requestType = "LETTER"
-//
-//          let mediaItem =  getItem(for: selectedCell)
-//
-//          adapter.parentId = mediaItem.name
-//          adapter.parentName = localizer.localize(requestType!)
-//
-//          destination.adapter = adapter
-//          destination.document = document
-//          destination.requestType = requestType
-//        }
-//
-//      default: break
-//      }
-//    }
-//  }
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let identifier = segue.identifier {
+      switch identifier {
+        case LetterController.SegueIdentifier:
+          if let destination = segue.destination as? LetterController,
+             let selectedCell = sender as? MediaNameTableCell {
+            adapter.requestType = "LETTER"
+
+            let mediaItem =  getItem(for: selectedCell)
+
+            adapter.parentId = mediaItem.name
+            adapter.parentName = localizer.localize(requestType!)
+
+            destination.adapter = adapter
+            destination.document = document
+            destination.requestType = requestType
+          }
+
+        default: break
+      }
+    }
+  }
 }

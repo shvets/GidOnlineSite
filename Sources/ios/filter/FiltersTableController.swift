@@ -32,54 +32,55 @@ class FiltersTableController: GidOnlineBaseTableViewController {
     }
   }
 
-//  override open func navigate(from view: UITableViewCell) {
-//
-//  }
+  override open func navigate(from view: UITableViewCell) {
+    let mediaItem = getItem(for: view)
 
-//  override open func tapped(_ gesture: UITapGestureRecognizer) {
-//    let selectedCell = gesture.view as! MediaNameTableCell
-//
-//    let requestType = getItem(for: selectedCell).name
-//
-//    if requestType == "BY_ACTORS" {
-//      performSegue(withIdentifier: LettersController.SegueIdentifier, sender: gesture.view)
-//    }
-//    else if requestType == "BY_DIRECTORS" {
-//      performSegue(withIdentifier: LettersController.SegueIdentifier, sender: gesture.view)
-//    }
-//    else if requestType == "BY_COUNTRIES" {
-//      performSegue(withIdentifier: CountriesController.SegueIdentifier, sender: gesture.view)
-//    }
-//    else if requestType == "BY_Years" {
-//      performSegue(withIdentifier: YearsController.SegueIdentifier, sender: gesture.view)
-//    }
-//  }
-//
-//  // MARK: - Navigation
-//
-//  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//    if let identifier = segue.identifier {
-//      switch identifier {
-//      case LettersController.SegueIdentifier:
-//        if let destination = segue.destination as? LettersController,
-//           let selectedCell = sender as? MediaNameTableCell {
-//
-//          let requestType = getItem(for: selectedCell).name
-//
-//          destination.document = document
-//          destination.requestType = requestType
-//        }
-//      case CountriesController.SegueIdentifier:
-//        if let destination = segue.destination as? CountriesController {
-//          destination.document = document
-//        }
-//      case YearsController.SegueIdentifier:
-//        if let destination = segue.destination as? YearsController {
-//          destination.document = document
-//        }
-//      default: break
-//      }
-//    }
-//  }
+    switch mediaItem.name! {
+      case "BY_ACTORS":
+        performSegue(withIdentifier: LettersController.SegueIdentifier, sender: view)
+
+      case "BY_DIRECTORS":
+        performSegue(withIdentifier: LettersController.SegueIdentifier, sender: view)
+
+      case "BY_COUNTRIES":
+        performSegue(withIdentifier: CountriesController.SegueIdentifier, sender: view)
+
+      case "BY_Years":
+        performSegue(withIdentifier: YearsController.SegueIdentifier, sender: view)
+
+      case "SEARCH":
+        performSegue(withIdentifier: SearchController.SegueIdentifier, sender: view)
+
+      default:
+        performSegue(withIdentifier: MediaItemsController.SegueIdentifier, sender: view)
+    }
+  }
+
+  // MARK: - Navigation
+
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let identifier = segue.identifier {
+      switch identifier {
+        case LettersController.SegueIdentifier:
+          if let destination = segue.destination as? LettersController,
+             let selectedCell = sender as? MediaNameTableCell {
+
+            let requestType = getItem(for: selectedCell).name
+
+            destination.document = document
+            destination.requestType = requestType
+          }
+        case CountriesController.SegueIdentifier:
+          if let destination = segue.destination as? CountriesController {
+            destination.document = document
+          }
+        case YearsController.SegueIdentifier:
+          if let destination = segue.destination as? YearsController {
+            destination.document = document
+          }
+        default: break
+      }
+    }
+  }
 
 }

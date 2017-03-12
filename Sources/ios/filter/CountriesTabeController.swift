@@ -35,24 +35,30 @@ class CountriesTableController: GidOnlineBaseTableViewController {
     }
   }
 
-//  override open func navigate(from view: UITableViewCell) {
-//
-//  }
+  override open func navigate(from view: UITableViewCell) {
+    performSegue(withIdentifier: MediaItemsController.SegueIdentifier, sender: view)
+  }
 
-//  override open func tapped(_ gesture: UITapGestureRecognizer) {
-//    let selectedCell = gesture.view as! MediaNameTableCell
-//
-//    let controller = MediaItemsController.instantiate(adapter).getActionController()
-//    let destination = controller as! MediaItemsController
-//
-//    adapter.requestType = "MOVIES"
-//
-//    adapter.selectedItem = getItem(for: selectedCell)
-//
-//    destination.adapter = adapter
-//
-//    destination.collectionView?.collectionViewLayout = adapter.buildLayout()!
-//
-//    show(controller!, sender: destination)
-//  }
+  // MARK: - Navigation
+
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let identifier = segue.identifier {
+      switch identifier {
+        case MediaItemsController.SegueIdentifier:
+          if let destination = segue.destination.getActionController() as? MediaItemsController,
+             let view = sender as? MediaNameTableCell {
+
+            let adapter = GidOnlineServiceAdapter()
+
+            adapter.requestType = "MOVIES"
+            adapter.selectedItem = getItem(for: view)
+
+            destination.adapter = adapter
+          }
+
+        default: break
+      }
+    }
+  }
+
 }

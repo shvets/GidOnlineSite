@@ -21,15 +21,6 @@ class ThemesTableController: GidOnlineBaseTableViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
-//    let layout = UICollectionViewFlowLayout()
-//
-//    layout.itemSize = CGSize(width: 450, height: 150)
-//    layout.sectionInset = UIEdgeInsets(top: 100.0, left: 20.0, bottom: 50.0, right: 20.0)
-//    layout.minimumInteritemSpacing = 10.0
-//    layout.minimumLineSpacing = 100.0
-//
-//    collectionView?.collectionViewLayout = layout
-
     adapter = GidOnlineServiceAdapter()
 
     for name in ThemesMenu {
@@ -39,44 +30,30 @@ class ThemesTableController: GidOnlineBaseTableViewController {
     }
   }
 
-  // MARK: UICollectionViewDataSource
+  override open func navigate(from view: UITableViewCell) {
+    performSegue(withIdentifier: MediaItemsController.SegueIdentifier, sender: view)
+  }
 
-//  override func numberOfSections(in collectionView: UICollectionView) -> Int {
-//    return 1
-//  }
-//
-//  override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//    return items.count
-//  }
-//
-//  override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath) as! MediaNameTableCell
-//
-//    let item = items[indexPath.row]
-//
-//    let localizedName = localizer.localize(item.name!)
-//
-//    cell.configureCell(item: item, localizedName: localizedName, target: self)
-//    CellHelper.shared.addGestureRecognizer(view: cell, target: self, action: #selector(self.tapped(_:)))
-//
-//    return cell
-//  }
+  // MARK: - Navigation
 
-//  override open func tapped(_ gesture: UITapGestureRecognizer) {
-//    let selectedCell = gesture.view as! MediaNameTableCell
-//
-//    let controller = MediaItemsController.instantiate(adapter).getActionController()
-//    let destination = controller as! MediaItemsController
-//
-//    adapter.requestType = "THEMES"
-//
-//    adapter.selectedItem =  getItem(for: selectedCell)
-//
-//    destination.adapter = adapter
-//
-//    destination.collectionView?.collectionViewLayout = adapter.buildLayout()!
-//
-//    show(controller!, sender: destination)
-//  }
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let identifier = segue.identifier {
+      switch identifier {
+        case MediaItemsController.SegueIdentifier:
+          if let destination = segue.destination.getActionController() as? MediaItemsController,
+             let view = sender as? MediaNameTableCell {
+
+            let adapter = GidOnlineServiceAdapter()
+
+            adapter.requestType = "THEMES"
+            adapter.selectedItem = getItem(for: view)
+
+            destination.adapter = adapter
+          }
+
+        default: break
+      }
+    }
+  }
 
 }

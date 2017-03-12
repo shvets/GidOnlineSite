@@ -23,24 +23,18 @@ class SettingsTableController: GidOnlineBaseTableViewController {
     ]
   }
 
-  // MARK: UICollectionViewDataSource
+  override open func navigate(from view: UITableViewCell) {
+    let mediaItem = getItem(for: view)
 
-//  override open func navigate(from view: UITableViewCell) {
-//
-//  }
+    let settingsMode = mediaItem.name
 
-//  override open func tapped(_ gesture: UITapGestureRecognizer) {
-//    let selectedCell = gesture.view as! MediaNameTableCell
-//
-//    let settingsMode = getItem(for: selectedCell).name
-//
-//    if settingsMode == "RESET_HISTORY" {
-//      self.present(buildResetHistoryController(), animated: false, completion: nil)
-//    }
-//    else if settingsMode == "RESET_BOOKMARKS" {
-//      self.present(buildResetQueueController(), animated: false, completion: nil)
-//    }
-//  }
+    if settingsMode == "RESET_HISTORY" {
+      self.present(buildResetHistoryController(), animated: false, completion: nil)
+    }
+    else if settingsMode == "RESET_BOOKMARKS" {
+      self.present(buildResetQueueController(), animated: false, completion: nil)
+    }
+  }
 
   func buildResetHistoryController() -> UIAlertController {
     let title = localizer.localize("HISTORY_WILL_BE_RESET")
