@@ -50,7 +50,7 @@ class ThemesTableController: GidOnlineBaseTableViewController {
 //  }
 //
 //  override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath) as! MediaNameCell
+//    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath) as! MediaNameTableCell
 //
 //    let item = items[indexPath.row]
 //
@@ -63,7 +63,7 @@ class ThemesTableController: GidOnlineBaseTableViewController {
 //  }
 
 //  override open func tapped(_ gesture: UITapGestureRecognizer) {
-//    let selectedCell = gesture.view as! MediaNameCell
+//    let selectedCell = gesture.view as! MediaNameTableCell
 //
 //    let controller = MediaItemsController.instantiate(adapter).getActionController()
 //    let destination = controller as! MediaItemsController
