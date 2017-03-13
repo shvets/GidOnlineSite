@@ -23,7 +23,7 @@ class FiltersTableController: GidOnlineBaseTableViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
-    adapter = GidOnlineServiceAdapter()
+    adapter = GidOnlineServiceAdapter(mobile: true)
 
     for name in FiltersMenu {
       let item = MediaItem(name: name)
@@ -45,14 +45,15 @@ class FiltersTableController: GidOnlineBaseTableViewController {
       case "BY_COUNTRIES":
         performSegue(withIdentifier: CountriesTableController.SegueIdentifier, sender: view)
 
-      case "BY_Years":
+      case "BY_YEARS":
         performSegue(withIdentifier: YearsTableController.SegueIdentifier, sender: view)
 
-      case "SEARCH":
-        performSegue(withIdentifier: SearchTableController.SegueIdentifier, sender: view)
+//      case "SEARCH":
+//        performSegue(withIdentifier: SearchTableController.SegueIdentifier, sender: view)
 
       default:
-        performSegue(withIdentifier: MediaItemsController.SegueIdentifier, sender: view)
+        //performSegue(withIdentifier: MediaItemsController.SegueIdentifier, sender: view)
+        break
     }
   }
 

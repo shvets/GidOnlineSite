@@ -7,7 +7,7 @@ import TVSetKit
 class GenresGroupController: GidOnlineBaseCollectionViewController {
   static let SegueIdentifier = "GenresGroup"
 
-  override open var CellIdentifier: String { return "CellIdentifier" }
+  override open var CellIdentifier: String { return "GenreGroupCell" }
 
   let GENRES_MENU = [
     "FAMILY",

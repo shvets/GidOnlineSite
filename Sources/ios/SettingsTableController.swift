@@ -9,7 +9,7 @@ class SettingsTableController: GidOnlineBaseTableViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
-    adapter = GidOnlineServiceAdapter()
+    adapter = GidOnlineServiceAdapter(mobile: true)
 
     loadSettingsMenu()
   }

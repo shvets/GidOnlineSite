@@ -2,7 +2,7 @@ import UIKit
 import Runglish
 import TVSetKit
 
-class SearchTableController: UIViewController {
+open class SearchTableController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var query: UITextField!
   @IBOutlet weak var transcodedQuery: UILabel!
   @IBOutlet weak var useRunglish: UIButton!
@@ -12,6 +12,7 @@ class SearchTableController: UIViewController {
   public class var SegueIdentifier: String { return "search" }
 
   public var adapter: ServiceAdapter!
+
   var localizer = Localizer("com.rubikon.GidOnlineSite")
 
   var params = [String: Any]()
@@ -35,14 +36,25 @@ class SearchTableController: UIViewController {
 
     isChecked = true
 
+    title = localizer.localize("SEARCH")
+
     useRunglishLabel.text = localizer.localize(useRunglishLabel.text!)
     searchButton.setTitle(localizer.localize(searchButton.title(for: .normal)!), for: .normal)
-    query.placeholder = localizer.localize(query.placeholder!)
 
-    query.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
+    searchButton.addTarget(self, action: #selector(self.search(_:)), for: .touchUpInside)
+
+    if let placeholder = query.placeholder {
+      query.placeholder = localizer.localize(placeholder)
+    }
+
+    query.addTarget(self, action: #selector(self.textFieldModified(textField:)), for: .editingChanged)
+
+    query.delegate = self
+
+    useRunglish.addTarget(self, action: #selector(self.onUseRunglish), for: .touchUpInside)
   }
 
-  func textFieldDidChange(textField: UITextField) {
+  func textFieldModified(textField: UITextField) {
     if isChecked {
       let transcoded = LatToRusConverter().transliterate(query.text!)
 
@@ -53,28 +65,44 @@ class SearchTableController: UIViewController {
     }
   }
 
-  @IBAction func onSearchAction(_ sender: UIButton) {
-    let controller = MediaItemsController.instantiate(adapter).getActionController()
-    let destination = controller as! MediaItemsController
+  public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    query.resignFirstResponder()
 
-    if isChecked {
-      let transcoded = LatToRusConverter().transliterate(query.text!)
+    return true;
+  }
 
-      adapter.query = transcoded
-      transcodedQuery.text = transcoded
+  func search(_ sender: UIButton) {
+    performSegue(withIdentifier: MediaItemsController.SegueIdentifier, sender: view)
+  }
+
+  override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let identifier = segue.identifier {
+      switch identifier {
+      case MediaItemsController.SegueIdentifier:
+        if let destination = segue.destination.getActionController() as? MediaItemsController {
+          if isChecked {
+            let transcoded = LatToRusConverter().transliterate(query.text!)
+
+            adapter.query = transcoded
+            transcodedQuery.text = transcoded
+          }
+          else {
+            adapter.query = query.text
+          }
+
+          destination.adapter = adapter
+        }
+
+      default: break
+      }
     }
-    else {
-      adapter.query = query.text
-    }
-
-    destination.adapter = adapter
-
-    destination.collectionView?.collectionViewLayout = adapter.buildLayout()!
-
-    show(controller!, sender: destination)
   }
 
   @IBAction func onUseRunglish(_ sender: UIButton) {
+    if isChecked {
+      transcodedQuery.text = ""
+    }
+
     isChecked = !isChecked
   }
 }

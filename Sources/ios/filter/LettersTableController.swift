@@ -17,7 +17,7 @@ class LettersTableController: GidOnlineBaseTableViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
-    adapter = GidOnlineServiceAdapter()
+    adapter = GidOnlineServiceAdapter(mobile: true)
 
     for letter in GidOnlineAPI.CyrillicLetters {
       if !["Ё", "Й", "Щ", "Ъ", "Ы", "Ь"].contains(letter) {

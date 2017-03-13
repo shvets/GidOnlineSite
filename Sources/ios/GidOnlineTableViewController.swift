@@ -27,7 +27,7 @@ open class GidOnlineTableViewController: GidOnlineBaseTableViewController {
 
     title = localizer.localize("GidOnline")
 
-    adapter = GidOnlineServiceAdapter()
+    adapter = GidOnlineServiceAdapter(mobile: true)
 
     self.clearsSelectionOnViewWillAppear = false
 
@@ -95,19 +95,18 @@ open class GidOnlineTableViewController: GidOnlineBaseTableViewController {
 
           let mediaItem = getItem(for: view)
 
-          let adapter = GidOnlineServiceAdapter()
+          let adapter = GidOnlineServiceAdapter(mobile: true)
 
           adapter.requestType = mediaItem.name
           adapter.parentName = localizer.localize(mediaItem.name!)
 
           destination.adapter = adapter
-          destination.collectionView?.collectionViewLayout = adapter.buildLayout()!
         }
 
       case SearchTableController.SegueIdentifier:
         if let destination = segue.destination.getActionController() as? SearchTableController {
 
-          let adapter = GidOnlineServiceAdapter()
+          let adapter = GidOnlineServiceAdapter(mobile: true)
 
           adapter.requestType = "SEARCH"
           adapter.parentName = localizer.localize("SEARCH_RESULTS")

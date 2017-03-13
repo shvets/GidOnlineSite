@@ -21,7 +21,7 @@ class ThemesTableController: GidOnlineBaseTableViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
-    adapter = GidOnlineServiceAdapter()
+    adapter = GidOnlineServiceAdapter(mobile: true)
 
     for name in ThemesMenu {
       let item = MediaItem(name: name)
@@ -43,7 +43,7 @@ class ThemesTableController: GidOnlineBaseTableViewController {
           if let destination = segue.destination.getActionController() as? MediaItemsController,
              let view = sender as? MediaNameTableCell {
 
-            let adapter = GidOnlineServiceAdapter()
+            let adapter = GidOnlineServiceAdapter(mobile: true)
 
             adapter.requestType = "THEMES"
             adapter.selectedItem = getItem(for: view)

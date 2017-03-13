@@ -16,7 +16,7 @@ class YearsTableController: GidOnlineBaseTableViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
-    adapter = GidOnlineServiceAdapter()
+    adapter = GidOnlineServiceAdapter(mobile: true)
 
     do {
       let data = try service.getYears(document!)
@@ -48,7 +48,7 @@ class YearsTableController: GidOnlineBaseTableViewController {
         if let destination = segue.destination.getActionController() as? MediaItemsController,
            let view = sender as? MediaNameTableCell {
 
-          let adapter = GidOnlineServiceAdapter()
+          let adapter = GidOnlineServiceAdapter(mobile: true)
 
           adapter.requestType = "MOVIES"
           adapter.selectedItem = getItem(for: view)
