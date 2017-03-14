@@ -10,6 +10,9 @@ class GidOnlineServiceAdapter: ServiceAdapter {
   static let bookmarksFileName = NSHomeDirectory() + "/Library/Caches/gidonline-bookmarks.json"
   static let historyFileName = NSHomeDirectory() + "/Library/Caches/gidonline-history.json"
 
+  override open class var StoryboardId: String { return "GidOnline" }
+  override open class var BundleId: String { return "com.rubikon.GidOnlineSite" }
+
   lazy var bookmarks = Bookmarks(bookmarksFileName)
   lazy var history = History(historyFileName)
 
@@ -32,9 +35,6 @@ class GidOnlineServiceAdapter: ServiceAdapter {
 
     pageSize = 12
     rowSize = 6
-
-    playerStoryboardId = "GidOnline"
-    //playerBundleId = "com.rubikon.EtvnetApp"
   }
 
   override open func clone() -> ServiceAdapter {
@@ -48,8 +48,8 @@ class GidOnlineServiceAdapter: ServiceAdapter {
   open func instantiateController(controllerId: String) -> UIViewController {
     return UIViewController.instantiate(
       controllerId: controllerId,
-      storyboardId: "GidOnline",
-      bundleId: "com.rubikon.GidOnlineSite")
+      storyboardId: GidOnlineServiceAdapter.StoryboardId,
+      bundleId: GidOnlineServiceAdapter.BundleId)
   }
 
   override func load() throws -> [MediaItem] {

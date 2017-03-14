@@ -13,7 +13,7 @@ open class SearchTableController: UIViewController, UITextFieldDelegate {
 
   public var adapter: ServiceAdapter!
 
-  var localizer = Localizer("com.rubikon.GidOnlineSite")
+  var localizer = Localizer(GidOnlineServiceAdapter.BundleId)
 
   var params = [String: Any]()
 
