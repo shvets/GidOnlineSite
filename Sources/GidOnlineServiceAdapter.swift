@@ -38,7 +38,7 @@ class GidOnlineServiceAdapter: ServiceAdapter {
   }
 
   override open func clone() -> ServiceAdapter {
-    let cloned = GidOnlineServiceAdapter()
+    let cloned = GidOnlineServiceAdapter(mobile: mobile!)
 
     cloned.clear()
 
