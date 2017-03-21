@@ -17,8 +17,6 @@ class LetterTableController: GidOnlineBaseTableViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
-    //adapter = GidOnlineServiceAdapter()
-
     do {
       var data: [Any]?
 
