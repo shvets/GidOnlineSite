@@ -41,29 +41,6 @@ class FiltersController: GidOnlineBaseCollectionViewController {
     }
   }
 
-  // MARK: UICollectionViewDataSource
-
-  override func numberOfSections(in collectionView: UICollectionView) -> Int {
-    return 1
-  }
-
-  override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return items.count
-  }
-
-  override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath) as! MediaNameCell
-
-    let item = items[indexPath.row]
-
-    let localizedName = localizer.localize(item.name!)
-
-    cell.configureCell(item: item, localizedName: localizedName, target: self)
-    CellHelper.shared.addGestureRecognizer(view: cell, target: self, action: #selector(self.tapped(_:)))
-
-    return cell
-  }
-
   override open func tapped(_ gesture: UITapGestureRecognizer) {
     let selectedCell = gesture.view as! MediaNameCell
 
