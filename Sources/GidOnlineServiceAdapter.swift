@@ -64,7 +64,12 @@ class GidOnlineServiceAdapter: ServiceAdapter {
     params.selectedItem = selectedItem
     params.document = document
 
-    return try dataSource.load(requestType!, params: params, pageSize: pageSize!, currentPage: currentPage)
+    if let requestType = requestType {
+      return try dataSource.load(requestType, params: params, pageSize: pageSize!, currentPage: currentPage)
+    }
+    else {
+      return []
+    }
   }
 
   override func buildLayout() -> UICollectionViewFlowLayout? {
