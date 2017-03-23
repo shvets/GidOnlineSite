@@ -5,15 +5,15 @@ import WebAPI
 import TVSetKit
 
 class GenresGroupTableViewController: GidOnlineBaseTableViewController {
-  static let SegueIdentifier = "GenresGroup"
+  static let SegueIdentifier = "Genres Group"
 
   override open var CellIdentifier: String { return "GenreGroupTableCell" }
 
   let GENRES_MENU = [
-    "FAMILY",
-    "CRIME",
-    "FICTION",
-    "EDUCATION"
+    "Family",
+    "Crime",
+    "Fiction",
+    "Education"
   ]
 
   var document: Document?
@@ -44,7 +44,7 @@ class GenresGroupTableViewController: GidOnlineBaseTableViewController {
         case GenresController.SegueIdentifier:
           if let destination = segue.destination as? GenresTableViewController,
              let selectedCell = sender as? MediaNameTableCell {
-            adapter.requestType = "GENRES"
+            adapter.requestType = "Genres"
 
             let mediaItem = getItem(for: selectedCell)
 

@@ -9,9 +9,9 @@ class ThemesTableController: GidOnlineBaseTableViewController {
   override open var CellIdentifier: String { return "ThemeTableCell" }
 
   let ThemesMenu = [
-    "TOP_SEVEN",
-    "NEW_MOVIES",
-    "PREMIERS"
+    "Top Seven",
+    "New Movies",
+    "Premiers"
   ]
 
   var document: Document?
@@ -45,7 +45,7 @@ class ThemesTableController: GidOnlineBaseTableViewController {
 
             let adapter = GidOnlineServiceAdapter(mobile: true)
 
-            adapter.requestType = "THEMES"
+            adapter.requestType = "Themes"
             adapter.selectedItem = getItem(for: view)
 
             destination.adapter = adapter

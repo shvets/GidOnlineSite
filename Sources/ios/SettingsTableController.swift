@@ -15,8 +15,8 @@ class SettingsTableController: GidOnlineBaseTableViewController {
   }
 
   func loadSettingsMenu() {
-    let resetHistory = MediaItem(name: "RESET_HISTORY")
-    let resetQueue = MediaItem(name: "RESET_BOOKMARKS")
+    let resetHistory = MediaItem(name: "Reset History")
+    let resetQueue = MediaItem(name: "Reset Bookmarks")
 
     items = [
       resetHistory, resetQueue
@@ -28,17 +28,17 @@ class SettingsTableController: GidOnlineBaseTableViewController {
 
     let settingsMode = mediaItem.name
 
-    if settingsMode == "RESET_HISTORY" {
+    if settingsMode == "Reset History" {
       self.present(buildResetHistoryController(), animated: false, completion: nil)
     }
-    else if settingsMode == "RESET_BOOKMARKS" {
+    else if settingsMode == "Reset Bookmarks" {
       self.present(buildResetQueueController(), animated: false, completion: nil)
     }
   }
 
   func buildResetHistoryController() -> UIAlertController {
-    let title = localizer.localize("HISTORY_WILL_BE_RESET")
-    let message = localizer.localize("CONFIRM_YOUR_CHOICE")
+    let title = localizer.localize("History Will Be Reset")
+    let message = localizer.localize("Please Confirm Your Choice")
 
     let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
@@ -58,8 +58,8 @@ class SettingsTableController: GidOnlineBaseTableViewController {
   }
 
   func buildResetQueueController() -> UIAlertController {
-    let title = localizer.localize("BOOKMARKS_WILL_BE_RESET")
-    let message = localizer.localize("CONFIRM_YOUR_CHOICE")
+    let title = localizer.localize("Bookmarks Will Be Reset")
+    let message = localizer.localize("Please Confirm Your Choice")
 
     let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 

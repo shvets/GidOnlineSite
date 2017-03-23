@@ -50,7 +50,7 @@ class YearsController: GidOnlineBaseCollectionViewController {
     let controller = MediaItemsController.instantiate(adapter).getActionController()
     let destination = controller as! MediaItemsController
 
-    adapter.requestType = "MOVIES"
+    adapter.requestType = "Movies"
 
     adapter.selectedItem = getItem(for: selectedCell)
 

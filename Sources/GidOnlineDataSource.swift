@@ -18,48 +18,48 @@ class GidOnlineDataSource: DataSource {
     var request = requestType
 
     if selectedItem?.type == "serie" {
-      request = "SEASONS"
+      request = "Seasons"
     }
     else if selectedItem?.type == "season" {
-      request = "EPISODES"
+      request = "Episodes"
     }
 
     switch request {
-      case "BOOKMARKS":
+      case "Bookmarks":
         bookmarks.load()
         result = bookmarks.getBookmarks(pageSize: pageSize, page: currentPage)
 
-      case "HISTORY":
+      case "History":
         history.load()
         result = history.getHistoryItems(pageSize: pageSize, page: currentPage)
 
-      case "ALL_MOVIES":
+      case "All Movies":
         result = try service.getAllMovies(page: currentPage)["movies"] as! [Any]
 
-      case "MOVIES":
+      case "Movies":
         let id = selectedItem!.id
 
         let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + "/" + id!, page: currentPage))
 
         result = try service.getMovies(document!, path: id!)["movies"] as! [Any]
 
-      case "GENRES":
+      case "Genres":
         result = try service.getGenres(document)
 
-      case "THEMES":
+      case "Themes":
         let theme = selectedItem!.name
 
-        if theme == "TOP_SEVEN" {
+        if theme == "Top Seven" {
           result = try service.getTopLinks(document)
         }
-        else if theme == "NEW_MOVIES" {
+        else if theme == "New Movies" {
           let id = "/new/"
 
           let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + id, page: currentPage))
 
           result = try service.getMovies(document!, path: id)["movies"] as! [Any]
         }
-        else if theme == "PREMIERS" {
+        else if theme == "Premiers" {
           let id = "/premiers/"
 
           let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + id, page: currentPage))
@@ -67,27 +67,27 @@ class GidOnlineDataSource: DataSource {
           result = try service.getMovies(document!, path: id)["movies"] as! [Any]
         }
 
-      case "FILTERS":
+      case "Filters":
         let theme = selectedItem!.name
 
-        if theme == "BY_ACTORS" {
+        if theme == "By Actors" {
           result = try service.getTopLinks(document)
         }
-        else if theme == "BY_DIRECTORS" {
+        else if theme == "By Directors" {
           let id = "/new/"
 
           let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + id, page: currentPage))
 
           result = try service.getMovies(document!, path: id)["movies"] as! [Any]
         }
-        else if theme == "BY_COUNTRIES" {
+        else if theme == "By Countries" {
           let id = "/premiers/"
 
           let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + id, page: currentPage))
 
           result = try service.getMovies(document!, path: id)["movies"] as! [Any]
         }
-        else if theme == "BY_YEARS" {
+        else if theme == "By Years" {
           let id = "/premiers/"
 
           let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + id, page: currentPage))
@@ -95,13 +95,13 @@ class GidOnlineDataSource: DataSource {
           result = try service.getMovies(document!, path: id)["movies"] as! [Any]
         }
 
-      case "SEASONS":
+      case "Seasons":
         result = try service.getSeasons(identifier!, parentName: params.parentName!, thumb: selectedItem?.thumb)
 
-      case "EPISODES":
+      case "Episodes":
         result = try service.getEpisodes(selectedItem!.parentId!, seasonNumber: selectedItem!.id!, thumb: selectedItem?.thumb)
 
-      case "SEARCH":
+      case "Search":
         if !identifier!.isEmpty {
           result = try service.search(identifier!, page: currentPage)["movies"] as! [Any]
         }

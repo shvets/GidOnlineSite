@@ -57,7 +57,7 @@ class GidOnlineServiceAdapter: ServiceAdapter {
 
     var params = RequestParams()
 
-    params.identifier = requestType == "SEARCH" ? query : parentId
+    params.identifier = requestType == "Search" ? query : parentId
     params.parentName = parentName
     params.bookmarks = bookmarks
     params.history = history

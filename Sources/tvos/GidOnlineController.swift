@@ -8,14 +8,14 @@ open class GidOnlineController: GidOnlineBaseCollectionViewController {
   override open var CellIdentifier: String { return "GidOnlineCell" }
 
   let MainMenuItems = [
-    "BOOKMARKS",
-    "HISTORY",
-    "ALL_MOVIES",
-    "GENRES",
-    "THEMES",
-    "FILTERS",
-    "SEARCH",
-    "SETTINGS"
+    "Bookmarks",
+    "History",
+    "All Movies",
+    "Genres",
+    "Themes",
+    "Filters",
+    "Search",
+    "Settings"
   ]
 
   var document: Document?
@@ -56,19 +56,19 @@ open class GidOnlineController: GidOnlineBaseCollectionViewController {
     let mediaItem = getItem(for: view)
 
     switch mediaItem.name! {
-      case "GENRES":
+      case "Genres":
         performSegue(withIdentifier: GenresGroupController.SegueIdentifier, sender: view)
 
-      case "THEMES":
+      case "Themes":
         performSegue(withIdentifier: ThemesController.SegueIdentifier, sender: view)
 
-      case "FILTERS":
+      case "Filters":
         performSegue(withIdentifier: FiltersController.SegueIdentifier, sender: view)
 
-      case "SETTINGS":
+      case "Settings":
         performSegue(withIdentifier: "Settings", sender: view)
 
-      case "SEARCH":
+      case "Search":
         performSegue(withIdentifier: SearchController.SegueIdentifier, sender: view)
 
       default:
@@ -116,8 +116,8 @@ open class GidOnlineController: GidOnlineBaseCollectionViewController {
 
             let adapter = GidOnlineServiceAdapter()
 
-            adapter.requestType = "SEARCH"
-            adapter.parentName = localizer.localize("SEARCH_RESULTS")
+            adapter.requestType = "Search"
+            adapter.parentName = localizer.localize("Search Results")
 
             destination.adapter = adapter
           }

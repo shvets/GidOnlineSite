@@ -10,10 +10,10 @@ class FiltersController: GidOnlineBaseCollectionViewController {
   override open var CellIdentifier: String { return "FilterCell" }
 
   let FiltersMenu = [
-    "BY_ACTORS",
-    "BY_DIRECTORS",
-    "BY_COUNTRIES",
-    "BY_YEARS"
+    "By Actors",
+    "By Directors",
+    "By Countries",
+    "By Years"
   ]
 
   var document: Document?
@@ -46,13 +46,13 @@ class FiltersController: GidOnlineBaseCollectionViewController {
 
     let requestType = getItem(for: selectedCell).name
 
-    if requestType == "BY_ACTORS" {
+    if requestType == "By Actors" {
       performSegue(withIdentifier: LettersController.SegueIdentifier, sender: gesture.view)
     }
-    else if requestType == "BY_DIRECTORS" {
+    else if requestType == "By Directors" {
       performSegue(withIdentifier: LettersController.SegueIdentifier, sender: gesture.view)
     }
-    else if requestType == "BY_COUNTRIES" {
+    else if requestType == "By Countries" {
       performSegue(withIdentifier: CountriesController.SegueIdentifier, sender: gesture.view)
     }
     else if requestType == "BY_Years" {

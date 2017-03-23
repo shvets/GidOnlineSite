@@ -9,7 +9,7 @@ open class SearchTableController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var useRunglishLabel: UILabel!
   @IBOutlet weak var searchButton: UIButton!
 
-  public class var SegueIdentifier: String { return "search" }
+  public class var SegueIdentifier: String { return "Search" }
 
   public var adapter: ServiceAdapter!
 
@@ -36,7 +36,7 @@ open class SearchTableController: UIViewController, UITextFieldDelegate {
 
     isChecked = true
 
-    title = localizer.localize("SEARCH")
+    title = localizer.localize("Search")
 
     useRunglishLabel.text = localizer.localize(useRunglishLabel.text!)
     searchButton.setTitle(localizer.localize(searchButton.title(for: .normal)!), for: .normal)

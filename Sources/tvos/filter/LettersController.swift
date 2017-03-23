@@ -47,7 +47,7 @@ class LettersController: GidOnlineBaseCollectionViewController {
       case LetterController.SegueIdentifier:
         if let destination = segue.destination as? LetterController,
            let selectedCell = sender as? MediaNameCell {
-          adapter.requestType = "LETTER"
+          adapter.requestType = "Letter"
 
           let mediaItem =  getItem(for: selectedCell)
 

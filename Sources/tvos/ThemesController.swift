@@ -9,9 +9,9 @@ class ThemesController: GidOnlineBaseCollectionViewController {
   override open var CellIdentifier: String { return "ThemeCell" }
 
   let ThemesMenu = [
-    "TOP_SEVEN",
-    "NEW_MOVIES",
-    "PREMIERS"
+    "Top Seven",
+    "New Movies",
+    "Premiers"
   ]
 
   var document: Document?
@@ -45,7 +45,7 @@ class ThemesController: GidOnlineBaseCollectionViewController {
     let controller = MediaItemsController.instantiate(adapter).getActionController()
     let destination = controller as! MediaItemsController
 
-    adapter.requestType = "THEMES"
+    adapter.requestType = "Themes"
 
     adapter.selectedItem =  getItem(for: selectedCell)
 

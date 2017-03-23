@@ -31,10 +31,10 @@ class LetterController: GidOnlineBaseCollectionViewController {
     do {
       var data: [Any]?
 
-      if requestType == "BY_ACTORS" {
+      if requestType == "By Actors" {
         data = try service.getActors(document!, letter: adapter.parentId!)
       }
-      else if requestType == "BY_DIRECTORS" {
+      else if requestType == "By Directors" {
         data = try service.getDirectors(document!, letter: adapter.parentId!)
       }
 
@@ -58,7 +58,7 @@ class LetterController: GidOnlineBaseCollectionViewController {
     let controller = MediaItemsController.instantiate(adapter).getActionController()
     let destination = controller as! MediaItemsController
 
-    adapter.requestType = "MOVIES"
+    adapter.requestType = "Movies"
 
     adapter.selectedItem =  getItem(for: selectedCell)
 

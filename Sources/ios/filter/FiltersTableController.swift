@@ -10,10 +10,10 @@ class FiltersTableController: GidOnlineBaseTableViewController {
   override open var CellIdentifier: String { return "FilterTableCell" }
 
   let FiltersMenu = [
-    "BY_ACTORS",
-    "BY_DIRECTORS",
-    "BY_COUNTRIES",
-    "BY_YEARS"
+    "By Actors",
+    "By Directors",
+    "By Countries",
+    "By Years"
   ]
 
   var document: Document?
@@ -36,23 +36,19 @@ class FiltersTableController: GidOnlineBaseTableViewController {
     let mediaItem = getItem(for: view)
 
     switch mediaItem.name! {
-      case "BY_ACTORS":
+      case "By Actors":
         performSegue(withIdentifier: LettersTableController.SegueIdentifier, sender: view)
 
-      case "BY_DIRECTORS":
+      case "By Directors":
         performSegue(withIdentifier: LettersTableController.SegueIdentifier, sender: view)
 
-      case "BY_COUNTRIES":
+      case "By Countries":
         performSegue(withIdentifier: CountriesTableController.SegueIdentifier, sender: view)
 
-      case "BY_YEARS":
+      case "By Years":
         performSegue(withIdentifier: YearsTableController.SegueIdentifier, sender: view)
 
-//      case "SEARCH":
-//        performSegue(withIdentifier: SearchTableController.SegueIdentifier, sender: view)
-
       default:
-        //performSegue(withIdentifier: MediaItemsController.SegueIdentifier, sender: view)
         break
     }
   }

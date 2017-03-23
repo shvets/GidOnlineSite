@@ -20,10 +20,10 @@ class LetterTableController: GidOnlineBaseTableViewController {
     do {
       var data: [Any]?
 
-      if requestType == "BY_ACTORS" {
+      if requestType == "By Actors" {
         data = try service.getActors(document!, letter: adapter.parentId!)
       }
-      else if requestType == "BY_DIRECTORS" {
+      else if requestType == "By Directors" {
         data = try service.getDirectors(document!, letter: adapter.parentId!)
       }
 
@@ -56,7 +56,7 @@ class LetterTableController: GidOnlineBaseTableViewController {
 
           let adapter = GidOnlineServiceAdapter(mobile: true)
 
-          adapter.requestType = "MOVIES"
+          adapter.requestType = "Movies"
           adapter.selectedItem = getItem(for: view)
 
           destination.adapter = adapter

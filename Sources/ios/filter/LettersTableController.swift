@@ -38,7 +38,7 @@ class LettersTableController: GidOnlineBaseTableViewController {
         case LetterTableController.SegueIdentifier:
           if let destination = segue.destination as? LetterTableController,
              let selectedCell = sender as? MediaNameTableCell {
-            adapter.requestType = "LETTER"
+            adapter.requestType = "Letter"
 
             let mediaItem =  getItem(for: selectedCell)
 
