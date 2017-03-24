@@ -3,6 +3,9 @@
 "History Will Be Reset" = "History Will Be Reset";
 "Bookmarks Will Be Reset" = "Bookmarks Will Be Reset";
 "Please Confirm Your Choice" = "Please Confirm Your Choice";
+"Search Results" = "Search Results";
+"Use Runglish?" = "Use Runglish?";
+"Enter Query" = "Enter Query";
 
 "Bookmarks" = "Bookmarks";
 "History" = "History";
@@ -24,10 +27,6 @@
 "New Movies" = "New Movies";
 "Premiers" = "Premiers";
 "Filters" = "Filters";
-
-"Search Results" = "Search Results";
-"Use Runglish?" = "Use Runglish?";
-"Enter Query" = "Enter Query";
 
 "Семейный" = "Family";
 "Сериалы" = "Serials";
