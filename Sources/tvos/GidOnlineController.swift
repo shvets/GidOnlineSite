@@ -14,8 +14,8 @@ open class GidOnlineController: GidOnlineBaseCollectionViewController {
     "Genres",
     "Themes",
     "Filters",
-    "Search",
-    "Settings"
+    "Settings",
+    "Search"
   ]
 
   var document: Document?

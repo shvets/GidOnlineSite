@@ -14,8 +14,8 @@ open class GidOnlineTableViewController: GidOnlineBaseTableViewController {
     "Genres",
     "Themes",
     "Filters",
-    "Search",
-    "Settings"
+    "Settings",
+    "Search"
   ]
 
   var document: Document?
