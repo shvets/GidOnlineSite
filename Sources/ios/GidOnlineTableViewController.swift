@@ -7,17 +7,6 @@ import TVSetKit
 open class GidOnlineTableViewController: GidOnlineBaseTableViewController {
   override open var CellIdentifier: String { return "GidOnlineTableCell" }
 
-  let MainMenuItems = [
-    "Bookmarks",
-    "History",
-    "All Movies",
-    "Genres",
-    "Themes",
-    "Filters",
-    "Settings",
-    "Search"
-  ]
-
   var document: Document?
 
   override open func viewDidLoad() {
@@ -31,11 +20,7 @@ open class GidOnlineTableViewController: GidOnlineBaseTableViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
-    for name in MainMenuItems {
-      let item = MediaItem(name: name)
-
-      items.append(item)
-    }
+    loadData()
 
     do {
       document = try service.fetchDocument(GidOnlineAPI.SiteUrl)
@@ -43,6 +28,17 @@ open class GidOnlineTableViewController: GidOnlineBaseTableViewController {
     catch {
       print("Cannot load document")
     }
+  }
+
+  func loadData() {
+    items.append(MediaItem(name: "Bookmarks", imageName: "Star"))
+    items.append(MediaItem(name: "History", imageName: "Bookmark"))
+    items.append(MediaItem(name: "All Movies", imageName: "Retro TV"))
+    items.append(MediaItem(name: "Genres", imageName: "Comedy"))
+    items.append(MediaItem(name: "Themes", imageName: "Briefcase"))
+    items.append(MediaItem(name: "Filters", imageName: "Filter"))
+    items.append(MediaItem(name: "Settings", imageName: "Engineering"))
+    items.append(MediaItem(name: "Search", imageName: "Search"))
   }
 
   override open func navigate(from view: UITableViewCell) {
