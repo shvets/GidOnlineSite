@@ -55,7 +55,7 @@ class FiltersController: GidOnlineBaseCollectionViewController {
     else if requestType == "By Countries" {
       performSegue(withIdentifier: CountriesController.SegueIdentifier, sender: gesture.view)
     }
-    else if requestType == "BY_Years" {
+    else if requestType == "By Years" {
       performSegue(withIdentifier: YearsController.SegueIdentifier, sender: gesture.view)
     }
   }
