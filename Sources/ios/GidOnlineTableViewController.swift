@@ -45,23 +45,23 @@ open class GidOnlineTableViewController: GidOnlineBaseTableViewController {
     let mediaItem = getItem(for: view)
 
     switch mediaItem.name! {
-    case "Genres":
-      performSegue(withIdentifier: GenresGroupController.SegueIdentifier, sender: view)
+      case "Genres":
+        performSegue(withIdentifier: GenresGroupTableViewController.SegueIdentifier, sender: view)
 
-    case "Themes":
-      performSegue(withIdentifier: ThemesController.SegueIdentifier, sender: view)
+      case "Themes":
+        performSegue(withIdentifier: ThemesTableController.SegueIdentifier, sender: view)
 
-    case "Filters":
-      performSegue(withIdentifier: FiltersController.SegueIdentifier, sender: view)
+      case "Filters":
+        performSegue(withIdentifier: FiltersController.SegueIdentifier, sender: view)
 
-    case "Settings":
-      performSegue(withIdentifier: "Settings", sender: view)
+      case "Settings":
+        performSegue(withIdentifier: "Settings", sender: view)
 
-    case "Search":
-      performSegue(withIdentifier: SearchController.SegueIdentifier, sender: view)
+      case "Search":
+        performSegue(withIdentifier: SearchTableController.SegueIdentifier, sender: view)
 
-    default:
-      performSegue(withIdentifier: MediaItemsController.SegueIdentifier, sender: view)
+      default:
+        performSegue(withIdentifier: MediaItemsController.SegueIdentifier, sender: view)
     }
   }
 
