@@ -78,22 +78,22 @@ open class SearchTableController: UIViewController, UITextFieldDelegate {
   override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let identifier = segue.identifier {
       switch identifier {
-      case MediaItemsController.SegueIdentifier:
-        if let destination = segue.destination.getActionController() as? MediaItemsController {
-          if isChecked {
-            let transcoded = LatToRusConverter().transliterate(query.text!)
+        case MediaItemsController.SegueIdentifier:
+          if let destination = segue.destination.getActionController() as? MediaItemsController {
+            if isChecked {
+              let transcoded = LatToRusConverter().transliterate(query.text!)
 
-            adapter.query = transcoded
-            transcodedQuery.text = transcoded
+              adapter.query = transcoded
+              transcodedQuery.text = transcoded
+            }
+            else {
+              adapter.query = query.text
+            }
+
+            destination.adapter = adapter
           }
-          else {
-            adapter.query = query.text
-          }
 
-          destination.adapter = adapter
-        }
-
-      default: break
+        default: break
       }
     }
   }
