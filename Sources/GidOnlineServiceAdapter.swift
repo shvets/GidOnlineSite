@@ -39,6 +39,8 @@ class GidOnlineServiceAdapter: ServiceAdapter {
     pageLoader.load = {
       return try self.load()
     }
+
+    dataSource = GidOnlineDataSource()
   }
 
   override open func clone() -> ServiceAdapter {
@@ -56,9 +58,7 @@ class GidOnlineServiceAdapter: ServiceAdapter {
       bundleId: GidOnlineServiceAdapter.BundleId)
   }
 
-  override func load() throws -> [MediaItem] {
-    let dataSource = GidOnlineDataSource()
-
+  override func load() throws -> [Any] {
     var params = RequestParams()
 
     params.identifier = requestType == "Search" ? query : parentId
@@ -68,8 +68,9 @@ class GidOnlineServiceAdapter: ServiceAdapter {
     params.selectedItem = selectedItem
     params.document = document
 
-    if let requestType = requestType {
-      return try dataSource.load(requestType, params: params, pageSize: pageLoader.pageSize!, currentPage: pageLoader.currentPage)
+    if let requestType = requestType, let dataSource = dataSource {
+      return try dataSource.load(requestType, params: params, pageSize: pageLoader.pageSize!,
+        currentPage: pageLoader.currentPage, convert: true)
     }
     else {
       return []
