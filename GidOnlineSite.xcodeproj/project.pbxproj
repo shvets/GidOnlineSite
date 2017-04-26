@@ -36,8 +36,8 @@
 		FA695E4F1E4F9C6F00E148A5 /* GidOnlineMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA695E451E4F9C6F00E148A5 /* GidOnlineMediaItem.swift */; };
 		FA695E501E4F9C6F00E148A5 /* GidOnlineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA695E461E4F9C6F00E148A5 /* GidOnlineService.swift */; };
 		FA695E511E4F9C6F00E148A5 /* GidOnlineServiceAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA695E471E4F9C6F00E148A5 /* GidOnlineServiceAdapter.swift */; };
+		FA6C128D1EB04BD500DA4A90 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6C128C1EB04BD500DA4A90 /* Alamofire.framework */; };
 		FA75748C1E5D32C100C705C6 /* TVSetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA75748B1E5D32C100C705C6 /* TVSetKit.framework */; };
-		FA7574911E5D32C800C705C6 /* Just.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA75748D1E5D32C800C705C6 /* Just.framework */; };
 		FA7574921E5D32C800C705C6 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA75748E1E5D32C800C705C6 /* SwiftyJSON.framework */; };
 		FA7574931E5D32C800C705C6 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA75748F1E5D32C800C705C6 /* SwiftSoup.framework */; };
 		FA7574941E5D32C800C705C6 /* WebAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7574901E5D32C800C705C6 /* WebAPI.framework */; };
@@ -77,6 +77,7 @@
 		FA695E451E4F9C6F00E148A5 /* GidOnlineMediaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GidOnlineMediaItem.swift; sourceTree = "<group>"; };
 		FA695E461E4F9C6F00E148A5 /* GidOnlineService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GidOnlineService.swift; sourceTree = "<group>"; };
 		FA695E471E4F9C6F00E148A5 /* GidOnlineServiceAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GidOnlineServiceAdapter.swift; sourceTree = "<group>"; };
+		FA6C128C1EB04BD500DA4A90 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../../../../Library/Developer/Xcode/DerivedData/EtvnetApp-auvgeykttffxrlaelzqpbfeqnwis/Build/Products/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		FA75748B1E5D32C100C705C6 /* TVSetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVSetKit.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/EtvnetApp-gdyhsaliqubivtfjullxnayrebpq/Build/Products/Debug-appletvos/TVSetKit.framework"; sourceTree = "<group>"; };
 		FA75748D1E5D32C800C705C6 /* Just.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Just.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/EtvnetApp-gdyhsaliqubivtfjullxnayrebpq/Build/Products/Debug-appletvos/Just.framework"; sourceTree = "<group>"; };
 		FA75748E1E5D32C800C705C6 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/EtvnetApp-gdyhsaliqubivtfjullxnayrebpq/Build/Products/Debug-appletvos/SwiftyJSON.framework"; sourceTree = "<group>"; };
@@ -92,8 +93,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA6C128D1EB04BD500DA4A90 /* Alamofire.framework in Frameworks */,
 				FA75748C1E5D32C100C705C6 /* TVSetKit.framework in Frameworks */,
-				FA7574911E5D32C800C705C6 /* Just.framework in Frameworks */,
 				FA7574921E5D32C800C705C6 /* SwiftyJSON.framework in Frameworks */,
 				FA7574931E5D32C800C705C6 /* SwiftSoup.framework in Frameworks */,
 				FA7574941E5D32C800C705C6 /* WebAPI.framework in Frameworks */,
@@ -194,6 +195,7 @@
 		FA75748A1E5D32C100C705C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA6C128C1EB04BD500DA4A90 /* Alamofire.framework */,
 				FA7574951E5D32D000C705C6 /* Runglish.framework */,
 				FA75748D1E5D32C800C705C6 /* Just.framework */,
 				FA75748E1E5D32C800C705C6 /* SwiftyJSON.framework */,
