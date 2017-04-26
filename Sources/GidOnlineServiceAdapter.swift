@@ -95,18 +95,9 @@ class GidOnlineServiceAdapter: ServiceAdapter {
   }
 
   override func getUrl(_ params: [String: Any]) throws -> String {
-    let id = params["id"] as! String
-    let mediaItem = params["item"] as! MediaItem
+    let bitrate = params["bitrate"] as! [String: String]
 
-    let urls = try service.getUrls(id, season: mediaItem.seasonNumber!, episode: mediaItem.episodeNumber!)
-
-    var newUrls: [String] = []
-
-    for url in urls {
-      newUrls.append(url["url"]!)
-    }
-
-    return newUrls[0]
+    return bitrate["url"]!
   }
 
   override func retrieveExtraInfo(_ item: MediaItem) throws {
