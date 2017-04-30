@@ -20,8 +20,8 @@ class GidOnlineServiceAdapter: ServiceAdapter {
 
   var document: Document?
 
-  public override init(mobile: Bool=false) {
-    super.init(mobile: mobile)
+  public init(mobile: Bool=false) {
+    super.init(dataSource: GidOnlineDataSource(), mobile: mobile)
     
     bookmarks.load()
     history.load()
@@ -39,8 +39,6 @@ class GidOnlineServiceAdapter: ServiceAdapter {
     pageLoader.load = {
       return try self.load()
     }
-
-    dataSource = GidOnlineDataSource()
   }
 
   override open func clone() -> ServiceAdapter {
