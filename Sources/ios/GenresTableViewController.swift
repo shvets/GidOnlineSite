@@ -17,7 +17,7 @@ class GenresTableViewController: GidOnlineBaseTableViewController {
     self.clearsSelectionOnViewWillAppear = false
 
     do {
-      let genres = try service.getGenres(document!, type: adapter.params.parentId!) as! [[String: String]]
+      let genres = try service.getGenres(document!, type: adapter.params["parentId"] as! String) as! [[String: String]]
 
       for genre in genres {
         let item = MediaItem(name: localizer.localize(genre["name"]!), id: genre["id"]!)
@@ -45,8 +45,8 @@ class GenresTableViewController: GidOnlineBaseTableViewController {
 
           let adapter = GidOnlineServiceAdapter(mobile: true)
 
-          adapter.params.requestType = "Movies"
-          adapter.params.selectedItem = getItem(for: view)
+          adapter.params["requestType"] = "Movies"
+          adapter.params["selectedItem"] = getItem(for: view)
 
           destination.adapter = adapter
         }

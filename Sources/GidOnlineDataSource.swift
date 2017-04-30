@@ -9,11 +9,11 @@ class GidOnlineDataSource: DataSource {
   func load(_ requestType: String, params: RequestParams, pageSize: Int, currentPage: Int, convert: Bool=true) throws -> [Any] {
     var result: [Any] = []
 
-    let identifier = params.identifier
-    let bookmarks = params.bookmarks!
-    let history = params.history!
-    let selectedItem = params.selectedItem
-    let document = params.document as! Document
+    let identifier = params["identifier"] as? String
+    let bookmarks = params["bookmarks"] as! Bookmarks
+    let history = params["history"] as! History
+    let selectedItem = params["selectedItem"] as? MediaItem
+    let document = params["document"] as! Document
 
     var request = requestType
 
@@ -96,7 +96,7 @@ class GidOnlineDataSource: DataSource {
         }
 
       case "Seasons":
-        result = try service.getSeasons(identifier!, parentName: params.parentName!, thumb: selectedItem?.thumb)
+        result = try service.getSeasons(identifier!, parentName: params["parentName"] as? String, thumb: selectedItem?.thumb)
 
       case "Episodes":
         result = try service.getEpisodes(selectedItem!.parentId!, seasonNumber: selectedItem!.id!, thumb: selectedItem?.thumb)

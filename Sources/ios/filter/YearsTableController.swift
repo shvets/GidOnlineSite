@@ -50,8 +50,8 @@ class YearsTableController: GidOnlineBaseTableViewController {
 
             let adapter = GidOnlineServiceAdapter(mobile: true)
 
-            adapter.params.requestType = "Movies"
-            adapter.params.selectedItem = getItem(for: view)
+            adapter.params["requestType"] = "Movies"
+            adapter.params["selectedItem"] = getItem(for: view)
 
             destination.adapter = adapter
           }

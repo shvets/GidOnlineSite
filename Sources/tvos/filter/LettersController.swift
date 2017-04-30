@@ -47,12 +47,12 @@ class LettersController: GidOnlineBaseCollectionViewController {
       case LetterController.SegueIdentifier:
         if let destination = segue.destination as? LetterController,
            let selectedCell = sender as? MediaNameCell {
-          adapter.params.requestType = "Letter"
+          adapter.params["requestType"] = "Letter"
 
           let mediaItem =  getItem(for: selectedCell)
 
-          adapter.params.parentId = mediaItem.name
-          adapter.params.parentName = localizer.localize(requestType!)
+          adapter.params["parentId"] = mediaItem.name
+          adapter.params["parentName"] = localizer.localize(requestType!)
 
           destination.adapter = adapter
           destination.document = document

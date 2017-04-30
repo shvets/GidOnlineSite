@@ -105,8 +105,8 @@ open class GidOnlineController: GidOnlineBaseCollectionViewController {
 
             let adapter = GidOnlineServiceAdapter()
 
-            adapter.params.requestType = mediaItem.name
-            adapter.params.parentName = localizer.localize(mediaItem.name!)
+            adapter.params["requestType"] = mediaItem.name
+            adapter.params["parentName"] = localizer.localize(mediaItem.name!)
 
             destination.adapter = adapter
             destination.collectionView?.collectionViewLayout = adapter.buildLayout()!
@@ -117,8 +117,8 @@ open class GidOnlineController: GidOnlineBaseCollectionViewController {
 
             let adapter = GidOnlineServiceAdapter()
 
-            adapter.params.requestType = "Search"
-            adapter.params.parentName = localizer.localize("Search Results")
+            adapter.params["requestType"] = "Search"
+            adapter.params["parentName"] = localizer.localize("Search Results")
 
             destination.adapter = adapter
           }

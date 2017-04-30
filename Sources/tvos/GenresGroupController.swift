@@ -53,12 +53,12 @@ class GenresGroupController: GidOnlineBaseCollectionViewController {
         case GenresController.SegueIdentifier:
           if let destination = segue.destination as? GenresController,
              let selectedCell = sender as? MediaNameCell {
-            adapter.params.requestType = "Genres"
+            adapter.params["requestType"] = "Genres"
 
             let mediaItem = getItem(for: selectedCell)
 
-            adapter.params.parentId = mediaItem.name
-            adapter.params.parentName = localizer.localize(mediaItem.name!)
+            adapter.params["parentId"] = mediaItem.name
+            adapter.params["parentName"] = localizer.localize(mediaItem.name!)
 
             destination.adapter = adapter
             destination.document = document
