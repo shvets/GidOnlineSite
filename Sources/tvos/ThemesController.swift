@@ -45,9 +45,9 @@ class ThemesController: GidOnlineBaseCollectionViewController {
     let controller = MediaItemsController.instantiate(adapter).getActionController()
     let destination = controller as! MediaItemsController
 
-    adapter.requestType = "Themes"
+    adapter.params.requestType = "Themes"
 
-    adapter.selectedItem =  getItem(for: selectedCell)
+    adapter.params.selectedItem = getItem(for: selectedCell)
 
     destination.adapter = adapter
 

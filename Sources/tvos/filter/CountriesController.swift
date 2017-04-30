@@ -50,9 +50,9 @@ class CountriesController: GidOnlineBaseCollectionViewController {
     let controller = MediaItemsController.instantiate(adapter).getActionController()
     let destination = controller as! MediaItemsController
 
-    adapter.requestType = "Movies"
+    adapter.params.requestType = "Movies"
 
-    adapter.selectedItem = getItem(for: selectedCell)
+    adapter.params.selectedItem = getItem(for: selectedCell)
 
     destination.adapter = adapter
 

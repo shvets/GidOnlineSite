@@ -38,12 +38,12 @@ class LettersTableController: GidOnlineBaseTableViewController {
         case LetterTableController.SegueIdentifier:
           if let destination = segue.destination as? LetterTableController,
              let selectedCell = sender as? MediaNameTableCell {
-            adapter.requestType = "Letter"
+            adapter.params.requestType = "Letter"
 
-            let mediaItem =  getItem(for: selectedCell)
+            let mediaItem = getItem(for: selectedCell)
 
-            adapter.parentId = mediaItem.name
-            adapter.parentName = localizer.localize(requestType!)
+            adapter.params.parentId = mediaItem.name
+            adapter.params.parentName = localizer.localize(requestType!)
 
             destination.adapter = adapter
             destination.document = document

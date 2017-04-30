@@ -26,7 +26,7 @@ class GenresController: GidOnlineBaseCollectionViewController {
     collectionView?.collectionViewLayout = layout
 
     do {
-      let genres = try service.getGenres(document!, type: adapter.parentId!) as! [[String: String]]
+      let genres = try service.getGenres(document!, type: adapter.params.parentId!) as! [[String: String]]
 
       for genre in genres {
         let item = MediaItem(name: localizer!.localize(genre["name"]!), id: genre["id"]!)
@@ -45,9 +45,9 @@ class GenresController: GidOnlineBaseCollectionViewController {
     let controller = MediaItemsController.instantiate(adapter).getActionController()
     let destination = controller as! MediaItemsController
 
-    adapter.requestType = "Movies"
+    adapter.params.requestType = "Movies"
 
-    adapter.selectedItem = getItem(for: selectedCell)
+    adapter.params.selectedItem = getItem(for: selectedCell)
 
     destination.adapter = adapter
 
