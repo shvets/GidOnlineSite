@@ -69,7 +69,7 @@ class GidOnlineServiceAdapter: ServiceAdapter {
     params.document = document
 
     if let requestType = requestType, let dataSource = dataSource {
-      return try dataSource.load(requestType, params: params, pageSize: pageLoader.pageSize!,
+      return try dataSource.load(requestType, params: params, pageSize: pageLoader.pageSize,
         currentPage: pageLoader.currentPage, convert: true)
     }
     else {
