@@ -56,7 +56,7 @@ class GidOnlineServiceAdapter: ServiceAdapter {
       bundleId: GidOnlineServiceAdapter.BundleId)
   }
 
-  override func load() throws -> [Any] {
+  func load() throws -> [Any] {
     if let requestType = params["requestType"] as? String, let dataSource = dataSource {
       var newParams = RequestParams()
 
