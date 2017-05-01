@@ -6,7 +6,7 @@ import TVSetKit
 class GidOnlineDataSource: DataSource {
   let service = GidOnlineService.shared
 
-  override open func load(_ requestType: String, params: RequestParams, pageSize: Int, currentPage: Int, convert: Bool=true) throws -> [Any] {
+  override open func load(pageSize: Int, currentPage: Int, convert: Bool=true) throws -> [Any] {
     var result: [Any] = []
 
     let identifier = params["identifier"] as? String
@@ -15,7 +15,7 @@ class GidOnlineDataSource: DataSource {
     let selectedItem = params["selectedItem"] as? MediaItem
     let document = params["document"] as! Document
 
-    var request = requestType
+    var request = params["requestType"] as! String
 
     if selectedItem?.type == "serie" {
       request = "Seasons"
