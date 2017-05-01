@@ -6,7 +6,7 @@ import TVSetKit
 class GidOnlineDataSource: DataSource {
   let service = GidOnlineService.shared
 
-  override open func load(convert: Bool=true) throws -> [Any] {
+  override open func load(params: RequestParams) throws -> [Any] {
     var result: [Any] = []
 
     let identifier = params["identifier"] as? String
