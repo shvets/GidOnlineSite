@@ -56,25 +56,17 @@ class GidOnlineServiceAdapter: ServiceAdapter {
       bundleId: GidOnlineServiceAdapter.BundleId)
   }
 
-  func load() throws -> [Any] {
-    if let requestType = params["requestType"] as? String, let dataSource = dataSource {
-      var newParams = RequestParams()
+  override open func load() throws -> [Any] {
+    let requestType = params["requestType"] as? String
+    let query = params["query"] as? String
+    let parentId = params["parentId"] as? String
 
-      newParams["requestType"] = requestType
-      newParams["identifier"] = requestType == "Search" ? params["query"] as? String : params["parentId"] as? String
-      newParams["parentName"] = params["parentName"]
-      newParams["bookmarks"] = bookmarks
-      newParams["history"] = history
-      newParams["selectedItem"] = params["selectedItem"]
-      newParams["document"] = document
-      newParams["pageSize"] = pageLoader.pageSize
-      newParams["currentPage"] = pageLoader.currentPage
+    params["identifier"] = requestType == "Search" ? query : parentId
+    params["bookmarks"] = bookmarks
+    params["history"] = history
+    params["document"] = document
 
-      return try dataSource.load(params: newParams)
-    }
-    else {
-      return []
-    }
+    return try super.load()
   }
 
   override func buildLayout() -> UICollectionViewFlowLayout? {
