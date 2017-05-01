@@ -9,7 +9,6 @@ class GidOnlineDataSource: DataSource {
   override open func load(params: RequestParams) throws -> [Any] {
     var result: [Any] = []
 
-    let identifier = params["identifier"] as? String
     let bookmarks = params["bookmarks"] as! Bookmarks
     let history = params["history"] as! History
     let selectedItem = params["selectedItem"] as? MediaItem
@@ -98,14 +97,18 @@ class GidOnlineDataSource: DataSource {
         }
 
       case "Seasons":
-        result = try service.getSeasons(identifier!, parentName: params["parentName"] as? String, thumb: selectedItem?.thumb)
+        if let identifier = params["parentId"] as? String {
+          result = try service.getSeasons(identifier, parentName: params["parentName"] as? String, thumb: selectedItem?.thumb)
+        }
 
       case "Episodes":
         result = try service.getEpisodes(selectedItem!.parentId!, seasonNumber: selectedItem!.id!, thumb: selectedItem?.thumb)
 
       case "Search":
-        if !identifier!.isEmpty {
-          result = try service.search(identifier!, page: currentPage)["movies"] as! [Any]
+        if let query = params["query"] as? String {
+          if !query.isEmpty {
+            result = try service.search(query, page: currentPage)["movies"] as! [Any]
+          }
         }
 
       default:
