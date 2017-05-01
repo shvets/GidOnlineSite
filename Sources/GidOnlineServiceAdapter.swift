@@ -67,10 +67,12 @@ class GidOnlineServiceAdapter: ServiceAdapter {
       newParams["history"] = history
       newParams["selectedItem"] = params["selectedItem"]
       newParams["document"] = document
+      newParams["pageSize"] = pageLoader.pageSize
+      newParams["currentPage"] = pageLoader.currentPage
 
       dataSource.params = newParams
 
-      return try dataSource.load(pageSize: pageLoader.pageSize, currentPage: pageLoader.currentPage, convert: true)
+      return try dataSource.load(convert: true)
     }
     else {
       return []
