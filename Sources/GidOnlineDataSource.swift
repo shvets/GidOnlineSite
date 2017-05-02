@@ -6,7 +6,7 @@ import TVSetKit
 class GidOnlineDataSource: DataSource {
   let service = GidOnlineService.shared
 
-  override open func load(params: RequestParams) throws -> [Any] {
+  override open func load(params: Parameters) throws -> [Any] {
     var result: [Any] = []
 
     let bookmarks = params["bookmarks"] as! Bookmarks
