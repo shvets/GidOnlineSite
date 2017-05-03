@@ -17,9 +17,7 @@
 		2DBA13794C25A5B6989884C6 /* GidOnlineBaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1E689FAD67FA8CDD6901 /* GidOnlineBaseCollectionViewController.swift */; };
 		2DBA13EE929B34A6A6236443 /* GenresGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA15C3352252614674A4FC /* GenresGroupController.swift */; };
 		2DBA144D9F3B1732D10FCC37 /* GidOnlineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA117C19092AB3C387E213 /* GidOnlineTableViewController.swift */; };
-		2DBA15D38430EA36BD154BE2 /* SearchTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA14C791129695092CB3C2 /* SearchTableController.swift */; };
 		2DBA16A712BC8FC3EDBC7662 /* GenresGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA11ED620ED7673EF911A5 /* GenresGroupTableViewController.swift */; };
-		2DBA17E977959208FF18E3A1 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA129E38F59C453FF6907B /* SearchController.swift */; };
 		2DBA180D3937BEC2CD45D44F /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA180254701555002C1AE8 /* SettingsController.swift */; };
 		2DBA19A3CEA030F34BAC88CE /* ThemesTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1E599D408001139C9C87 /* ThemesTableController.swift */; };
 		2DBA1B642B19A3E2BAC67DC6 /* LetterTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA196EF9E630F6AE996C3E /* LetterTableController.swift */; };
@@ -50,8 +48,6 @@
 		2DBA11BEE386F65E6DA6FD3E /* LettersTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LettersTableController.swift; sourceTree = "<group>"; };
 		2DBA11ED620ED7673EF911A5 /* GenresGroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresGroupTableViewController.swift; sourceTree = "<group>"; };
 		2DBA125DB4233619AD74DD49 /* FiltersTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersTableController.swift; sourceTree = "<group>"; };
-		2DBA129E38F59C453FF6907B /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
-		2DBA14C791129695092CB3C2 /* SearchTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableController.swift; sourceTree = "<group>"; };
 		2DBA15C3352252614674A4FC /* GenresGroupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresGroupController.swift; sourceTree = "<group>"; };
 		2DBA15ED4B597FBBEE1BC967 /* GenresTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresTableViewController.swift; sourceTree = "<group>"; };
 		2DBA174CD2D59908BA9D67A0 /* GenresController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresController.swift; sourceTree = "<group>"; };
@@ -109,7 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				FA3A0D461E8349090022E511 /* filter */,
-				2DBA129E38F59C453FF6907B /* SearchController.swift */,
 				2DBA15C3352252614674A4FC /* GenresGroupController.swift */,
 				2DBA180254701555002C1AE8 /* SettingsController.swift */,
 				2DBA1834319169C264D39EF9 /* ThemesController.swift */,
@@ -140,7 +135,6 @@
 				2DBA15ED4B597FBBEE1BC967 /* GenresTableViewController.swift */,
 				2DBA11ED620ED7673EF911A5 /* GenresGroupTableViewController.swift */,
 				2DBA117C19092AB3C387E213 /* GidOnlineTableViewController.swift */,
-				2DBA14C791129695092CB3C2 /* SearchTableController.swift */,
 				2DBA1DD94EABE9DE4F0AC755 /* SettingsTableController.swift */,
 				2DBA1E599D408001139C9C87 /* ThemesTableController.swift */,
 			);
@@ -294,7 +288,6 @@
 				FA695E4F1E4F9C6F00E148A5 /* GidOnlineMediaItem.swift in Sources */,
 				FA695E501E4F9C6F00E148A5 /* GidOnlineService.swift in Sources */,
 				FA3A0D501E8349500022E511 /* YearsController.swift in Sources */,
-				2DBA17E977959208FF18E3A1 /* SearchController.swift in Sources */,
 				2DBA13EE929B34A6A6236443 /* GenresGroupController.swift in Sources */,
 				2DBA180D3937BEC2CD45D44F /* SettingsController.swift in Sources */,
 				2DBA1142441332DE0F2BFCD6 /* ThemesController.swift in Sources */,
@@ -308,7 +301,6 @@
 				FA3A0D4D1E8349500022E511 /* FiltersController.swift in Sources */,
 				2DBA16A712BC8FC3EDBC7662 /* GenresGroupTableViewController.swift in Sources */,
 				2DBA144D9F3B1732D10FCC37 /* GidOnlineTableViewController.swift in Sources */,
-				2DBA15D38430EA36BD154BE2 /* SearchTableController.swift in Sources */,
 				FA3A0D4F1E8349500022E511 /* LettersController.swift in Sources */,
 				2DBA1D66E28E3F0CA67EC87F /* SettingsTableController.swift in Sources */,
 				2DBA19A3CEA030F34BAC88CE /* ThemesTableController.swift in Sources */,
