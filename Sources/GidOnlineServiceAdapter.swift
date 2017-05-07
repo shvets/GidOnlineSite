@@ -18,20 +18,11 @@ class GidOnlineServiceAdapter: ServiceAdapter {
 
   var episodes: [JSON]?
 
-  var document: Document?
-
   public init(mobile: Bool=false) {
     super.init(dataSource: GidOnlineDataSource(), mobile: mobile)
     
     bookmarks.load()
     history.load()
-
-    do {
-      document = try service.fetchDocument(GidOnlineAPI.SiteUrl)!
-    }
-    catch {
-      print("Error fetching document")
-    }
 
     pageLoader.pageSize = 12
     pageLoader.rowSize = 6
@@ -57,9 +48,15 @@ class GidOnlineServiceAdapter: ServiceAdapter {
   }
 
   override open func load() throws -> [Any] {
+    do {
+      params["document"] = try service.fetchDocument(GidOnlineAPI.SiteUrl)!
+    }
+    catch {
+      print("Error fetching document")
+    }
+
     params["bookmarks"] = bookmarks
     params["history"] = history
-    params["document"] = document
 
     return try super.load()
   }
