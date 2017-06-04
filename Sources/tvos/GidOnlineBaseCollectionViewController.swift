@@ -6,6 +6,6 @@ open class GidOnlineBaseCollectionViewController: BaseCollectionViewController {
   override open func viewDidLoad() {
     super.viewDidLoad()
 
-    localizer = Localizer(GidOnlineServiceAdapter.BundleId)
+    localizer = Localizer(GidOnlineServiceAdapter.BundleId, bundleClass: GidOnlineSite.self)
   }
 }

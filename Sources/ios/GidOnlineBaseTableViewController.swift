@@ -6,7 +6,7 @@ open class GidOnlineBaseTableViewController: BaseTableViewController {
   override open func viewDidLoad() {
     super.viewDidLoad()
 
-    localizer = Localizer(GidOnlineServiceAdapter.BundleId)
+    localizer = Localizer(GidOnlineServiceAdapter.BundleId, bundleClass: GidOnlineSite.self)
   }
 
 }
