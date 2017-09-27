@@ -13,8 +13,8 @@ class GidOnlineServiceAdapter: ServiceAdapter {
   override open class var StoryboardId: String { return "GidOnline" }
   override open class var BundleId: String { return "com.rubikon.GidOnlineSite" }
 
-  lazy var bookmarks = Bookmarks(bookmarksFileName)
-  lazy var history = History(historyFileName)
+    lazy var bookmarks = Bookmarks(GidOnlineServiceAdapter.bookmarksFileName)
+    lazy var history = History(GidOnlineServiceAdapter.historyFileName)
 
   var episodes: [JSON]?
 
