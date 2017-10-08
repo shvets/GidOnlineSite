@@ -42,7 +42,7 @@ open class GidOnlineTableViewController: GidOnlineBaseTableViewController {
   }
 
   override open func navigate(from view: UITableViewCell) {
-    let mediaItem = getItem(for: view)
+    let mediaItem = getItem(for: view) as! MediaItem
 
     switch mediaItem.name! {
       case "Genres":
@@ -89,7 +89,7 @@ open class GidOnlineTableViewController: GidOnlineBaseTableViewController {
         if let destination = segue.destination.getActionController() as? MediaItemsController,
            let view = sender as? MediaNameTableCell {
 
-          let mediaItem = getItem(for: view)
+          let mediaItem = getItem(for: view) as! MediaItem
 
           let adapter = GidOnlineServiceAdapter(mobile: true)
 

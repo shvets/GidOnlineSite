@@ -54,7 +54,7 @@ open class GidOnlineController: GidOnlineBaseCollectionViewController {
   }
 
   override open func navigate(from view: UICollectionViewCell, playImmediately: Bool=false) {
-    let mediaItem = getItem(for: view)
+    let mediaItem = getItem(for: view) as! MediaItem
 
     switch mediaItem.name! {
       case "Genres":
@@ -101,7 +101,7 @@ open class GidOnlineController: GidOnlineBaseCollectionViewController {
           if let destination = segue.destination.getActionController() as? MediaItemsController,
              let view = sender as? MediaNameCell {
 
-            let mediaItem = getItem(for: view)
+            let mediaItem = getItem(for: view) as! MediaItem
 
             let adapter = GidOnlineServiceAdapter()
 

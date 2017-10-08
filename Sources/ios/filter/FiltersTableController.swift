@@ -33,7 +33,7 @@ class FiltersTableController: GidOnlineBaseTableViewController {
   }
 
   override open func navigate(from view: UITableViewCell) {
-    let mediaItem = getItem(for: view)
+    let mediaItem = getItem(for: view) as! MediaItem
 
     switch mediaItem.name! {
       case "By Actors":
@@ -62,7 +62,7 @@ class FiltersTableController: GidOnlineBaseTableViewController {
           if let destination = segue.destination as? LettersTableController,
              let selectedCell = sender as? MediaNameTableCell {
 
-            let requestType = getItem(for: selectedCell).name
+            let requestType = (getItem(for: selectedCell) as! MediaName).name
 
             destination.document = document
             destination.requestType = requestType

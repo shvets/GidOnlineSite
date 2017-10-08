@@ -40,7 +40,7 @@ class LettersTableController: GidOnlineBaseTableViewController {
              let selectedCell = sender as? MediaNameTableCell {
             adapter.params["requestType"] = "Letter"
 
-            let mediaItem = getItem(for: selectedCell)
+            let mediaItem = getItem(for: selectedCell) as! MediaItem
 
             adapter.params["parentId"] = mediaItem.name
             adapter.params["parentName"] = localizer.localize(requestType!)

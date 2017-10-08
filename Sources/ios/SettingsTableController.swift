@@ -24,7 +24,7 @@ class SettingsTableController: GidOnlineBaseTableViewController {
   }
 
   override open func navigate(from view: UITableViewCell) {
-    let mediaItem = getItem(for: view)
+    let mediaItem = getItem(for: view) as! MediaItem
 
     let settingsMode = mediaItem.name
 
