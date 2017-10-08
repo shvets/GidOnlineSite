@@ -55,7 +55,7 @@ class GenresGroupController: GidOnlineBaseCollectionViewController {
              let selectedCell = sender as? MediaNameCell {
             adapter.params["requestType"] = "Genres"
 
-            let mediaItem = getItem(for: selectedCell) as! MediaItem
+            let mediaItem = getItem(for: selectedCell)
 
             adapter.params["parentId"] = mediaItem.name
             adapter.params["parentName"] = localizer.localize(mediaItem.name!)

@@ -49,7 +49,7 @@ class LettersController: GidOnlineBaseCollectionViewController {
            let selectedCell = sender as? MediaNameCell {
           adapter.params["requestType"] = "Letter"
 
-          let mediaItem =  getItem(for: selectedCell) as! MediaItem
+          let mediaItem =  getItem(for: selectedCell)
 
           adapter.params["parentId"] = mediaItem.name
           adapter.params["parentName"] = localizer.localize(requestType!)
