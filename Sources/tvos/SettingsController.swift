@@ -35,7 +35,7 @@ class SettingsController: GidOnlineBaseCollectionViewController {
   override open func tapped(_ gesture: UITapGestureRecognizer) {
     let selectedCell = gesture.view as! MediaNameCell
 
-    let settingsMode = (getItem(for: selectedCell) as! MediaName).name
+    let settingsMode = getItem(for: selectedCell).name
 
     if settingsMode == "Reset History" {
       self.present(buildResetHistoryController(), animated: false, completion: nil)

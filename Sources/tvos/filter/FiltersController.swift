@@ -44,7 +44,7 @@ class FiltersController: GidOnlineBaseCollectionViewController {
   override open func tapped(_ gesture: UITapGestureRecognizer) {
     let selectedCell = gesture.view as! MediaNameCell
 
-    let requestType = (getItem(for: selectedCell) as! MediaName).name
+    let requestType = getItem(for: selectedCell).name
 
     if requestType == "By Actors" {
       performSegue(withIdentifier: LettersController.SegueIdentifier, sender: gesture.view)
@@ -69,7 +69,7 @@ class FiltersController: GidOnlineBaseCollectionViewController {
           if let destination = segue.destination as? LettersController,
              let selectedCell = sender as? MediaNameCell {
 
-            let requestType = (getItem(for: selectedCell) as! MediaName).name
+            let requestType = getItem(for: selectedCell).name
 
             destination.document = document
             destination.requestType = requestType

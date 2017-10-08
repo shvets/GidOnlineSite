@@ -62,7 +62,7 @@ class FiltersTableController: GidOnlineBaseTableViewController {
           if let destination = segue.destination as? LettersTableController,
              let selectedCell = sender as? MediaNameTableCell {
 
-            let requestType = (getItem(for: selectedCell) as! MediaName).name
+            let requestType = getItem(for: selectedCell).name
 
             destination.document = document
             destination.requestType = requestType
