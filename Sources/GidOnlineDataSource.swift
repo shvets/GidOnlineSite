@@ -11,18 +11,20 @@ class GidOnlineDataSource: DataSource {
 
     let bookmarks = params["bookmarks"] as! Bookmarks
     let history = params["history"] as! History
-    let selectedItem = params["selectedItem"] as? MediaItem
+    let selectedItem = params["selectedItem"] as? Item
     let document = params["document"] as! Document
 
     var request = params["requestType"] as! String
     //let pageSize = params["pageSize"] as? Int
     let currentPage = params["currentPage"] as! Int
 
-    if selectedItem?.type == "serie" {
-      request = "Seasons"
-    }
-    else if selectedItem?.type == "season" {
-      request = "Episodes"
+    if let selectedItem = selectedItem as? MediaItem {
+      if selectedItem.type == "serie" {
+        request = "Seasons"
+      }
+      else if selectedItem.type == "season" {
+        request = "Episodes"
+      }
     }
 
     switch request {
@@ -38,71 +40,77 @@ class GidOnlineDataSource: DataSource {
         result = try service.getAllMovies(page: currentPage)["movies"] as! [Any]
 
       case "Movies":
-        let id = selectedItem!.id
+        if let selectedItem = selectedItem, let id = selectedItem.id {
+          let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + "/" + id, page: currentPage))
 
-        let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + "/" + id!, page: currentPage))
-
-        result = try service.getMovies(document!, path: id!)["movies"] as! [Any]
+          result = try service.getMovies(document!, path: id)["movies"] as! [Any]
+        }
 
       case "Genres":
         result = try service.getGenres(document)
 
       case "Themes":
-        let theme = selectedItem!.name
+        if let selectedItem = selectedItem {
+          let theme = selectedItem.name
 
-        if theme == "Top Seven" {
-          result = try service.getTopLinks(document)
-        }
-        else if theme == "New Movies" {
-          let id = "/new/"
+          if theme == "Top Seven" {
+            result = try service.getTopLinks(document)
+          }
+          else if theme == "New Movies" {
+            let id = "/new/"
 
-          let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + id, page: currentPage))
+            let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + id, page: currentPage))
 
-          result = try service.getMovies(document!, path: id)["movies"] as! [Any]
-        }
-        else if theme == "Premiers" {
-          let id = "/premiers/"
+            result = try service.getMovies(document!, path: id)["movies"] as! [Any]
+          }
+          else if theme == "Premiers" {
+            let id = "/premiers/"
 
-          let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + id, page: currentPage))
+            let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + id, page: currentPage))
 
-          result = try service.getMovies(document!, path: id)["movies"] as! [Any]
+            result = try service.getMovies(document!, path: id)["movies"] as! [Any]
+          }
         }
 
       case "Filters":
-        let theme = selectedItem!.name
+        if let selectedItem = selectedItem {
+          let theme = selectedItem.name
 
-        if theme == "By Actors" {
-          result = try service.getTopLinks(document)
-        }
-        else if theme == "By Directors" {
-          let id = "/new/"
+          if theme == "By Actors" {
+            result = try service.getTopLinks(document)
+          }
+          else if theme == "By Directors" {
+            let id = "/new/"
 
-          let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + id, page: currentPage))
+            let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + id, page: currentPage))
 
-          result = try service.getMovies(document!, path: id)["movies"] as! [Any]
-        }
-        else if theme == "By Countries" {
-          let id = "/premiers/"
+            result = try service.getMovies(document!, path: id)["movies"] as! [Any]
+          }
+          else if theme == "By Countries" {
+            let id = "/premiers/"
 
-          let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + id, page: currentPage))
+            let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + id, page: currentPage))
 
-          result = try service.getMovies(document!, path: id)["movies"] as! [Any]
-        }
-        else if theme == "By Years" {
-          let id = "/premiers/"
+            result = try service.getMovies(document!, path: id)["movies"] as! [Any]
+          }
+          else if theme == "By Years" {
+            let id = "/premiers/"
 
-          let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + id, page: currentPage))
+            let document = try service.fetchDocument(service.getPagePath(GidOnlineAPI.SiteUrl + id, page: currentPage))
 
-          result = try service.getMovies(document!, path: id)["movies"] as! [Any]
+            result = try service.getMovies(document!, path: id)["movies"] as! [Any]
+          }
         }
 
       case "Seasons":
-        if let identifier = params["parentId"] as? String {
-          result = try service.getSeasons(identifier, parentName: params["parentName"] as? String, thumb: selectedItem?.thumb)
+        if let identifier = params["parentId"] as? String, let selectedItem = selectedItem as? MediaItem {
+          result = try service.getSeasons(identifier, parentName: params["parentName"] as? String, thumb: selectedItem.thumb)
         }
 
       case "Episodes":
-        result = try service.getEpisodes(selectedItem!.parentId!, seasonNumber: selectedItem!.id!, thumb: selectedItem?.thumb)
+        if let selectedItem = selectedItem as? MediaItem {
+          result = try service.getEpisodes(selectedItem.parentId!, seasonNumber: selectedItem.id!, thumb: selectedItem.thumb)
+        }
 
       case "Search":
         if let query = params["query"] as? String {
