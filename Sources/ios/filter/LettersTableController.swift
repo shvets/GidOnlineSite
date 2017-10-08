@@ -21,7 +21,7 @@ class LettersTableController: GidOnlineBaseTableViewController {
 
     for letter in GidOnlineAPI.CyrillicLetters {
       if !["Ё", "Й", "Щ", "Ъ", "Ы", "Ь"].contains(letter) {
-        items.append(MediaItem(name: letter))
+        items.append(Item(name: letter))
       }
     }
   }

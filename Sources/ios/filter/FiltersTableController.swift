@@ -26,7 +26,7 @@ class FiltersTableController: GidOnlineBaseTableViewController {
     adapter = GidOnlineServiceAdapter(mobile: true)
 
     for name in FiltersMenu {
-      let item = MediaItem(name: name)
+      let item = Item(name: name)
 
       items.append(item)
     }

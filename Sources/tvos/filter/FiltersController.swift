@@ -35,7 +35,7 @@ class FiltersController: GidOnlineBaseCollectionViewController {
     collectionView?.collectionViewLayout = layout
 
     for name in FiltersMenu {
-      let item = MediaItem(name: name)
+      let item = Item(name: name)
 
       items.append(item)
     }

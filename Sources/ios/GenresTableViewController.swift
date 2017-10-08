@@ -20,7 +20,7 @@ class GenresTableViewController: GidOnlineBaseTableViewController {
       let genres = try service.getGenres(document!, type: adapter.params["parentId"] as! String) as! [[String: String]]
 
       for genre in genres {
-        let item = MediaItem(name: localizer.localize(genre["name"]!), id: genre["id"]!)
+        let item = Item(name: localizer.localize(genre["name"]!), id: genre["id"]!)
 
         items.append(item)
       }

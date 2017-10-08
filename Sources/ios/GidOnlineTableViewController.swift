@@ -31,14 +31,14 @@ open class GidOnlineTableViewController: GidOnlineBaseTableViewController {
   }
 
   func loadData() {
-    items.append(MediaItem(name: "Bookmarks", imageName: "Star"))
-    items.append(MediaItem(name: "History", imageName: "Bookmark"))
-    items.append(MediaItem(name: "All Movies", imageName: "Retro TV"))
-    items.append(MediaItem(name: "Genres", imageName: "Comedy"))
-    items.append(MediaItem(name: "Themes", imageName: "Briefcase"))
-    items.append(MediaItem(name: "Filters", imageName: "Filter"))
-    items.append(MediaItem(name: "Settings", imageName: "Engineering"))
-    items.append(MediaItem(name: "Search", imageName: "Search"))
+    items.append(MediaName(name: "Bookmarks", imageName: "Star"))
+    items.append(MediaName(name: "History", imageName: "Bookmark"))
+    items.append(MediaName(name: "All Movies", imageName: "Retro TV"))
+    items.append(MediaName(name: "Genres", imageName: "Comedy"))
+    items.append(MediaName(name: "Themes", imageName: "Briefcase"))
+    items.append(MediaName(name: "Filters", imageName: "Filter"))
+    items.append(MediaName(name: "Settings", imageName: "Engineering"))
+    items.append(MediaName(name: "Search", imageName: "Search"))
   }
 
   override open func navigate(from view: UITableViewCell) {

@@ -36,7 +36,7 @@ class CountriesController: GidOnlineBaseCollectionViewController {
         let id = elem["id"] as! String
         let name = elem["name"] as! String
 
-        items.append(MediaItem(name: name, id: id))
+        items.append(Item(name: name, id: id))
       }
     }
     catch {

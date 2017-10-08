@@ -35,7 +35,7 @@ class GenresGroupController: GidOnlineBaseCollectionViewController {
     adapter = GidOnlineServiceAdapter()
 
     for name in GENRES_MENU {
-      let item = MediaItem(name: name)
+      let item = Item(name: name)
 
       items.append(item)
     }

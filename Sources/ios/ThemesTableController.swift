@@ -24,7 +24,7 @@ class ThemesTableController: GidOnlineBaseTableViewController {
     adapter = GidOnlineServiceAdapter(mobile: true)
 
     for name in ThemesMenu {
-      let item = MediaItem(name: name)
+      let item = Item(name: name)
 
       items.append(item)
     }

@@ -26,7 +26,7 @@ class GenresGroupTableViewController: GidOnlineBaseTableViewController {
     adapter = GidOnlineServiceAdapter(mobile: true)
 
     for name in GENRES_MENU {
-      let item = MediaItem(name: name)
+      let item = Item(name: name)
 
       items.append(item)
     }

@@ -24,8 +24,8 @@ class SettingsController: GidOnlineBaseCollectionViewController {
   }
 
   func loadSettingsMenu() {
-    let resetHistory = MediaItem(name: "Reset History")
-    let resetQueue = MediaItem(name: "Reset Bookmarks")
+    let resetHistory = Item(name: "Reset History")
+    let resetQueue = Item(name: "Reset Bookmarks")
 
     items = [
       resetHistory, resetQueue
