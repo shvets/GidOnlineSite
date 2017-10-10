@@ -40,20 +40,20 @@ class ThemesController: GidOnlineBaseCollectionViewController {
   }
 
   override open func tapped(_ gesture: UITapGestureRecognizer) {
-    let selectedCell = gesture.view as! MediaNameCell
+    if let destination = MediaItemsController.instantiateController(adapter),
+       let selectedCell = gesture.view as? MediaNameCell {
+      adapter.params["requestType"] = "Themes"
 
-    let controller = MediaItemsController.instantiate(adapter).getActionController()
-    let destination = controller as! MediaItemsController
+      adapter.params["selectedItem"] = getItem(for: selectedCell)
 
-    adapter.params["requestType"] = "Themes"
+      destination.adapter = adapter
 
-    adapter.params["selectedItem"] = getItem(for: selectedCell)
+      if let layout = adapter.buildLayout() {
+        destination.collectionView?.collectionViewLayout = layout
+      }
 
-    destination.adapter = adapter
-
-    destination.collectionView?.collectionViewLayout = adapter.buildLayout()!
-
-    show(controller!, sender: destination)
+      show(destination, sender: destination)
+    }
   }
 
 }
