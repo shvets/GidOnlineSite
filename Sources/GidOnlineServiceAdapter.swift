@@ -40,13 +40,6 @@ class GidOnlineServiceAdapter: ServiceAdapter {
     return cloned
   }
 
-  open func instantiateController(controllerId: String) -> UIViewController {
-    return UIViewController.instantiate(
-      controllerId: controllerId,
-      storyboardId: GidOnlineServiceAdapter.StoryboardId,
-      bundleId: GidOnlineServiceAdapter.BundleId)
-  }
-
   override open func load() throws -> [Any] {
     do {
       params["document"] = try service.fetchDocument(GidOnlineAPI.SiteUrl)!
