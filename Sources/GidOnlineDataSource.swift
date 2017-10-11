@@ -1,4 +1,5 @@
 import SwiftSoup
+import SwiftyJSON
 import WebAPI
 import TVSetKit
 
@@ -129,14 +130,13 @@ class GidOnlineDataSource: DataSource {
     var newItems = [Item]()
 
     for item in items {
-//      var jsonItem = item as? JSON
-//
-//      if jsonItem == nil {
-//        jsonItem = JSON(item)
-//      }
+      var jsonItem = item as? JSON
 
-//      let movie = GidOnlineMediaItem(data: jsonItem!)
-      let movie = GidOnlineMediaItem(data: [:])
+      if jsonItem == nil {
+        jsonItem = JSON(item)
+      }
+
+      let movie = GidOnlineMediaItem(data: jsonItem!)
       
       newItems += [movie]
     }
