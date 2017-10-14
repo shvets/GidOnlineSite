@@ -25,6 +25,8 @@
 		2DBA1B66842D30D8D2D8D04D /* GidOnlineBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1A37169DDA4FF65C75F1 /* GidOnlineBaseTableViewController.swift */; };
 		2DBA1CA21D70D7FBAF99D00F /* GidOnlineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1ECD63BE69CF5077B4E2 /* GidOnlineController.swift */; };
 		2DBA1D66E28E3F0CA67EC87F /* SettingsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1DD94EABE9DE4F0AC755 /* SettingsTableController.swift */; };
+		FA2786721F927EDF0088F553 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2786701F927EDE0088F553 /* BaseCollectionViewController.swift */; };
+		FA2786731F927EDF0088F553 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2786711F927EDE0088F553 /* BaseTableViewController.swift */; };
 		FA3A0D4C1E8349500022E511 /* CountriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3A0D471E8349500022E511 /* CountriesController.swift */; };
 		FA3A0D4D1E8349500022E511 /* FiltersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3A0D481E8349500022E511 /* FiltersController.swift */; };
 		FA3A0D4E1E8349500022E511 /* LetterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3A0D491E8349500022E511 /* LetterController.swift */; };
@@ -63,6 +65,8 @@
 		2DBA1E599D408001139C9C87 /* ThemesTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemesTableController.swift; sourceTree = "<group>"; };
 		2DBA1E689FAD67FA8CDD6901 /* GidOnlineBaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GidOnlineBaseCollectionViewController.swift; sourceTree = "<group>"; };
 		2DBA1ECD63BE69CF5077B4E2 /* GidOnlineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GidOnlineController.swift; sourceTree = "<group>"; };
+		FA2786701F927EDE0088F553 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
+		FA2786711F927EDE0088F553 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		FA3A0D471E8349500022E511 /* CountriesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountriesController.swift; sourceTree = "<group>"; };
 		FA3A0D481E8349500022E511 /* FiltersController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersController.swift; sourceTree = "<group>"; };
 		FA3A0D491E8349500022E511 /* LetterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetterController.swift; sourceTree = "<group>"; };
@@ -175,6 +179,8 @@
 		FA695E381E4F9C3100E148A5 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				FA2786701F927EDE0088F553 /* BaseCollectionViewController.swift */,
+				FA2786711F927EDE0088F553 /* BaseTableViewController.swift */,
 				FA695E441E4F9C6F00E148A5 /* GidOnlineDataSource.swift */,
 				FA695E451E4F9C6F00E148A5 /* GidOnlineMediaItem.swift */,
 				FA695E461E4F9C6F00E148A5 /* GidOnlineService.swift */,
@@ -297,11 +303,13 @@
 				2DBA1CA21D70D7FBAF99D00F /* GidOnlineController.swift in Sources */,
 				FA3A0D4E1E8349500022E511 /* LetterController.swift in Sources */,
 				2DBA1225AAF1ED13A2A0721D /* GenresController.swift in Sources */,
+				FA2786721F927EDF0088F553 /* BaseCollectionViewController.swift in Sources */,
 				2DBA13794C25A5B6989884C6 /* GidOnlineBaseCollectionViewController.swift in Sources */,
 				2DBA1B66842D30D8D2D8D04D /* GidOnlineBaseTableViewController.swift in Sources */,
 				FA3A0D4C1E8349500022E511 /* CountriesController.swift in Sources */,
 				2DBA11293C23D83A04243523 /* GenresTableViewController.swift in Sources */,
 				FA3A0D4D1E8349500022E511 /* FiltersController.swift in Sources */,
+				FA2786731F927EDF0088F553 /* BaseTableViewController.swift in Sources */,
 				2DBA16A712BC8FC3EDBC7662 /* GenresGroupTableViewController.swift in Sources */,
 				2DBA144D9F3B1732D10FCC37 /* GidOnlineTableViewController.swift in Sources */,
 				FA3A0D4F1E8349500022E511 /* LettersController.swift in Sources */,
