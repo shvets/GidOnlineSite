@@ -48,4 +48,39 @@ class GidOnlineMediaItem: MediaItem {
     return bitrates
   }
 
+  override func retrieveExtraInfo() throws {
+    if type == "movie" {
+      let document = try service.fetchDocument(id!)
+
+      let mediaData = try service.getMediaData(document!)
+
+      var text = ""
+
+      if let year = mediaData["year"] as? String {
+        text += "\(year)\n"
+      }
+
+      if let countries = mediaData["countries"] as? [String] {
+        let txt = countries.joined(separator: ", ")
+
+        text += "\(txt)\n"
+      }
+
+      if let duration = mediaData["duration"] as? String {
+        text += "\(duration)\n\n"
+      }
+
+      if let tags = mediaData["tags"] as? [String] {
+        let txt = tags.joined(separator: ", ")
+
+        text += "\(txt)\n"
+      }
+
+      if let summary = mediaData["summary"] as? String {
+        text += "\(summary)\n"
+      }
+
+      description = text
+    }
+  }
 }
