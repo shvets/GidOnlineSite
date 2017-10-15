@@ -71,12 +71,6 @@ class GidOnlineServiceAdapter: ServiceAdapter {
     return CGRect(x: 40, y: 40, width: 210*2.7, height: 300*2.7)
   }
 
-  override func getUrl(_ params: [String: Any]) throws -> String {
-    let bitrate = params["bitrate"] as! [String: String]
-
-    return bitrate["url"]!
-  }
-
   override func retrieveExtraInfo(_ item: MediaItem) throws {
     let movieUrl = item.id!
 

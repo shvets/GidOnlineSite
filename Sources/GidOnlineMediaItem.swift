@@ -28,15 +28,15 @@ class GidOnlineMediaItem: MediaItem {
     }
   }
 
-  override func getBitrates() throws -> [[String: Any]] {
-    var bitrates: [[String: Any]] = []
+  override func getBitrates() throws -> [[String: String]] {
+    var bitrates: [[String: String]] = []
 
     let urls = try GidOnlineAPI(proxy: true).getUrls(id!, season: seasonNumber!, episode: episodeNumber!)
 
     let qualityLevels = QualityLevel.availableLevels(urls.count)
 
     for (index, item) in urls.enumerated() {
-      var bitrate: [String: Any] = [:]
+      var bitrate: [String: String] = [:]
       bitrate["id"] = item["bandwidth"]
       bitrate["url"] = item["url"]
 
