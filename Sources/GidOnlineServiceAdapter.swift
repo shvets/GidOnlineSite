@@ -71,18 +71,18 @@ class GidOnlineServiceAdapter: ServiceAdapter {
     return CGRect(x: 40, y: 40, width: 210*2.7, height: 300*2.7)
   }
 
-  func getConfiguration() -> Configuration {
-    let conf = Configuration()
-
+  func getConfiguration() -> [String: Any] {
     if mobile {
-      conf.pageSize = 12
-      conf.rowSize = 1
+      return [
+        "pageSize": 12,
+        "rowSize": 1
+      ]
     }
     else {
-      conf.pageSize = 12
-      conf.rowSize = 6
+      return [
+        "pageSize": 12,
+        "rowSize": 6
+      ]
     }
-
-    return conf
   }
 }
