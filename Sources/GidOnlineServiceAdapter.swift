@@ -13,8 +13,11 @@ class GidOnlineServiceAdapter: ServiceAdapter {
   override open class var StoryboardId: String { return "GidOnline" }
   override open class var BundleId: String { return "com.rubikon.GidOnlineSite" }
 
-    lazy var bookmarks = Bookmarks(GidOnlineServiceAdapter.bookmarksFileName)
-    lazy var history = History(GidOnlineServiceAdapter.historyFileName)
+  lazy var bookmarks = Bookmarks(GidOnlineServiceAdapter.bookmarksFileName)
+  lazy var history = History(GidOnlineServiceAdapter.historyFileName)
+
+  var bookmarksManager: BookmarksManager?
+  var historyManager: HistoryManager?
 
   var episodes: [JSON]?
 
@@ -23,6 +26,9 @@ class GidOnlineServiceAdapter: ServiceAdapter {
     
     bookmarks.load()
     history.load()
+
+    bookmarksManager = BookmarksManager(bookmarks)
+    historyManager = HistoryManager(history)
 
     pageLoader.pageSize = 12
     pageLoader.rowSize = 6
@@ -72,17 +78,20 @@ class GidOnlineServiceAdapter: ServiceAdapter {
   }
 
   func getConfiguration() -> [String: Any] {
+    var conf = [String: Any]()
+
+    conf["pageSize"] = 12
+
     if mobile {
-      return [
-        "pageSize": 12,
-        "rowSize": 1
-      ]
+      conf["rowSize"] = 1
     }
     else {
-      return [
-        "pageSize": 12,
-        "rowSize": 6
-      ]
+      conf["rowSize"] = 6
     }
+
+    conf["bookmarksManager"] = bookmarksManager
+    conf["historyManager"] = historyManager
+
+    return conf
   }
 }
