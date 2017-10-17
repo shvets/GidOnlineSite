@@ -14,7 +14,7 @@ class LettersController: UICollectionViewController, UICollectionViewDelegateFlo
   
   let localizer = Localizer(GidOnlineServiceAdapter.BundleId, bundleClass: GidOnlineSite.self)
 
-  private var items: Items!
+  private var items = Items()
 
   var document: Document?
   var requestType: String?
@@ -26,7 +26,7 @@ class LettersController: UICollectionViewController, UICollectionViewDelegateFlo
 
     setupLayout()
 
-    items = Items() {
+    items.pageLoader.load = {
       return self.loadData()
     }
 

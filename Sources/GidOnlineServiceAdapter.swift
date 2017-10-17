@@ -86,6 +86,8 @@ class GidOnlineServiceAdapter: ServiceAdapter {
       conf["rowSize"] = 6
     }
 
+    conf["mobile"] = mobile
+
     conf["bookmarksManager"] = bookmarksManager
     conf["historyManager"] = historyManager
 

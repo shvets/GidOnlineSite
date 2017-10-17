@@ -12,7 +12,7 @@ class LettersTableController: UITableViewController {
 
   let service = GidOnlineService.shared
 
-  private var items: Items!
+  private var items = Items()
 
   var document: Document?
   var requestType: String?
@@ -22,7 +22,7 @@ class LettersTableController: UITableViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
-    items = Items() {
+    items.pageLoader.load = {
       return self.loadData()
     }
 

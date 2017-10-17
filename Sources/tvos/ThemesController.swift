@@ -18,7 +18,7 @@ class ThemesController: UICollectionViewController, UICollectionViewDelegateFlow
   
   let localizer = Localizer(GidOnlineServiceAdapter.BundleId, bundleClass: GidOnlineSite.self)
 
-  private var items: Items!
+  private var items = Items()
 
   var document: Document?
 
@@ -29,7 +29,7 @@ class ThemesController: UICollectionViewController, UICollectionViewDelegateFlow
 
     setupLayout()
 
-    items = Items() {
+    items.pageLoader.load = {
       return self.loadThemes()
     }
 

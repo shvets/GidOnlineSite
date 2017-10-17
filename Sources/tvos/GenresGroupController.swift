@@ -17,7 +17,7 @@ class GenresGroupController: UICollectionViewController, UICollectionViewDelegat
     "Education"
   ]
 
-  private var items: Items!
+  private var items = Items()
   var document: Document?
 
   override func viewDidLoad() {
@@ -27,7 +27,7 @@ class GenresGroupController: UICollectionViewController, UICollectionViewDelegat
 
     setupLayout()
 
-    items = Items() {
+    items.pageLoader.load = {
       return self.loadGenresMenu()
     }
 

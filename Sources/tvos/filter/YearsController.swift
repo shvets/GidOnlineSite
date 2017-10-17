@@ -13,7 +13,7 @@ class YearsController: UICollectionViewController, UICollectionViewDelegateFlowL
   var adapter = GidOnlineServiceAdapter()
   let service = GidOnlineService.shared
 
-  private var items: Items!
+  private var items = Items()
 
   var document: Document?
 
@@ -24,7 +24,7 @@ class YearsController: UICollectionViewController, UICollectionViewDelegateFlowL
 
     setupLayout()
 
-    items = Items() {
+    items.pageLoader.load = {
       return self.loadData()
     }
 

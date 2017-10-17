@@ -15,7 +15,7 @@ class FiltersTableController: UITableViewController {
 
   let localizer = Localizer(GidOnlineServiceAdapter.BundleId, bundleClass: GidOnlineSite.self)
 
-  private var items: Items!
+  private var items = Items()
 
   var document: Document?
 
@@ -26,7 +26,7 @@ class FiltersTableController: UITableViewController {
 
     //adapter = GidOnlineServiceAdapter(mobile: true)
 
-    items = Items() {
+    items.pageLoader.load = {
       return self.loadData()
     }
 

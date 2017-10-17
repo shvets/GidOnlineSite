@@ -15,7 +15,7 @@ class GenresGroupTableViewController: UITableViewController {
 
   let localizer = Localizer(GidOnlineServiceAdapter.BundleId, bundleClass: GidOnlineSite.self)
 
-  private var items: Items!
+  private var items = Items()
   var document: Document?
 
   override func viewDidLoad() {
@@ -23,7 +23,7 @@ class GenresGroupTableViewController: UITableViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
-    items = Items() {
+    items.pageLoader.load = {
       return self.loadGenresMenu()
     }
 

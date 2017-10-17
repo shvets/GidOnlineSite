@@ -11,7 +11,7 @@ open class GidOnlineController: UICollectionViewController, UICollectionViewDele
 
   let service = GidOnlineService.shared
 
-  private var items: Items!
+  private var items = Items()
   var document: Document?
 
   override open func viewDidLoad() {
@@ -21,7 +21,7 @@ open class GidOnlineController: UICollectionViewController, UICollectionViewDele
 
     setupLayout()
 
-    items = Items() {
+    items.pageLoader.load = {
       return self.loadData()
     }
 

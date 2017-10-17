@@ -11,7 +11,7 @@ class LetterTableController: UITableViewController {
 
   let service = GidOnlineService.shared
 
-  private var items: Items!
+  private var items = Items()
 
   var adapter = GidOnlineServiceAdapter(mobile: true)
 
@@ -23,7 +23,7 @@ class LetterTableController: UITableViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
-    items = Items() {
+    items.pageLoader.load = {
       return self.loadData()
     }
 

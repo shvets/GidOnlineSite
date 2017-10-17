@@ -14,7 +14,7 @@ class CountriesController: UICollectionViewController, UICollectionViewDelegateF
 
   var adapter = GidOnlineServiceAdapter()
   
-  private var items: Items!
+  private var items = Items()
 
   var document: Document?
 
@@ -25,7 +25,7 @@ class CountriesController: UICollectionViewController, UICollectionViewDelegateF
 
     setupLayout()
 
-    items = Items() {
+    items.pageLoader.load = {
       return self.loadData()
     }
 

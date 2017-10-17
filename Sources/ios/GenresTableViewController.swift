@@ -13,7 +13,7 @@ class GenresTableViewController: UITableViewController {
 
   let adapter = GidOnlineServiceAdapter(mobile: true)
 
-  private var items: Items!
+  private var items = Items()
   var document: Document?
 
   override func viewDidLoad() {
@@ -21,7 +21,7 @@ class GenresTableViewController: UITableViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
-    items = Items() {
+    items.pageLoader.load = {
       return self.loadGenres()
     }
 

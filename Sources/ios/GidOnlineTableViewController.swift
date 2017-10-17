@@ -10,7 +10,7 @@ open class GidOnlineTableViewController: UITableViewController {
 
   let localizer = Localizer(GidOnlineServiceAdapter.BundleId, bundleClass: GidOnlineSite.self)
 
-  private var items: Items!
+  private var items = Items()
   var document: Document?
 
   override open func viewDidLoad() {
@@ -20,7 +20,7 @@ open class GidOnlineTableViewController: UITableViewController {
 
     title = localizer.localize("GidOnline")
 
-    items = Items() {
+    items.pageLoader.load = {
       return self.loadData()
     }
 
