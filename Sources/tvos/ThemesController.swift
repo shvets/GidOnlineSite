@@ -88,7 +88,7 @@ class ThemesController: UICollectionViewController, UICollectionViewDelegateFlow
     if let destination = MediaItemsController.instantiateController(adapter),
        let selectedCell = gesture.view as? MediaNameCell,
        let indexPath = collectionView?.indexPath(for: selectedCell) {
-      adapter.params["requestType"] = "Themes"
+      destination.params["requestType"] = "Themes"
 
       adapter.params["selectedItem"] = items.getItem(for: indexPath)
 

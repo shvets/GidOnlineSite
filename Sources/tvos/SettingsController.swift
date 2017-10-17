@@ -20,10 +20,6 @@ class SettingsController: UICollectionViewController, UICollectionViewDelegateFl
     }
 
     items.loadInitialData(collectionView)
-
-//    adapter = GidOnlineServiceAdapter()
-
-    loadSettingsMenu()
   }
 
   func loadSettingsMenu() -> [Item] {

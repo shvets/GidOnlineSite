@@ -78,7 +78,7 @@ class ThemesTableController: UITableViewController {
 
             let adapter = GidOnlineServiceAdapter(mobile: true)
 
-            adapter.params["requestType"] = "Themes"
+            destination.params["requestType"] = "Themes"
             adapter.params["selectedItem"] = items.getItem(for: indexPath)
 
             destination.adapter = adapter

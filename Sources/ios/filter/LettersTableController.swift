@@ -78,12 +78,12 @@ class LettersTableController: UITableViewController {
              let selectedCell = sender as? MediaNameTableCell,
             let indexPath = tableView.indexPath(for: selectedCell) {
             let adapter = GidOnlineServiceAdapter(mobile: true)
-            adapter.params["requestType"] = "Letter"
+            destination.params["requestType"] = "Letter"
 
             let mediaItem = items.getItem(for: indexPath)
 
             adapter.params["parentId"] = mediaItem.name
-            adapter.params["parentName"] = localizer.localize(requestType!)
+            destination.params["parentName"] = localizer.localize(requestType!)
 
             destination.adapter = adapter
             destination.document = document

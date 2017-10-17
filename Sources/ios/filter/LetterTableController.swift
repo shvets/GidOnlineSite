@@ -11,6 +11,7 @@ class LetterTableController: UITableViewController {
 
   let service = GidOnlineService.shared
 
+ public var params = Parameters()
   private var items = Items()
 
   var adapter = GidOnlineServiceAdapter(mobile: true)
@@ -98,7 +99,7 @@ class LetterTableController: UITableViewController {
 
           let adapter = GidOnlineServiceAdapter(mobile: true)
 
-          adapter.params["requestType"] = "Movies"
+          destination.params["requestType"] = "Movies"
           adapter.params["selectedItem"] = items.getItem(for: indexPath)
 
           destination.adapter = adapter

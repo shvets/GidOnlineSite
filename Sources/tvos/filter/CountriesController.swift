@@ -95,7 +95,7 @@ class CountriesController: UICollectionViewController, UICollectionViewDelegateF
        let selectedCell = gesture.view as? MediaNameCell,
        let indexPath = collectionView?.indexPath(for: selectedCell) {
       let adapter = GidOnlineServiceAdapter()
-      adapter.params["requestType"] = "Movies"
+      destination.params["requestType"] = "Movies"
 
       adapter.params["selectedItem"] = items.getItem(for: indexPath)
 

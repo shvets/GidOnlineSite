@@ -13,6 +13,7 @@ class LetterController: UICollectionViewController, UICollectionViewDelegateFlow
 
   let localizer = Localizer(GidOnlineServiceAdapter.BundleId, bundleClass: GidOnlineSite.self)
 
+ public var params = Parameters()
   private var items = Items()
 
   var document: Document?
@@ -101,7 +102,7 @@ class LetterController: UICollectionViewController, UICollectionViewDelegateFlow
     if let destination = MediaItemsController.instantiateController(adapter),
        let selectedCell = gesture.view as? MediaNameCell,
        let indexPath = collectionView?.indexPath(for: selectedCell) {
-      adapter.params["requestType"] = "Movies"
+      destination.params["requestType"] = "Movies"
 
       adapter.params["selectedItem"] = items.getItem(for: indexPath)
 

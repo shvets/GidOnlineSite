@@ -95,8 +95,8 @@ class YearsController: UICollectionViewController, UICollectionViewDelegateFlowL
     if let destination = MediaItemsController.instantiateController(adapter),
        let selectedCell = gesture.view as? MediaNameCell,
        let indexPath = collectionView?.indexPath(for: selectedCell) {
-      var adapter = GidOnlineServiceAdapter()
-      adapter.params["requestType"] = "Movies"
+      let adapter = GidOnlineServiceAdapter()
+      destination.params["requestType"] = "Movies"
 
       adapter.params["selectedItem"] = items.getItem(for: indexPath)
 

@@ -80,12 +80,12 @@ class GenresGroupTableViewController: UITableViewController {
              let indexPath = tableView.indexPath(for: selectedCell) {
 
             let adapter = GidOnlineServiceAdapter(mobile: true)
-            adapter.params["requestType"] = "Genres"
+            destination.params["requestType"] = "Genres"
 
             let mediaItem = items.getItem(for: indexPath)
 
             adapter.params["parentId"] = mediaItem.name
-            adapter.params["parentName"] = localizer.localize(mediaItem.name!)
+            destination.params["parentName"] = localizer.localize(mediaItem.name!)
 
             //destination.adapter = adapter
             destination.document = document

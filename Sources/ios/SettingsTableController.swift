@@ -18,8 +18,6 @@ class SettingsTableController: UITableViewController {
     }
 
     items.loadInitialData(tableView)
-
-    loadSettingsMenu()
   }
 
   func loadSettingsMenu() -> [Item] {
