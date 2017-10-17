@@ -89,6 +89,7 @@ open class GidOnlineController: UICollectionViewController, UICollectionViewDele
       navigate(from: location)
     }
   }
+
   open func navigate(from view: UICollectionViewCell, playImmediately: Bool=false) {
     if let indexPath = collectionView?.indexPath(for: view) {
       let mediaItem = items.getItem(for: indexPath)
