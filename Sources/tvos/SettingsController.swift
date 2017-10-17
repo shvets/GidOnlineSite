@@ -1,14 +1,39 @@
 import UIKit
 import TVSetKit
 
-class SettingsController: GidOnlineBaseCollectionViewController {
-  override open var CellIdentifier: String { return "SettingCell" }
+class SettingsController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+  let CellIdentifier = "SettingCell"
+
+  let localizer = Localizer(GidOnlineServiceAdapter.BundleId, bundleClass: GidOnlineSite.self)
+
+  private var items: Items!
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
     self.clearsSelectionOnViewWillAppear = false
 
+    setupLayout()
+
+    items = Items() {
+      return self.loadSettingsMenu()
+    }
+
+    items.loadInitialData(collectionView)
+
+//    adapter = GidOnlineServiceAdapter()
+
+    loadSettingsMenu()
+  }
+
+  func loadSettingsMenu() -> [Item] {
+    return [
+      Item(name: "Reset History"),
+      Item(name: "Reset Bookmarks")
+    ]
+  }
+
+  func setupLayout() {
     let layout = UICollectionViewFlowLayout()
 
     layout.itemSize = CGSize(width: 450, height: 150)
@@ -17,31 +42,42 @@ class SettingsController: GidOnlineBaseCollectionViewController {
     layout.minimumLineSpacing = 100.0
 
     collectionView?.collectionViewLayout = layout
-
-    adapter = GidOnlineServiceAdapter()
-
-    loadSettingsMenu()
   }
 
-  func loadSettingsMenu() {
-    let resetHistory = Item(name: "Reset History")
-    let resetQueue = Item(name: "Reset Bookmarks")
-
-    items = [
-      resetHistory, resetQueue
-    ]
+  override open func numberOfSections(in collectionView: UICollectionView) -> Int {
+    return 1
   }
 
-  override open func tapped(_ gesture: UITapGestureRecognizer) {
-    let selectedCell = gesture.view as! MediaNameCell
+  override open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return items.count
+  }
 
-    let settingsMode = getItem(for: selectedCell).name
+  override open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath) as? MediaNameCell {
+      if let item = items[indexPath.row] as? MediaName {
+         cell.configureCell(item: item, localizedName: localizer.getLocalizedName(item.name), target: self)
+      }
 
-    if settingsMode == "Reset History" {
-      self.present(buildResetHistoryController(), animated: false, completion: nil)
+      CellHelper.shared.addTapGestureRecognizer(view: cell, target: self, action: #selector(self.tapped(_:)))
+
+      return cell
     }
-    else if settingsMode == "Reset Bookmarks" {
-      self.present(buildResetQueueController(), animated: false, completion: nil)
+    else {
+      return UICollectionViewCell()
+    }
+  }
+
+  @objc open func tapped(_ gesture: UITapGestureRecognizer) {
+    if let selectedCell = gesture.view as? MediaNameCell,
+       let indexPath = collectionView?.indexPath(for: selectedCell) {
+      let settingsMode = items.getItem(for: indexPath).name
+      
+      if settingsMode == "Reset History" {
+        self.present(buildResetHistoryController(), animated: false, completion: nil)
+      }
+      else if settingsMode == "Reset Bookmarks" {
+        self.present(buildResetQueueController(), animated: false, completion: nil)
+      }
     }
   }
 
@@ -51,8 +87,10 @@ class SettingsController: GidOnlineBaseCollectionViewController {
 
     let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
+    let adapter = GidOnlineServiceAdapter()
+
     let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-      let history = (self.adapter as! GidOnlineServiceAdapter).history
+      let history = adapter.history
 
       history.clear()
       history.save()
@@ -72,8 +110,10 @@ class SettingsController: GidOnlineBaseCollectionViewController {
 
     let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
+    let adapter = GidOnlineServiceAdapter()
+
     let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-      let bookmarks = (self.adapter as! GidOnlineServiceAdapter).bookmarks
+      let bookmarks = adapter.bookmarks
 
       bookmarks.clear()
       bookmarks.save()

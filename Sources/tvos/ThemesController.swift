@@ -4,15 +4,21 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-class ThemesController: GidOnlineBaseCollectionViewController {
+class ThemesController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   static let SegueIdentifier = "Themes"
-  override open var CellIdentifier: String { return "ThemeCell" }
+  let CellIdentifier = "ThemeCell"
 
   let ThemesMenu = [
     "Top Seven",
     "New Movies",
     "Premiers"
   ]
+
+  var adapter = GidOnlineServiceAdapter()
+  
+  let localizer = Localizer(GidOnlineServiceAdapter.BundleId, bundleClass: GidOnlineSite.self)
+
+  private var items: Items!
 
   var document: Document?
 
@@ -21,6 +27,30 @@ class ThemesController: GidOnlineBaseCollectionViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
+    setupLayout()
+
+    items = Items() {
+      return self.loadThemes()
+    }
+
+    items.loadInitialData(collectionView)
+
+    //adapter = GidOnlineServiceAdapter()
+  }
+
+ func loadThemes() -> [Item] {
+    var items = [Item]()
+
+    for name in ThemesMenu {
+      let item = Item(name: name)
+
+      items.append(item)
+    }
+
+    return items
+  }
+
+  func setupLayout() {
     let layout = UICollectionViewFlowLayout()
 
     layout.itemSize = CGSize(width: 450, height: 150)
@@ -29,22 +59,38 @@ class ThemesController: GidOnlineBaseCollectionViewController {
     layout.minimumLineSpacing = 100.0
 
     collectionView?.collectionViewLayout = layout
+  }
 
-    adapter = GidOnlineServiceAdapter()
+  override open func numberOfSections(in collectionView: UICollectionView) -> Int {
+    return 1
+  }
 
-    for name in ThemesMenu {
-      let item = Item(name: name)
+  override open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return items.count
+  }
 
-      items.append(item)
+  override open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath) as? MediaNameCell {
+      if let item = items[indexPath.row] as? MediaName {
+         cell.configureCell(item: item, localizedName: localizer.getLocalizedName(item.name), target: self)
+      }
+
+      CellHelper.shared.addTapGestureRecognizer(view: cell, target: self, action: #selector(self.tapped(_:)))
+
+      return cell
+    }
+    else {
+      return UICollectionViewCell()
     }
   }
 
-  override open func tapped(_ gesture: UITapGestureRecognizer) {
+  @objc func tapped(_ gesture: UITapGestureRecognizer) {
     if let destination = MediaItemsController.instantiateController(adapter),
-       let selectedCell = gesture.view as? MediaNameCell {
+       let selectedCell = gesture.view as? MediaNameCell,
+       let indexPath = collectionView?.indexPath(for: selectedCell) {
       adapter.params["requestType"] = "Themes"
 
-      adapter.params["selectedItem"] = getItem(for: selectedCell)
+      adapter.params["selectedItem"] = items.getItem(for: indexPath)
 
       destination.adapter = adapter
       //destination.configuration = adapter.getConfiguration()

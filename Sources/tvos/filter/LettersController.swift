@@ -4,10 +4,17 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-class LettersController: GidOnlineBaseCollectionViewController {
+class LettersController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   static let SegueIdentifier = "Letters"
+  let CellIdentifier = "LettersCell"
 
-  override open var CellIdentifier: String { return "LettersCell" }
+  let service = GidOnlineService.shared
+
+  var adapter = GidOnlineServiceAdapter()
+  
+  let localizer = Localizer(GidOnlineServiceAdapter.BundleId, bundleClass: GidOnlineSite.self)
+
+  private var items: Items!
 
   var document: Document?
   var requestType: String?
@@ -17,6 +24,30 @@ class LettersController: GidOnlineBaseCollectionViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
+    setupLayout()
+
+    items = Items() {
+      return self.loadData()
+    }
+
+    items.loadInitialData(collectionView)
+
+//    adapter = GidOnlineServiceAdapter()
+  }
+
+   func loadData() -> [Item] {
+    var items = [Item]()
+
+    for letter in GidOnlineAPI.CyrillicLetters {
+      if !["Ё", "Й", "Щ", "Ъ", "Ы", "Ь"].contains(letter) {
+        items.append(Item(name: letter))
+      }
+    }
+
+    return items
+  }
+
+  func setupLayout() {
     let layout = UICollectionViewFlowLayout()
 
     layout.itemSize = CGSize(width: 450, height: 150)
@@ -25,17 +56,32 @@ class LettersController: GidOnlineBaseCollectionViewController {
     layout.minimumLineSpacing = 50.0
 
     collectionView?.collectionViewLayout = layout
+  }
 
-    adapter = GidOnlineServiceAdapter()
+  override open func numberOfSections(in collectionView: UICollectionView) -> Int {
+    return 1
+  }
 
-    for letter in GidOnlineAPI.CyrillicLetters {
-      if !["Ё", "Й", "Щ", "Ъ", "Ы", "Ь"].contains(letter) {
-        items.append(Item(name: letter))
+  override open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return items.count
+  }
+
+  override open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath) as? MediaNameCell {
+      if let item = items[indexPath.row] as? MediaName {
+         cell.configureCell(item: item, localizedName: localizer.getLocalizedName(item.name), target: self)
       }
+
+      CellHelper.shared.addTapGestureRecognizer(view: cell, target: self, action: #selector(self.tapped(_:)))
+
+      return cell
+    }
+    else {
+      return UICollectionViewCell()
     }
   }
 
-  override func tapped(_ gesture: UITapGestureRecognizer) {
+  @objc func tapped(_ gesture: UITapGestureRecognizer) {
     performSegue(withIdentifier: "Letter", sender: gesture.view)
   }
 
@@ -46,10 +92,11 @@ class LettersController: GidOnlineBaseCollectionViewController {
       switch identifier {
       case LetterController.SegueIdentifier:
         if let destination = segue.destination as? LetterController,
-           let selectedCell = sender as? MediaNameCell {
+           let selectedCell = sender as? MediaNameCell,
+           let indexPath = collectionView?.indexPath(for: selectedCell) {
           adapter.params["requestType"] = "Letter"
 
-          let mediaItem =  getItem(for: selectedCell)
+          let mediaItem = items.getItem(for: indexPath)
 
           adapter.params["parentId"] = mediaItem.name
           adapter.params["parentName"] = localizer.localize(requestType!)

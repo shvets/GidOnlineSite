@@ -4,10 +4,10 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-class FiltersController: GidOnlineBaseCollectionViewController {
+class FiltersController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   static let SegueIdentifier = "Filters"
 
-  override open var CellIdentifier: String { return "FilterCell" }
+  let CellIdentifier = "FilterCell"
 
   let FiltersMenu = [
     "By Actors",
@@ -16,6 +16,10 @@ class FiltersController: GidOnlineBaseCollectionViewController {
     "By Years"
   ]
 
+  let localizer = Localizer(GidOnlineServiceAdapter.BundleId, bundleClass: GidOnlineSite.self)
+
+  private var items: Items!
+
   var document: Document?
 
   override func viewDidLoad() {
@@ -23,8 +27,30 @@ class FiltersController: GidOnlineBaseCollectionViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
-    adapter = GidOnlineServiceAdapter()
+    setupLayout()
 
+    items = Items() {
+      return self.loadData()
+    }
+
+    items.loadInitialData(collectionView)
+
+    //adapter = GidOnlineServiceAdapter()
+  }
+
+  func loadData() -> [Item] {
+    var items = [Item]()
+
+    for name in FiltersMenu {
+      let item = Item(name: name)
+
+      items.append(item)
+    }
+
+    return items
+  }
+
+  func setupLayout() {
     let layout = UICollectionViewFlowLayout()
 
     layout.itemSize = CGSize(width: 450, height: 150)
@@ -33,30 +59,48 @@ class FiltersController: GidOnlineBaseCollectionViewController {
     layout.minimumLineSpacing = 100.0
 
     collectionView?.collectionViewLayout = layout
+  }
 
-    for name in FiltersMenu {
-      let item = Item(name: name)
+  override open func numberOfSections(in collectionView: UICollectionView) -> Int {
+    return 1
+  }
 
-      items.append(item)
+  override open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return items.count
+  }
+
+  override open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath) as? MediaNameCell {
+      if let item = items[indexPath.row] as? MediaName {
+         cell.configureCell(item: item, localizedName: localizer.getLocalizedName(item.name), target: self)
+      }
+
+      CellHelper.shared.addTapGestureRecognizer(view: cell, target: self, action: #selector(self.tapped(_:)))
+
+      return cell
+    }
+    else {
+      return UICollectionViewCell()
     }
   }
 
-  override open func tapped(_ gesture: UITapGestureRecognizer) {
-    let selectedCell = gesture.view as! MediaNameCell
-
-    let requestType = getItem(for: selectedCell).name
-
-    if requestType == "By Actors" {
-      performSegue(withIdentifier: LettersController.SegueIdentifier, sender: gesture.view)
-    }
-    else if requestType == "By Directors" {
-      performSegue(withIdentifier: LettersController.SegueIdentifier, sender: gesture.view)
-    }
-    else if requestType == "By Countries" {
-      performSegue(withIdentifier: CountriesController.SegueIdentifier, sender: gesture.view)
-    }
-    else if requestType == "By Years" {
-      performSegue(withIdentifier: YearsController.SegueIdentifier, sender: gesture.view)
+  @objc open func tapped(_ gesture: UITapGestureRecognizer) {
+    if let selectedCell = gesture.view as? MediaNameCell,
+      let indexPath = collectionView?.indexPath(for: selectedCell) {
+      let requestType = items.getItem(for: indexPath).name
+      
+      if requestType == "By Actors" {
+        performSegue(withIdentifier: LettersController.SegueIdentifier, sender: gesture.view)
+      }
+      else if requestType == "By Directors" {
+        performSegue(withIdentifier: LettersController.SegueIdentifier, sender: gesture.view)
+      }
+      else if requestType == "By Countries" {
+        performSegue(withIdentifier: CountriesController.SegueIdentifier, sender: gesture.view)
+      }
+      else if requestType == "By Years" {
+        performSegue(withIdentifier: YearsController.SegueIdentifier, sender: gesture.view)
+      }
     }
   }
 
@@ -67,9 +111,10 @@ class FiltersController: GidOnlineBaseCollectionViewController {
       switch identifier {
         case LettersController.SegueIdentifier:
           if let destination = segue.destination as? LettersController,
-             let selectedCell = sender as? MediaNameCell {
+             let selectedCell = sender as? MediaNameCell,
+             let indexPath = collectionView?.indexPath(for: selectedCell) {
 
-            let requestType = getItem(for: selectedCell).name
+            let requestType = items.getItem(for: indexPath).name
 
             destination.document = document
             destination.requestType = requestType

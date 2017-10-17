@@ -4,10 +4,11 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-class GenresGroupController: GidOnlineBaseCollectionViewController {
+class GenresGroupController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   static let SegueIdentifier = "Genres Group"
+  let CellIdentifier = "GenreGroupCell"
 
-  override open var CellIdentifier: String { return "GenreGroupCell" }
+  let localizer = Localizer(GidOnlineServiceAdapter.BundleId, bundleClass: GidOnlineSite.self)
 
   let GENRES_MENU = [
     "Family",
@@ -16,6 +17,7 @@ class GenresGroupController: GidOnlineBaseCollectionViewController {
     "Education"
   ]
 
+  private var items: Items!
   var document: Document?
 
   override func viewDidLoad() {
@@ -23,6 +25,29 @@ class GenresGroupController: GidOnlineBaseCollectionViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
+    setupLayout()
+
+    items = Items() {
+      return self.loadGenresMenu()
+    }
+
+    items.loadInitialData(collectionView)
+
+    //adapter = GidOnlineServiceAdapter()
+  }
+
+ func loadGenresMenu() -> [Item] {
+    var items = [Item]()
+
+    for name in GENRES_MENU {
+      let item = Item(name: name)
+
+      items.append(item)
+    }
+    return items
+  }
+
+  func setupLayout() {
     let layout = UICollectionViewFlowLayout()
 
     layout.itemSize = CGSize(width: 450, height: 150)
@@ -31,17 +56,32 @@ class GenresGroupController: GidOnlineBaseCollectionViewController {
     layout.minimumLineSpacing = 100.0
 
     collectionView?.collectionViewLayout = layout
+  }
 
-    adapter = GidOnlineServiceAdapter()
+  override open func numberOfSections(in collectionView: UICollectionView) -> Int {
+    return 1
+  }
 
-    for name in GENRES_MENU {
-      let item = Item(name: name)
+  override open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return items.count
+  }
 
-      items.append(item)
+  override open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath) as? MediaNameCell {
+      if let item = items[indexPath.row] as? MediaName {
+         cell.configureCell(item: item, localizedName: localizer.getLocalizedName(item.name), target: self)
+      }
+
+      CellHelper.shared.addTapGestureRecognizer(view: cell, target: self, action: #selector(self.tapped(_:)))
+
+      return cell
+    }
+    else {
+      return UICollectionViewCell()
     }
   }
 
-  override open func tapped(_ gesture: UITapGestureRecognizer) {
+  @objc open func tapped(_ gesture: UITapGestureRecognizer) {
     performSegue(withIdentifier: GenresController.SegueIdentifier, sender: gesture.view)
   }
 
@@ -52,10 +92,13 @@ class GenresGroupController: GidOnlineBaseCollectionViewController {
       switch identifier {
         case GenresController.SegueIdentifier:
           if let destination = segue.destination as? GenresController,
-             let selectedCell = sender as? MediaNameCell {
+             let selectedCell = sender as? MediaNameCell,
+             let indexPath = collectionView?.indexPath(for: selectedCell) {
+            let adapter = GidOnlineServiceAdapter()
+
             adapter.params["requestType"] = "Genres"
 
-            let mediaItem = getItem(for: selectedCell)
+            let mediaItem = items.getItem(for: indexPath)
 
             adapter.params["parentId"] = mediaItem.name
             adapter.params["parentName"] = localizer.localize(mediaItem.name!)

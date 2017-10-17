@@ -4,10 +4,17 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-class CountriesController: GidOnlineBaseCollectionViewController {
+class CountriesController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   static let SegueIdentifier = "Countries"
+  let CellIdentifier = "CountryCell"
 
-  override open var CellIdentifier: String { return "CountryCell" }
+  let service = GidOnlineService.shared
+
+  let localizer = Localizer(GidOnlineServiceAdapter.BundleId, bundleClass: GidOnlineSite.self)
+
+  var adapter = GidOnlineServiceAdapter()
+  
+  private var items: Items!
 
   var document: Document?
 
@@ -16,16 +23,19 @@ class CountriesController: GidOnlineBaseCollectionViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
-    let layout = UICollectionViewFlowLayout()
+    setupLayout()
 
-    layout.itemSize = CGSize(width: 450, height: 150)
-    layout.sectionInset = UIEdgeInsets(top: 100.0, left: 20.0, bottom: 50.0, right: 20.0)
-    layout.minimumInteritemSpacing = 10.0
-    layout.minimumLineSpacing = 100.0
+    items = Items() {
+      return self.loadData()
+    }
 
-    collectionView?.collectionViewLayout = layout
+    items.loadInitialData(collectionView)
 
-    adapter = GidOnlineServiceAdapter()
+    //adapter = GidOnlineServiceAdapter()
+  }
+
+ func loadData() -> [Item] {
+    var items = [Item]()
 
     do {
       let data = try service.getCountries(document!)
@@ -42,14 +52,52 @@ class CountriesController: GidOnlineBaseCollectionViewController {
     catch {
       print("Error getting items")
     }
+
+    return items
   }
 
-  override open func tapped(_ gesture: UITapGestureRecognizer) {
+  func setupLayout() {
+    let layout = UICollectionViewFlowLayout()
+
+    layout.itemSize = CGSize(width: 450, height: 150)
+    layout.sectionInset = UIEdgeInsets(top: 100.0, left: 20.0, bottom: 50.0, right: 20.0)
+    layout.minimumInteritemSpacing = 10.0
+    layout.minimumLineSpacing = 100.0
+
+    collectionView?.collectionViewLayout = layout
+  }
+
+  override open func numberOfSections(in collectionView: UICollectionView) -> Int {
+    return 1
+  }
+
+  override open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return items.count
+  }
+
+  override open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath) as? MediaNameCell {
+      if let item = items[indexPath.row] as? MediaName {
+         cell.configureCell(item: item, localizedName: localizer.getLocalizedName(item.name), target: self)
+      }
+
+      CellHelper.shared.addTapGestureRecognizer(view: cell, target: self, action: #selector(self.tapped(_:)))
+
+      return cell
+    }
+    else {
+      return UICollectionViewCell()
+    }
+  }
+
+  @objc open func tapped(_ gesture: UITapGestureRecognizer) {
     if let destination = MediaItemsController.instantiateController(adapter),
-       let selectedCell = gesture.view as? MediaNameCell {
+       let selectedCell = gesture.view as? MediaNameCell,
+       let indexPath = collectionView?.indexPath(for: selectedCell) {
+      let adapter = GidOnlineServiceAdapter()
       adapter.params["requestType"] = "Movies"
 
-      adapter.params["selectedItem"] = getItem(for: selectedCell)
+      adapter.params["selectedItem"] = items.getItem(for: indexPath)
 
       destination.adapter = adapter
       //destination.configuration = adapter.getConfiguration()
