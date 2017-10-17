@@ -4,10 +4,15 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-class LettersTableController: GidOnlineBaseTableViewController {
+class LettersTableController: UITableViewController {
   static let SegueIdentifier = "Letters"
+  let CellIdentifier = "LettersTableCell"
 
-  override open var CellIdentifier: String { return "LettersTableCell" }
+  let localizer = Localizer(GidOnlineServiceAdapter.BundleId, bundleClass: GidOnlineSite.self)
+
+  let service = GidOnlineService.shared
+
+  private var items: Items!
 
   var document: Document?
   var requestType: String?
@@ -17,17 +22,50 @@ class LettersTableController: GidOnlineBaseTableViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
-    adapter = GidOnlineServiceAdapter(mobile: true)
+    items = Items() {
+      return self.loadData()
+    }
+
+    items.loadInitialData(tableView)
+  }
+
+  func loadData() -> [Item] {
+    var items = [Item]()
 
     for letter in GidOnlineAPI.CyrillicLetters {
       if !["Ё", "Й", "Щ", "Ъ", "Ы", "Ь"].contains(letter) {
         items.append(Item(name: letter))
       }
     }
+
+    return items
   }
 
-  override open func navigate(from view: UITableViewCell) {
-    performSegue(withIdentifier: LetterTableController.SegueIdentifier, sender: view)
+// MARK: UITableViewDataSource
+
+  override open func numberOfSections(in tableView: UITableView) -> Int {
+    return 1
+  }
+
+  override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return items.count
+  }
+
+  override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    if let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath) as? MediaNameTableCell {
+      let item = items[indexPath.row]
+
+      cell.configureCell(item: item, localizedName: localizer.getLocalizedName(item.name))
+
+      return cell
+    }
+    else {
+      return UITableViewCell()
+    }
+  }
+
+  override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    performSegue(withIdentifier: LetterTableController.SegueIdentifier, sender: tableView)
   }
 
   // MARK: - Navigation
@@ -37,10 +75,12 @@ class LettersTableController: GidOnlineBaseTableViewController {
       switch identifier {
         case LetterTableController.SegueIdentifier:
           if let destination = segue.destination as? LetterTableController,
-             let selectedCell = sender as? MediaNameTableCell {
+             let selectedCell = sender as? MediaNameTableCell,
+            let indexPath = tableView.indexPath(for: selectedCell) {
+            let adapter = GidOnlineServiceAdapter(mobile: true)
             adapter.params["requestType"] = "Letter"
 
-            let mediaItem = getItem(for: selectedCell)
+            let mediaItem = items.getItem(for: indexPath)
 
             adapter.params["parentId"] = mediaItem.name
             adapter.params["parentName"] = localizer.localize(requestType!)

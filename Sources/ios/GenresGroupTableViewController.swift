@@ -1,13 +1,10 @@
 import UIKit
-import SwiftyJSON
-import SwiftSoup
-import WebAPI
 import TVSetKit
+import SwiftSoup
 
-class GenresGroupTableViewController: GidOnlineBaseTableViewController {
+class GenresGroupTableViewController: UITableViewController {
   static let SegueIdentifier = "Genres Group"
-
-  override open var CellIdentifier: String { return "GenreGroupTableCell" }
+  let CellIdentifier = "GenreGroupTableCell"
 
   let GENRES_MENU = [
     "Family",
@@ -16,6 +13,9 @@ class GenresGroupTableViewController: GidOnlineBaseTableViewController {
     "Education"
   ]
 
+  let localizer = Localizer(GidOnlineServiceAdapter.BundleId, bundleClass: GidOnlineSite.self)
+
+  private var items: Items!
   var document: Document?
 
   override func viewDidLoad() {
@@ -23,17 +23,50 @@ class GenresGroupTableViewController: GidOnlineBaseTableViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
-    adapter = GidOnlineServiceAdapter(mobile: true)
+    items = Items() {
+      return self.loadGenresMenu()
+    }
+
+    items.loadInitialData(tableView)
+  }
+
+  func loadGenresMenu() -> [Item] {
+    var items = [Item]()
 
     for name in GENRES_MENU {
       let item = Item(name: name)
 
       items.append(item)
     }
+
+    return items
   }
 
-  override open func navigate(from view: UITableViewCell) {
-    performSegue(withIdentifier: GenresController.SegueIdentifier, sender: view)
+ // MARK: UITableViewDataSource
+
+  override open func numberOfSections(in tableView: UITableView) -> Int {
+    return 1
+  }
+
+  override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return items.count
+  }
+
+  override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    if let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath) as? MediaNameTableCell {
+      let item = items[indexPath.row]
+
+      cell.configureCell(item: item, localizedName: localizer.getLocalizedName(item.name))
+
+      return cell
+    }
+    else {
+      return UITableViewCell()
+    }
+  }
+
+  override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    performSegue(withIdentifier: GenresController.SegueIdentifier, sender: tableView)
   }
 
   // MARK: - Navigation
@@ -43,15 +76,18 @@ class GenresGroupTableViewController: GidOnlineBaseTableViewController {
       switch identifier {
         case GenresController.SegueIdentifier:
           if let destination = segue.destination as? GenresTableViewController,
-             let selectedCell = sender as? MediaNameTableCell {
+             let selectedCell = sender as? MediaNameTableCell,
+             let indexPath = tableView.indexPath(for: selectedCell) {
+
+            let adapter = GidOnlineServiceAdapter(mobile: true)
             adapter.params["requestType"] = "Genres"
 
-            let mediaItem = getItem(for: selectedCell)
+            let mediaItem = items.getItem(for: indexPath)
 
             adapter.params["parentId"] = mediaItem.name
             adapter.params["parentName"] = localizer.localize(mediaItem.name!)
 
-            destination.adapter = adapter
+            //destination.adapter = adapter
             destination.document = document
           }
 

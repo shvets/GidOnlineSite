@@ -1,12 +1,16 @@
 import UIKit
-import SwiftyJSON
 import SwiftSoup
-import WebAPI
 import TVSetKit
+import WebAPI
 
-open class GidOnlineTableViewController: GidOnlineBaseTableViewController {
-  override open var CellIdentifier: String { return "GidOnlineTableCell" }
+open class GidOnlineTableViewController: UITableViewController {
+ let CellIdentifier = "GidOnlineTableCell"
 
+  let service = GidOnlineService.shared
+
+  let localizer = Localizer(GidOnlineServiceAdapter.BundleId, bundleClass: GidOnlineSite.self)
+
+  private var items: Items!
   var document: Document?
 
   override open func viewDidLoad() {
@@ -16,21 +20,16 @@ open class GidOnlineTableViewController: GidOnlineBaseTableViewController {
 
     title = localizer.localize("GidOnline")
 
-    adapter = GidOnlineServiceAdapter(mobile: true)
-
-    self.clearsSelectionOnViewWillAppear = false
-
-    loadData()
-
-    do {
-      document = try service.fetchDocument(GidOnlineAPI.SiteUrl)
+    items = Items() {
+      return self.loadData()
     }
-    catch {
-      print("Cannot load document")
-    }
+
+    items.loadInitialData(tableView)
   }
 
-  func loadData() {
+  func loadData() -> [Item] {
+    var items = [Item]()
+
     items.append(MediaName(name: "Bookmarks", imageName: "Star"))
     items.append(MediaName(name: "History", imageName: "Bookmark"))
     items.append(MediaName(name: "All Movies", imageName: "Retro TV"))
@@ -39,30 +38,63 @@ open class GidOnlineTableViewController: GidOnlineBaseTableViewController {
     items.append(MediaName(name: "Filters", imageName: "Filter"))
     items.append(MediaName(name: "Settings", imageName: "Engineering"))
     items.append(MediaName(name: "Search", imageName: "Search"))
+
+
+    do {
+      document = try service.fetchDocument(GidOnlineAPI.SiteUrl)
+    }
+    catch {
+      print("Cannot load document")
+    }
+
+    return items
   }
 
-  override open func navigate(from view: UITableViewCell) {
-    let mediaItem = getItem(for: view)
+ // MARK: UITableViewDataSource
 
-    switch mediaItem.name! {
-      case "Genres":
-        performSegue(withIdentifier: GenresGroupTableViewController.SegueIdentifier, sender: view)
+  override open func numberOfSections(in tableView: UITableView) -> Int {
+    return 1
+  }
 
-      case "Themes":
-        performSegue(withIdentifier: ThemesTableController.SegueIdentifier, sender: view)
+  override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return items.count
+  }
 
-      case "Filters":
-        performSegue(withIdentifier: FiltersController.SegueIdentifier, sender: view)
+  override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    if let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath) as? MediaNameTableCell {
+      let item = items[indexPath.row]
 
-      case "Settings":
-        performSegue(withIdentifier: "Settings", sender: view)
+      cell.configureCell(item: item, localizedName: localizer.getLocalizedName(item.name))
 
-      case "Search":
-        performSegue(withIdentifier: SearchTableController.SegueIdentifier, sender: view)
-
-      default:
-        performSegue(withIdentifier: MediaItemsController.SegueIdentifier, sender: view)
+      return cell
     }
+    else {
+      return UITableViewCell()
+    }
+  }
+
+  override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      let mediaItem = items.getItem(for: indexPath)
+
+      switch mediaItem.name! {
+        case "Genres":
+          performSegue(withIdentifier: GenresGroupTableViewController.SegueIdentifier, sender: view)
+
+        case "Themes":
+          performSegue(withIdentifier: ThemesTableController.SegueIdentifier, sender: view)
+
+        case "Filters":
+          performSegue(withIdentifier: FiltersController.SegueIdentifier, sender: view)
+
+        case "Settings":
+          performSegue(withIdentifier: "Settings", sender: view)
+
+        case "Search":
+          performSegue(withIdentifier: SearchTableController.SegueIdentifier, sender: view)
+
+        default:
+          performSegue(withIdentifier: MediaItemsController.SegueIdentifier, sender: view)
+      }
   }
 
   // MARK: - Navigation
@@ -75,10 +107,10 @@ open class GidOnlineTableViewController: GidOnlineBaseTableViewController {
           destination.document = document
         }
 
-      case ThemesTableController.SegueIdentifier:
-        if let destination = segue.destination as? ThemesTableController {
-          destination.document = document
-        }
+//      case ThemesTableController.SegueIdentifier:
+//        if let destination = segue.destination as? ThemesTableController {
+//          destination.document = document
+//        }
 
       case FiltersTableController.SegueIdentifier:
         if let destination = segue.destination as? FiltersTableController {
@@ -87,9 +119,10 @@ open class GidOnlineTableViewController: GidOnlineBaseTableViewController {
 
       case MediaItemsController.SegueIdentifier:
         if let destination = segue.destination.getActionController() as? MediaItemsController,
-           let view = sender as? MediaNameTableCell {
+           let view = sender as? MediaNameTableCell,
+           let indexPath = tableView.indexPath(for: view) {
 
-          let mediaItem = getItem(for: view)
+          let mediaItem = items.getItem(for: indexPath)
 
           let adapter = GidOnlineServiceAdapter(mobile: true)
 
