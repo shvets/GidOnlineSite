@@ -82,7 +82,7 @@ class LettersTableController: UITableViewController {
 
             let mediaItem = items.getItem(for: indexPath)
 
-            adapter.params["parentId"] = mediaItem.name
+            destination.params["parentId"] = mediaItem.name
             destination.params["parentName"] = localizer.localize(requestType!)
 
             destination.adapter = adapter

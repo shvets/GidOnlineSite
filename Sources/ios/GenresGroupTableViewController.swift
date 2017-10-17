@@ -84,7 +84,7 @@ class GenresGroupTableViewController: UITableViewController {
 
             let mediaItem = items.getItem(for: indexPath)
 
-            adapter.params["parentId"] = mediaItem.name
+            destination.params["parentId"] = mediaItem.name
             destination.params["parentName"] = localizer.localize(mediaItem.name!)
 
             //destination.adapter = adapter
