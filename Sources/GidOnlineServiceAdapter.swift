@@ -23,9 +23,6 @@ class GidOnlineServiceAdapter: ServiceAdapter {
 
   public init(mobile: Bool=false) {
     super.init(dataSource: GidOnlineDataSource(), mobile: mobile)
-    
-    bookmarks.load()
-    history.load()
 
     bookmarksManager = BookmarksManager(bookmarks)
     historyManager = HistoryManager(history)

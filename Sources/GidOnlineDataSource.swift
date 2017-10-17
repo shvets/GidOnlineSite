@@ -29,11 +29,9 @@ class GidOnlineDataSource: DataSource {
 
     switch request {
       case "Bookmarks":
-        bookmarks.load()
         result = bookmarks.getBookmarks(pageSize: 60, page: currentPage)
 
       case "History":
-        history.load()
         result = history.getHistoryItems(pageSize: 60, page: currentPage)
 
       case "All Movies":
