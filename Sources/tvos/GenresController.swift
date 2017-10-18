@@ -7,6 +7,7 @@ import TVSetKit
 class GenresController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   static let SegueIdentifier = "Genres"
   let CellIdentifier = "GenreCell"
+  let StoryboardId = "GidOnline"
 
   var adapter = GidOnlineServiceAdapter()
 
@@ -88,7 +89,7 @@ class GenresController: UICollectionViewController, UICollectionViewDelegateFlow
   }
 
   @objc public func tapped(_ gesture: UITapGestureRecognizer) {
-    if let destination = MediaItemsController.instantiateController(adapter),
+    if let destination = MediaItemsController.instantiateController(StoryboardId),
        let selectedCell = gesture.view as? MediaNameCell,
        let indexPath = collectionView?.indexPath(for: selectedCell) {
       let adapter = GidOnlineServiceAdapter()
@@ -96,7 +97,6 @@ class GenresController: UICollectionViewController, UICollectionViewDelegateFlow
       destination.params["requestType"] = "Movies"
       destination.params["selectedItem"] = items.getItem(for: indexPath)
 
-      destination.adapter = adapter
       destination.configuration = adapter.getConfiguration()
 
       if let layout = adapter.buildLayout() {

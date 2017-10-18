@@ -129,7 +129,6 @@ open class GidOnlineTableViewController: UITableViewController {
           destination.params["requestType"] = mediaItem.name
           destination.params["parentName"] = localizer.localize(mediaItem.name!)
 
-          destination.adapter = adapter
           destination.configuration = adapter.getConfiguration()
         }
 

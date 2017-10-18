@@ -7,6 +7,7 @@ import TVSetKit
 class YearsController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   static let SegueIdentifier = "Years"
   let CellIdentifier = "YearCell"
+  let StoryboardId = "GidOnline"
 
   let localizer = Localizer(GidOnlineServiceAdapter.BundleId, bundleClass: GidOnlineSite.self)
 
@@ -92,7 +93,7 @@ class YearsController: UICollectionViewController, UICollectionViewDelegateFlowL
   }
 
   @objc func tapped(_ gesture: UITapGestureRecognizer) {
-    if let destination = MediaItemsController.instantiateController(adapter),
+    if let destination = MediaItemsController.instantiateController(StoryboardId),
        let selectedCell = gesture.view as? MediaNameCell,
        let indexPath = collectionView?.indexPath(for: selectedCell) {
 
@@ -100,8 +101,6 @@ class YearsController: UICollectionViewController, UICollectionViewDelegateFlowL
 
       destination.params["requestType"] = "Movies"
       destination.params["selectedItem"] = items.getItem(for: indexPath)
-
-      destination.adapter = adapter
 
       destination.configuration = adapter.getConfiguration()
 

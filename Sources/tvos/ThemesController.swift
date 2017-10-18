@@ -7,6 +7,7 @@ import TVSetKit
 class ThemesController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   static let SegueIdentifier = "Themes"
   let CellIdentifier = "ThemeCell"
+  let StoryboardId = "GidOnline"
 
   let ThemesMenu = [
     "Top Seven",
@@ -85,14 +86,13 @@ class ThemesController: UICollectionViewController, UICollectionViewDelegateFlow
   }
 
   @objc func tapped(_ gesture: UITapGestureRecognizer) {
-    if let destination = MediaItemsController.instantiateController(adapter),
+    if let destination = MediaItemsController.instantiateController(StoryboardId),
        let selectedCell = gesture.view as? MediaNameCell,
        let indexPath = collectionView?.indexPath(for: selectedCell) {
       destination.params["requestType"] = "Themes"
 
       destination.params["selectedItem"] = items.getItem(for: indexPath)
 
-      destination.adapter = adapter
       destination.configuration = adapter.getConfiguration()
 
       if let layout = adapter.buildLayout() {

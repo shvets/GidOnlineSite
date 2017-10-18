@@ -7,6 +7,7 @@ import TVSetKit
 class CountriesController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   static let SegueIdentifier = "Countries"
   let CellIdentifier = "CountryCell"
+  let StoryboardId = "GidOnline"
 
   let service = GidOnlineService.shared
 
@@ -91,7 +92,7 @@ class CountriesController: UICollectionViewController, UICollectionViewDelegateF
   }
 
   @objc open func tapped(_ gesture: UITapGestureRecognizer) {
-    if let destination = MediaItemsController.instantiateController(adapter),
+    if let destination = MediaItemsController.instantiateController(StoryboardId),
        let selectedCell = gesture.view as? MediaNameCell,
        let indexPath = collectionView?.indexPath(for: selectedCell) {
 
@@ -100,7 +101,6 @@ class CountriesController: UICollectionViewController, UICollectionViewDelegateF
       destination.params["requestType"] = "Movies"
       destination.params["selectedItem"] = items.getItem(for: indexPath)
 
-      destination.adapter = adapter
       destination.configuration = adapter.getConfiguration()
 
       if let layout = adapter.buildLayout() {
