@@ -79,7 +79,7 @@ class GenresGroupTableViewController: UITableViewController {
              let selectedCell = sender as? MediaNameTableCell,
              let indexPath = tableView.indexPath(for: selectedCell) {
 
-            let adapter = GidOnlineServiceAdapter(mobile: true)
+            //let adapter = GidOnlineServiceAdapter(mobile: true)
             destination.params["requestType"] = "Genres"
 
             let mediaItem = items.getItem(for: indexPath)

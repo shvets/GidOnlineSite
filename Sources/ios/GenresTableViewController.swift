@@ -88,7 +88,7 @@ class GenresTableViewController: UITableViewController {
           let adapter = GidOnlineServiceAdapter(mobile: true)
 
           destination.params["requestType"] = "Movies"
-          adapter.params["selectedItem"] = items.getItem(for: indexPath)
+          destination.params["selectedItem"] = items.getItem(for: indexPath)
 
           destination.adapter = adapter
           destination.configuration = adapter.getConfiguration()

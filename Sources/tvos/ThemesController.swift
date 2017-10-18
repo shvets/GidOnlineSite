@@ -90,10 +90,10 @@ class ThemesController: UICollectionViewController, UICollectionViewDelegateFlow
        let indexPath = collectionView?.indexPath(for: selectedCell) {
       destination.params["requestType"] = "Themes"
 
-      adapter.params["selectedItem"] = items.getItem(for: indexPath)
+      destination.params["selectedItem"] = items.getItem(for: indexPath)
 
       destination.adapter = adapter
-      //destination.configuration = adapter.getConfiguration()
+      destination.configuration = adapter.getConfiguration()
 
       if let layout = adapter.buildLayout() {
         destination.collectionView?.collectionViewLayout = layout

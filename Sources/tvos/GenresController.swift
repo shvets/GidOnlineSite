@@ -92,12 +92,12 @@ class GenresController: UICollectionViewController, UICollectionViewDelegateFlow
        let selectedCell = gesture.view as? MediaNameCell,
        let indexPath = collectionView?.indexPath(for: selectedCell) {
       let adapter = GidOnlineServiceAdapter()
-      destination.params["requestType"] = "Movies"
 
-      adapter.params["selectedItem"] = items.getItem(for: indexPath)
+      destination.params["requestType"] = "Movies"
+      destination.params["selectedItem"] = items.getItem(for: indexPath)
 
       destination.adapter = adapter
-      //destination.configuration = adapter.getConfiguration()
+      destination.configuration = adapter.getConfiguration()
 
       if let layout = adapter.buildLayout() {
         destination.collectionView?.collectionViewLayout = layout

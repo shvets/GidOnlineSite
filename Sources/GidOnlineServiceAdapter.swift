@@ -16,8 +16,8 @@ class GidOnlineServiceAdapter: ServiceAdapter {
   lazy var bookmarks = Bookmarks(GidOnlineServiceAdapter.bookmarksFileName)
   lazy var history = History(GidOnlineServiceAdapter.historyFileName)
 
-  var bookmarksManager: BookmarksManager?
-  var historyManager: HistoryManager?
+  lazy var bookmarksManager = BookmarksManager(bookmarks)
+  lazy var historyManager = HistoryManager(history)
 
   var episodes: [JSON]?
 
@@ -90,6 +90,8 @@ class GidOnlineServiceAdapter: ServiceAdapter {
 
     conf["bookmarksManager"] = bookmarksManager
     conf["historyManager"] = historyManager
+    conf["dataSource"] = dataSource
+    conf["storyboardId"] =  GidOnlineServiceAdapter.StoryboardId
 
     return conf
   }
