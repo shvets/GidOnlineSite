@@ -70,7 +70,7 @@ class GidOnlineServiceAdapter: ServiceAdapter {
     return layout
   }
 
-  override func getDetailsImageFrame() -> CGRect? {
+  func getDetailsImageFrame() -> CGRect? {
     return CGRect(x: 40, y: 40, width: 210*2.7, height: 300*2.7)
   }
 
@@ -92,6 +92,7 @@ class GidOnlineServiceAdapter: ServiceAdapter {
     conf["historyManager"] = historyManager
     conf["dataSource"] = dataSource
     conf["storyboardId"] =  GidOnlineServiceAdapter.StoryboardId
+    conf["detailsImageFrame"] = getDetailsImageFrame()
 
     return conf
   }
