@@ -57,7 +57,7 @@ class GidOnlineServiceAdapter: ServiceAdapter {
     return try super.load()
   }
 
-  override func buildLayout() -> UICollectionViewFlowLayout? {
+  func buildLayout() -> UICollectionViewFlowLayout? {
     let layout = UICollectionViewFlowLayout()
 
     layout.itemSize = CGSize(width: 200*1.2, height: 300*1.2) // 200 x 300
@@ -93,7 +93,7 @@ class GidOnlineServiceAdapter: ServiceAdapter {
     conf["dataSource"] = dataSource
     conf["storyboardId"] =  GidOnlineServiceAdapter.StoryboardId
     conf["detailsImageFrame"] = getDetailsImageFrame()
-
+    conf["buildLayout"] = buildLayout()
     return conf
   }
 }

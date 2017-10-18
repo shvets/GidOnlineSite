@@ -155,13 +155,8 @@ open class GidOnlineController: UICollectionViewController, UICollectionViewDele
 
         case SearchController.SegueIdentifier:
           if let destination = segue.destination.getActionController() as? SearchController {
-
-            let adapter = GidOnlineServiceAdapter()
-
             destination.params["requestType"] = "Search"
             destination.params["parentName"] = localizer.localize("Search Results")
-
-            destination.adapter = adapter
           }
 
         default:

@@ -140,8 +140,7 @@ open class GidOnlineTableViewController: UITableViewController {
 
           destination.params["requestType"] = "Search"
           destination.params["parentName"] = localizer.localize("Search Results")
-
-          destination.adapter = adapter
+          
           destination.configuration = adapter.getConfiguration()
         }
 
