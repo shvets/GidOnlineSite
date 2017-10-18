@@ -92,6 +92,7 @@ class GidOnlineServiceAdapter: ServiceAdapter {
     conf["historyManager"] = historyManager
     conf["dataSource"] = dataSource
     conf["storyboardId"] =  GidOnlineServiceAdapter.StoryboardId
+    conf["bundleId"] = GidOnlineServiceAdapter.BundleId
     conf["detailsImageFrame"] = getDetailsImageFrame()
     conf["buildLayout"] = buildLayout()
     return conf
