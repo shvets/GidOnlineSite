@@ -28,16 +28,17 @@ class GidOnlineDataSource: DataSource {
     }
 
     switch request {
-      case "Bookmarks":
-        if let bookmarks = params["bookmarks"]  as? Bookmarks {
-          result = bookmarks.getBookmarks(pageSize: 60, page: currentPage)
-        }
+    case "Bookmarks":
+      if let bookmarksManager = params["bookmarksManager"]  as? BookmarksManager,
+         let bookmarks = bookmarksManager.bookmarks {
+        result = bookmarks.getBookmarks(pageSize: 60, page: currentPage)
+      }
 
-      case "History":
-        if let history = params["history"] as? History {
-          result = history.getHistoryItems(pageSize: 60, page: currentPage)
-        }
-
+    case "History":
+      if let historyManager = params["historyManager"]  as? HistoryManager,
+         let history = historyManager.history {
+        result = history.getHistoryItems(pageSize: 60, page: currentPage)
+      }
       case "All Movies":
         result = try service.getAllMovies(page: currentPage)["movies"] as! [Any]
 
