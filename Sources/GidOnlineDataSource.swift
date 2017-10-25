@@ -9,13 +9,10 @@ class GidOnlineDataSource: DataSource {
   override open func load(params: Parameters) throws -> [Any] {
     var result: [Any] = []
 
-//    let bookmarks = params["bookmarks"] as! Bookmarks
-//    let history = params["history"] as! History
     let selectedItem = params["selectedItem"] as? Item
     let document = params["document"] as! Document
 
     var request = params["requestType"] as! String
-    //let pageSize = params["pageSize"] as? Int
     let currentPage = params["currentPage"] as! Int
 
     if let selectedItem = selectedItem as? MediaItem {
