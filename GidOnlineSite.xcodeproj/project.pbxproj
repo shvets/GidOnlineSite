@@ -22,7 +22,6 @@
 		2DBA19A3CEA030F34BAC88CE /* ThemesTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1E599D408001139C9C87 /* ThemesTableController.swift */; };
 		2DBA1B642B19A3E2BAC67DC6 /* LetterTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA196EF9E630F6AE996C3E /* LetterTableController.swift */; };
 		2DBA1CA21D70D7FBAF99D00F /* GidOnlineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1ECD63BE69CF5077B4E2 /* GidOnlineController.swift */; };
-		2DBA1D64800EB29EFC2FE530 /* GidOnlineMediaItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1102948D923DB432B157 /* GidOnlineMediaItemsController.swift */; };
 		2DBA1D66E28E3F0CA67EC87F /* SettingsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1DD94EABE9DE4F0AC755 /* SettingsTableController.swift */; };
 		FA3A0D4C1E8349500022E511 /* CountriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3A0D471E8349500022E511 /* CountriesController.swift */; };
 		FA3A0D4D1E8349500022E511 /* FiltersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3A0D481E8349500022E511 /* FiltersController.swift */; };
@@ -44,7 +43,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2DBA1102948D923DB432B157 /* GidOnlineMediaItemsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GidOnlineMediaItemsController.swift; sourceTree = "<group>"; };
 		2DBA117C19092AB3C387E213 /* GidOnlineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GidOnlineTableViewController.swift; sourceTree = "<group>"; };
 		2DBA11BEE386F65E6DA6FD3E /* LettersTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LettersTableController.swift; sourceTree = "<group>"; };
 		2DBA11ED620ED7673EF911A5 /* GenresGroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresGroupTableViewController.swift; sourceTree = "<group>"; };
@@ -181,7 +179,6 @@
 				2DBA136AFBCD0B80BDE00DBA /* tvos */,
 				2DBA1D0B5700591D31AB8451 /* ios */,
 				2DBA1B1FCF344AAFD8405213 /* GidOnlineSite.swift */,
-				2DBA1102948D923DB432B157 /* GidOnlineMediaItemsController.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -308,7 +305,6 @@
 				2DBA1251543ECF656CBA5807 /* LettersTableController.swift in Sources */,
 				2DBA11E5079BFE82C5CB42CA /* YearsTableController.swift in Sources */,
 				2DBA1592C177165F6AB7BDFD /* GidOnlineSite.swift in Sources */,
-				2DBA1D64800EB29EFC2FE530 /* GidOnlineMediaItemsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
