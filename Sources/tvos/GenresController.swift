@@ -32,7 +32,13 @@ class GenresController: UICollectionViewController, UICollectionViewDelegateFlow
       return self.loadGenres()
     }
 
-    items.loadInitialData(collectionView)
+    items.pageLoader.loadData { result in
+      if let items = result as? [Item] {
+        self.items.items = items
+
+        self.collectionView?.reloadData()
+      }
+    }
   }
 
   func loadGenres() -> [Item] {

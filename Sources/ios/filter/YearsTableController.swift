@@ -24,7 +24,13 @@ class YearsTableController: UITableViewController {
       return self.loadData()
     }
 
-    items.loadInitialData(tableView)
+    self.items.pageLoader.loadData { result in
+      if let items = result as? [Item] {
+        self.items.items = items
+
+        self.tableView?.reloadData()
+      }
+    }
   }
 
   func loadData() -> [Item] {

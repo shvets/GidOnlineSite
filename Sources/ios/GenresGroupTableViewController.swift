@@ -27,7 +27,13 @@ class GenresGroupTableViewController: UITableViewController {
       return self.loadGenresMenu()
     }
 
-    items.loadInitialData(tableView)
+    items.pageLoader.loadData { result in
+      if let items = result as? [Item] {
+        self.items.items = items
+
+        self.tableView?.reloadData()
+      }
+    }
   }
 
   func loadGenresMenu() -> [Item] {

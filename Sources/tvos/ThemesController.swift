@@ -34,9 +34,13 @@ class ThemesController: UICollectionViewController, UICollectionViewDelegateFlow
       return self.loadThemes()
     }
 
-    items.loadInitialData(collectionView)
+    items.pageLoader.loadData { result in
+      if let items = result as? [Item] {
+        self.items.items = items
 
-    //adapter = GidOnlineServiceAdapter()
+        self.collectionView?.reloadData()
+      }
+    }
   }
 
  func loadThemes() -> [Item] {

@@ -19,7 +19,13 @@ class SettingsController: UICollectionViewController, UICollectionViewDelegateFl
       return self.loadSettingsMenu()
     }
 
-    items.loadInitialData(collectionView)
+    items.pageLoader.loadData { result in
+      if let items = result as? [Item] {
+        self.items.items = items
+
+        self.collectionView?.reloadData()
+      }
+    }
   }
 
   func loadSettingsMenu() -> [Item] {

@@ -25,7 +25,13 @@ open class GidOnlineController: UICollectionViewController, UICollectionViewDele
       return self.loadData()
     }
 
-    items.loadInitialData(collectionView)
+    items.pageLoader.loadData { result in
+      if let items = result as? [Item] {
+        self.items.items = items
+
+        self.collectionView?.reloadData()
+      }
+    }
   }
 
   func loadData() -> [Item] {

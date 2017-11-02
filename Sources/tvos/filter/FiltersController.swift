@@ -33,9 +33,13 @@ class FiltersController: UICollectionViewController, UICollectionViewDelegateFlo
       return self.loadData()
     }
 
-    items.loadInitialData(collectionView)
+    items.pageLoader.loadData { result in
+      if let items = result as? [Item] {
+        self.items.items = items
 
-    //adapter = GidOnlineServiceAdapter()
+        self.collectionView?.reloadData()
+      }
+    }
   }
 
   func loadData() -> [Item] {
